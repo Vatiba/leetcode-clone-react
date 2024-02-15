@@ -31,11 +31,9 @@ export default function Login() {
       <Head title="Login" />
       <div className="hero flex-grow">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="pt-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda</p>
-            <p className="py-2">excepturi exercitationem quasi. In deleniti eaque </p>
-            <p className="pb-6">autrepudiandae et a id nisi.</p>
+          <div className="text-center lg:text-left ">
+            <h1 className="text-5xl font-bold">Registrasiya</h1>
+            <p className="pt-6 max-w-lg">Siz registrasiya bolanynyzdan son Oguzcode web programmasynyn mumkinchiliklerinden peydalanyp bilersiniz</p>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit}>
@@ -53,7 +51,7 @@ export default function Login() {
                   <input type="text" placeholder="password" className="input input-bordered" />
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
+                      Password yatdan chykardynyzmy?
                     </a>
                   </label>
                 </div>

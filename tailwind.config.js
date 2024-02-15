@@ -9,4 +9,15 @@ module.exports = {
     },
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      "light",
+      "dark"
+    ],
+  },
+  theme: {
+    colors: {
+      primary: 'rgb(var(--color-primary) / <alpha-value>)'
+    },
+  },
 };

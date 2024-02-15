@@ -3,11 +3,14 @@ import { ReactNode, useState } from 'react';
 import { AuthStatus } from '~/components/auth/AuthProvider';
 import Logo from '~/components/shared/Logo/Logo';
 import NavItem from '~/components/shared/Nav/NavItem';
+import ThemeBtn from '~/components/shared/ThemeBtn';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Example', href: '/example' },
-  { name: 'Protected', href: '/protected' },
+  { name: 'Problems', href: '/problems' },
+  { name: 'Contest', href: '/contest' },
+  { name: 'Discuss', href: '/discuss' },
+  { name: 'Top rating', href: '/top-rating' },
+  { name: 'About us', href: '/about-us' },
 ];
 
 function navItems(isMobile = false) {
@@ -21,10 +24,12 @@ function navItems(isMobile = false) {
 function PrimaryNavbar() {
   return (
     <div className="flex">
-      <NavItem href="#">
+      <NavItem href="/">
         <Logo />
       </NavItem>
-      <div className="hidden md:flex items-center space-x-1">{navItems()}</div>
+      <div className="hidden md:flex items-center space-x-1">
+        {navItems()}
+      </div>
     </div>
   );
 }
@@ -32,7 +37,8 @@ function PrimaryNavbar() {
 function SecondaryNavbar() {
   return (
     <div className="hidden md:flex items-center space-x-3">
-      <AuthStatus />
+    <ThemeBtn />
+      {/* <AuthStatus /> */}
     </div>
   );
 }

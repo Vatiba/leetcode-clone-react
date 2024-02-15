@@ -7,13 +7,12 @@ export default function NotFoundScreen() {
       <div className="hero flex-grow">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Page not found</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In
-              deleniti eaque aut repudiandae et a id nisi.
-            </p>
+            <h1 className="text-5xl font-bold py-6">Gözlenýän sahypa tapylmady</h1>
+            {/* <p className="py-6">
+              Gözlenýän sahypa tapylmady.
+            </p> */}
             <a className="btn btn-primary" href="/">
-              Go to homepage
+              Esasy sahypa
             </a>
           </div>
         </div>
