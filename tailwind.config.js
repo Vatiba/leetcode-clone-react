@@ -3,21 +3,17 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        sm: "url('./assets/img/bg-sm.png')",
-        md: "url('./assets/img/bg-md.png')",
+        sm: "url('./src/shared/assets/img/bg-sm.png')",
+        md: "url('./src/shared/assets/img/bg-md.png')",
       },
     },
   },
   plugins: [require('daisyui')],
   daisyui: {
     themes: [
+      "dark",
       "light",
-      "dark"
+      "forest"
     ],
-  },
-  theme: {
-    colors: {
-      primary: 'rgb(var(--color-primary) / <alpha-value>)'
-    },
   },
 };
