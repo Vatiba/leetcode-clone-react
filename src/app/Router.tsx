@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
 import { RequireAuth } from 'entities/auth';
-import { Navbar } from 'widgets/navbar';
+import { Navbar, Footer } from 'widgets';
 import { Loading } from 'shared/ui';
 
 const HomeScreen = lazy(() => import('pages/Home'));
@@ -12,10 +12,13 @@ const AboutUsScreen = lazy(() => import('pages/AboutUs'));
 
 function Layout() {
 	return (
-		<>
+		<div className='wrapper'>
 			<Navbar />
-			<Outlet />
-		</>
+			<div className="main">
+				<Outlet />
+			</div>
+			<Footer />
+		</div>
 	);
 }
 

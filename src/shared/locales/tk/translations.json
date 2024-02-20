@@ -1,0 +1,14 @@
+{
+   "inspiration": "Oka, Öwren, Döret",
+   "requiredField": "Hökmany meýdança",
+   "firstName": "Siziň adyňyz näme?",
+   "lastName": "Siziň familiýaňyz näme?",
+   "location": "Lokasiýaňyzy giriziň",
+   "status": "Ýagdaýyňyzy giriziň",
+   "school": "Mekdep belgiňizi giriziň ýa-da saýlaň",
+   "university": "Uniwersitetiňizi saýlaň",
+   "worker": "Işleýän ýeriňize giriň",
+   "signUp": "Registrasiýa",
+   "signIn": "Girmek ",
+   "password": "Parol uzynlygy minimum {{val}} bolmaly"
+}

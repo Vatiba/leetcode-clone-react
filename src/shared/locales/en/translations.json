@@ -1,0 +1,14 @@
+{
+   "inspiration": "Read, Learn, Create",
+   "requiredField": "Required field",
+   "firstName": "What is your first name?",
+   "lastName": "What is your last name?",
+   "location": "What is your location?",
+   "status": "What is your status?",
+   "school": "Enter your school number or select",
+   "university": "Select your university",
+   "worker": "Enter where you work",
+   "signUp": "Registration",
+   "signIn": "Login",
+   "password": "Password should be minimum {{val}} characters"
+}

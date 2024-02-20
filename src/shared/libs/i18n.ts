@@ -2,27 +2,27 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // language translations
-import translationRU from "shared/locales/ru/translation.json";
-import translationTK from "shared/locales/tk/translation.json";
-import translationEN from "shared/locales/en/translation.json";
+import translationsRu from 'shared/locales/ru/translations.json';
+import translationsEn from 'shared/locales/en/translations.json';
+import translationsTk from 'shared/locales/tk/translations.json';
 
 // language storage key
 import { storageKeys } from "entities/constants";
 import { Language } from "entities/types";
 
 
-export const defaultNS = "translation";
+export const defaultNS = "translations";
 
 // translations
 export const resources = {
    ru: {
-      translation: translationRU,
+      translations: translationsRu,
    },
    tk: {
-      translation: translationTK,
+      translations: translationsTk,
    },
    en: {
-      translation: translationEN,
+      translations: translationsEn,
    },
 }
 

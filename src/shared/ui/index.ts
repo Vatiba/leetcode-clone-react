@@ -1,1 +1,2 @@
-export { default as Loading } from './Loading';
+export { default as Container } from './container';
+export { default as Loading } from './loading';

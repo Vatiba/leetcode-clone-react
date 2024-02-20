@@ -1,14 +1,23 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import Head from 'entities/Head';
+import { Login } from 'widgets/login';
+import { Container } from 'shared/ui';
 
 export default function HomeScreen() {
 	const { t } = useTranslation();
-	
+
 	return (
 		<>
 			<Head title="Home" />
-			<div className="hero bg-sm md:bg-md flex-grow">
+			<Container>
+				<div className='flex justify-around my-44'>
+					<h1 className='text-4xl font-bold'>
+						{t('inspiration')}
+					</h1>
+					<Login />
+				</div>
+			</Container>
+			{/* <div className="hero bg-sm md:bg-md flex-grow">
 				<div className="hero-overlay bg-opacity-60" />
 				<div className="hero-content text-center text-neutral-content">
 					<div className="max-w-lg">
@@ -25,7 +34,7 @@ export default function HomeScreen() {
 						</Link>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 }
