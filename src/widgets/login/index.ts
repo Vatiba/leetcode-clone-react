@@ -1,3 +1,3 @@
 export {
-   Login
+   LoginWidget
 } from "./ui";

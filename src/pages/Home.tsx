@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Head from 'entities/Head';
-import { Login } from 'widgets/login';
+import { Login } from 'widgets';
 import { Container } from 'shared/ui';
 
 export default function HomeScreen() {

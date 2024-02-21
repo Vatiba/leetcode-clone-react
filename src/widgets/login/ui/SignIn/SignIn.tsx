@@ -37,6 +37,9 @@ const SignIn = (props: SignInProps) => {
 				isSubmitting,
 			}) => (
 				<Form>
+				<h1 className='mt-2 text-center font-bold text-xl'>
+					{t('signIn')}
+				</h1>
 					<label className="form-control w-full">
 						<div className="label">
 							<span className="label-text">{t('email')}</span>

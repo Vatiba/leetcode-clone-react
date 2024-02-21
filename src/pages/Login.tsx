@@ -2,6 +2,8 @@ import { FormEvent } from 'react';
 import { Location, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from 'entities/auth';
 import Head from 'entities/Head';
+import { Container } from 'shared';
+import { LoginWidget } from 'widgets/login';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,42 +31,9 @@ export default function Login() {
   return (
     <>
       <Head title="Login" />
-      <div className="hero flex-grow">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left ">
-            <h1 className="text-5xl font-bold">Registrasiya</h1>
-            <p className="pt-6 max-w-lg">Siz registrasiya bolanynyzdan son Oguzcode web programmasynyn mumkinchiliklerinden peydalanyp bilersiniz</p>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSubmit}>
-              <div className="card-body">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input type="text" name="username" placeholder="username" className="input input-bordered" />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Password</span>
-                  </label>
-                  <input type="text" placeholder="password" className="input input-bordered" />
-                  <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Password yatdan chykardynyzmy?
-                    </a>
-                  </label>
-                </div>
-                <div className="form-control mt-6">
-                  <button type="submit" className="btn btn-primary">
-                    Login
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      <Container className='flex justify-center my-36'>
+        <LoginWidget />
+      </Container>
     </>
   );
 }
