@@ -10,5 +10,14 @@
    "worker": "Enter where you work",
    "signUp": "Registration",
    "signIn": "Login",
-   "password": "Password should be minimum {{val}} characters"
+   "password": "Password",
+   "passwordMin": "Password should be minimum {{val}} characters",
+   "phoneMin": "Phone number should be minimum {{val}} digits",
+   "email": "E-mail",
+   "signOut": "Sign out",
+   "correctEmail": "Enter correct email address",
+   "step1": "Step 1",
+   "step2": "Step 2",
+   "next": "Next",
+   "doYouHaveAccount": "Do you already have account?"
 }

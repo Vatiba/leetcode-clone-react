@@ -11,7 +11,7 @@ const LanguageBtn = () => {
 
 
    return (
-      <div className="dropdown dropdown-hover dropdown-end">
+      <div className="dropdown dropdown-hover dropdown-top">
          <div
             tabIndex={0}
             role="button"

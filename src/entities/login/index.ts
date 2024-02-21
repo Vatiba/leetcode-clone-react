@@ -3,5 +3,6 @@ export type {
    LoginForm
 } from './types';
 export {
-   RegistrationSchema
+   RegistrationSchema,
+   LoginSchema
 } from './model';

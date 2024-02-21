@@ -5,8 +5,9 @@ import * as Yup from 'yup';
 const RegistrationSchema = (t: TFunction) => Yup.object({
 	firstName: Yup.string().required(t('requiredField')),
 	lastName: Yup.string().required(t('requiredField')),
-	email: Yup.string().email(),
-	phoneNumber: Yup.number(),
+	email: Yup.string().required(t('requiredField')).email(t('correctEmail')),
+	password: Yup.string().required(t('requiredField')).min(4, t('passwordMin')),
+	phoneNumber: Yup.number().min(8, t('phoneMin')),
 	location: Yup.string().required(t('requiredField')),
 	status: Yup.string().oneOf(userStatus).nullable(),
 	school: Yup.string().when('status', {

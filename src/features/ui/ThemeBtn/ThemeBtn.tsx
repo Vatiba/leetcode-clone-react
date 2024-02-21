@@ -3,9 +3,9 @@ import { useLocalStorage } from 'shared/hooks';
 
 const ThemeBtn = () => {
 	//we store the theme in localStorage to preserve the state on next visit with an initial theme of dark.
-	const [theme, setTheme] = useLocalStorage("theme", "dark");
+	const [theme, setTheme] = useLocalStorage("theme", "emerald");
 	const toggleTheme = () => {
-		setTheme(theme === "dark" ? "light" : "dark");
+		setTheme(theme === "emerald" ? "forest" : "emerald");
 	};
 
 	//modify data-theme attribute on document.body when theme changes

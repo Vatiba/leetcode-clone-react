@@ -4,9 +4,9 @@ type RegistrationForm = {
    firstName: string
    lastName: string
    email: string
-   phoneNumber: string
    password: string
-   location: string | number
+   phoneNumber: string
+   location: number | ''
    status: UserStatus | ''
    school?: string | number
    university?: string

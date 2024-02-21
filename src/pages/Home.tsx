@@ -10,8 +10,8 @@ export default function HomeScreen() {
 		<>
 			<Head title="Home" />
 			<Container>
-				<div className='flex justify-around my-44'>
-					<h1 className='text-4xl font-bold'>
+				<div className='flex flex-wrap justify-around items-center h-[600px] lg:h-[800px]'>
+					<h1 className='text-5xl font-bold'>
 						{t('inspiration')}
 					</h1>
 					<Login />

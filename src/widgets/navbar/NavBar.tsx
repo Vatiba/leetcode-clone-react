@@ -41,8 +41,6 @@ function PrimaryNavbar() {
 function SecondaryNavbar() {
 	return (
 		<div className="hidden md:flex items-center space-x-3">
-			<ThemeBtn />
-			<LangBtn />
 			<AuthStatus />
 		</div>
 	);

@@ -10,5 +10,14 @@
    "worker": "Işleýän ýeriňize giriň",
    "signUp": "Registrasiýa",
    "signIn": "Girmek ",
-   "password": "Parol uzynlygy minimum {{val}} bolmaly"
+   "password": "Parol",
+   "passwordMin": "Parol uzynlygy minimum {{val}} bolmaly",
+   "phoneMin": "Telefon nomer uzynlygy minimum {{val}} bolmaly",
+   "email": "E-poçta",
+   "signOut": "Çykmak",
+   "correctEmail": "Dogry e-poçta giriziň",
+   "step1": "Step 1",
+   "step2": "Step 2",
+   "next": "Indiki",
+   "doYouHaveAccount": "Hasabyňyz barmy?"
 }

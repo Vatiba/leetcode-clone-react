@@ -4,36 +4,24 @@ import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
+import { useSearchParams } from 'react-router-dom';
 
 const Login = () => {
 	const { t } = useTranslation();
 
-	const [activeTab, setActiveTab] = useState<'signIn' | 'signUp'>('signIn');
+	const [activeTab, setActiveTab] = useSearchParams('login');
 
 	return (
 		<div className='flex flex-col'>
-			<div role="tablist" className="tabs tabs-lifted">
-				<a
-					role="tab"
-					className={clsx("tab", activeTab === 'signIn' && 'tab-active')}
-					onClick={() => setActiveTab('signIn')}
-				>
-					{t('signIn')}
-				</a>
-				<a
-					role="tab"
-					className={clsx("tab", activeTab === 'signUp' && 'tab-active')}
-					onClick={() => setActiveTab('signUp')}
-				>
-					{t('signUp')}
-				</a>
+
+			<div className='shadow-md rounded-lg p-5 w-96'>
+				{
+					activeTab.get('loginType') === 'signUp' || !activeTab.get('loginType') ?
+						<SignUp setLoginType={setActiveTab} />
+						:
+						<SignIn setLoginType={setActiveTab} />
+				}
 			</div>
-			{
-				activeTab === 'signIn' ?
-					<SignIn />
-					:
-					<SignUp />
-			}
 		</div>
 	)
 }
