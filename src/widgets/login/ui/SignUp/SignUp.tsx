@@ -44,9 +44,6 @@ const SignUp = (props: SignUpProps) => {
 				isSubmitting,
 			}) => (
 				<Form>
-					<h1 className='mt-2 text-center font-bold text-xl'>
-						{t('signUp')}
-					</h1>
 					{
 						activeTab.get('step') === '1' || !activeTab.get('step') &&
 						<>
