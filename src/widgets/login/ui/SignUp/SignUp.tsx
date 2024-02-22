@@ -228,7 +228,7 @@ const SignUp = (props: SignUpProps) => {
 									</div>
 								</label>
 							}
-							<button className="btn btn-primary btn-block mb-3 capitalize" type='submit'>
+							<button className="btn btn-primary btn-block mb-3 capitalize text-white" type='submit'>
 								{t('signUp')}
 							</button>
 						</>
@@ -245,7 +245,7 @@ const SignUp = (props: SignUpProps) => {
 					{
 						activeTab.get('step') === '1' || !activeTab.get('step') &&
 						<div className='flex justify-end'>
-							<button className="btn btn-primary mb-3" type='submit' onClick={() => setActiveTab({ step: '2' })}>
+							<button className="btn btn-primary capitalize text-white" type='submit' onClick={() => setActiveTab({ step: '2' })}>
 								{t('next')}
 							</button>
 						</div>

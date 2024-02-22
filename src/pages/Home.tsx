@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Head from 'entities/Head';
 import { LoginWidget } from 'widgets';
 import { Container } from 'shared/ui';
+import { OlimpiadsWidget, CommentsWidget, TablesWidget } from 'widgets/home';
 
 export default function HomeScreen() {
 	const { t } = useTranslation();
@@ -17,7 +18,12 @@ export default function HomeScreen() {
 					<LoginWidget />
 				</div>
 
+				<OlimpiadsWidget />
 				
+				<CommentsWidget />
+
+				<TablesWidget />
+
 			</Container>
 		</>
 	);

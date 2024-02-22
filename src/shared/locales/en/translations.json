@@ -19,5 +19,9 @@
    "step1": "Step 1",
    "step2": "Step 2",
    "next": "Next",
-   "doYouHaveAccount": "Do you already have account?"
+   "doYouHaveAccount": "Do you already have account?",
+   "olimpiads": "Olimpiads",
+   "comments": "Comments",
+   "topRating": "Top rating",
+   "winnersOfLastOlimpiads": "Winners of last olimpiads"
 }

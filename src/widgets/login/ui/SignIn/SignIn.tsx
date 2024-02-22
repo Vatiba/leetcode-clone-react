@@ -81,7 +81,7 @@ const SignIn = (props: SignInProps) => {
 							}
 						</div>
 					</label>
-					<button className="btn btn-primary btn-block mt-6" type='submit' disabled={isSubmitting}>
+					<button className="btn btn-primary btn-block mt-6 text-white" type='submit' disabled={isSubmitting}>
 						{t('signIn')}
 					</button>
 					<div className='flex justify-end'>

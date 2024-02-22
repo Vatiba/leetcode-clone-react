@@ -19,5 +19,9 @@
    "step1": "Step 1",
    "step2": "Step 2",
    "next": "Далее",
-   "doYouHaveAccount": "У вас уже есть аккаунт?"
+   "doYouHaveAccount": "У вас уже есть аккаунт?",
+   "olimpiads": "Олимпиады",
+   "comments": "Коментарии",
+   "topRating": "Топ рейтинг",
+   "winnersOfLastOlimpiads": "Победители последней олимпиады"
 }
