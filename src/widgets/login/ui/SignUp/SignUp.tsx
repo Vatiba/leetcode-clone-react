@@ -189,7 +189,7 @@ const SignUp = (props: SignUpProps) => {
 									<div className="label">
 										<span className="label-text">{t('school')}</span>
 									</div>
-									<input type="text" className="input input-sm input-bordered w-full" />
+									<input type="number" className="input input-bordered w-full" />
 									<div className="label">
 										{
 											errors.school && touched.school &&
@@ -204,7 +204,17 @@ const SignUp = (props: SignUpProps) => {
 									<div className="label">
 										<span className="label-text">{t('university')}</span>
 									</div>
-									<input type="text" className="input input-sm input-bordered w-full" />
+									<select
+										className="select select-bordered"
+										name="university"
+										onChange={handleChange}
+										onBlur={handleBlur}
+										value={values.university}
+									>
+										<option>TITU</option>
+										<option>TDU</option>
+										<option>etc...</option>
+									</select>
 									<div className="label">
 										{
 											errors.university && touched.university &&
