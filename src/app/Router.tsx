@@ -61,6 +61,10 @@ function Routes() {
 					element: <AboutUsScreen />,
 				},
 				{
+					path: '/contact',
+					element: <AboutUsScreen />,
+				},
+				{
 					path: '/login',
 					element: <LoginScreen />,
 				},

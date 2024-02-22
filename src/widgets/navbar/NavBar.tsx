@@ -2,7 +2,6 @@
 import { ReactNode, useState } from 'react';
 import { AuthStatus } from 'entities/auth';
 import { NavItem } from 'widgets/navbar';
-import {ThemeBtn, LangBtn} from 'features/ui';
 import logo from 'shared/assets/img/logo.png';
 
 const navigation = [
@@ -10,7 +9,6 @@ const navigation = [
 	{ name: 'Contest', href: '/contest' },
 	{ name: 'Discuss', href: '/discuss' },
 	{ name: 'Top rating', href: '/top-rating' },
-	{ name: 'About us', href: '/about-us' },
 ];
 
 function Logo() {
