@@ -23,5 +23,8 @@
    "olimpiads": "Olimpiads",
    "comments": "Comments",
    "topRating": "Top rating",
-   "winnersOfLastOlimpiads": "Winners of last olimpiads"
+   "winnersOfLastOlimpiads": "Winners of last olimpiads",
+   "title": "Title",
+   "difficulty": "Difficulty",
+   "statusName": "Status"
 }

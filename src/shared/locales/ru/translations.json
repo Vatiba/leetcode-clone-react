@@ -23,5 +23,8 @@
    "olimpiads": "Олимпиады",
    "comments": "Коментарии",
    "topRating": "Топ рейтинг",
-   "winnersOfLastOlimpiads": "Победители последней олимпиады"
+   "winnersOfLastOlimpiads": "Победители последней олимпиады",
+   "title": "Заголовок",
+   "difficulty": "Сложность",
+   "statusName": "Статус"
 }
