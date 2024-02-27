@@ -28,5 +28,8 @@
    "difficulty": "Difficulty",
    "statusName": "Status",
    "pickRandom": "Pick random",
-   "showTopicTags": "Show topic tags"
+   "showTopicTags": "Show topic tags",
+   "activeContests": "Active contests",
+   "futureContents": "Future contests",
+   "pastContests": "Past contests"
 }

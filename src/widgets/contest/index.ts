@@ -1,0 +1,3 @@
+export {
+   PastContestsTableWidget
+} from './ui';

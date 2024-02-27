@@ -13,7 +13,7 @@ export default function Problems() {
 
 	return (
 		<>
-			<Head title="Home" />
+			<Head title="Problems" />
 			<Container>
 				<div className='flex flex-col mt-24'>
 					<ProblemsTagsWidget />

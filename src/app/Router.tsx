@@ -7,6 +7,7 @@ import { Loading } from 'shared/ui';
 const HomeScreen = lazy(() => import('pages/Home'));
 const ProtectedScreen = lazy(() => import('pages/Protected'));
 const ProblemsScreen = lazy(() => import('pages/Problems'));
+const ContestScreen = lazy(() => import('pages/Contest'));
 const LoginScreen = lazy(() => import('pages/Login'));
 const NotFoundScreen = lazy(() => import('pages/NotFound'));
 const AboutUsScreen = lazy(() => import('pages/AboutUs'));
@@ -39,7 +40,7 @@ function Routes() {
 				},
 				{
 					path: '/contest',
-					element: <ProtectedScreen />,
+					element: <ContestScreen />,
 				},
 				{
 					path: '/discuss',

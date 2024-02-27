@@ -28,5 +28,8 @@
    "difficulty": "Сложность",
    "statusName": "Статус",
    "pickRandom": "Выбрать рандом",
-   "showTopicTags": "Показать теги"
+   "showTopicTags": "Показать теги",
+   "activeContests": "Активные конкурсы",
+   "futureContents": "Будущие конкурсы",
+   "pastContests": "Прошедшие конкурсы"
 }

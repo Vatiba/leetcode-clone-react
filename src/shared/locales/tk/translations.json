@@ -28,5 +28,8 @@
    "difficulty": "Kynçylyk",
    "statusName": "Ýagdaýy",
    "pickRandom": "Tötänleýin saýla",
-   "showTopicTags": "Tagleri görkez"
+   "showTopicTags": "Tagleri görkez",
+   "activeContests": "Işjeň bäsleşikler",
+   "futureContents": "Geljekdäki bäsleşikler",
+   "pastContests": "Geçen bäsleşikler"
 }
