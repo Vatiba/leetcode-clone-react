@@ -26,5 +26,7 @@
    "winnersOfLastOlimpiads": "Soňky olimpiadanyň ýeňijileri",
    "title": "Ady",
    "difficulty": "Kynçylyk",
-   "statusName": "Ýagdaýy"
+   "statusName": "Ýagdaýy",
+   "pickRandom": "Tötänleýin saýla",
+   "showTopicTags": "Tagleri görkez"
 }

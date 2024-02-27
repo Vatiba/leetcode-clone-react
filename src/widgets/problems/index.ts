@@ -1,3 +1,5 @@
 export {
-   ProblemsTableWidget
+   ProblemsTableWidget,
+   ProblemsTagsWidget,
+   ProblemFiltersWidget
 } from './ui';

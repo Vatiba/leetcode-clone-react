@@ -26,5 +26,7 @@
    "winnersOfLastOlimpiads": "Победители последней олимпиады",
    "title": "Заголовок",
    "difficulty": "Сложность",
-   "statusName": "Статус"
+   "statusName": "Статус",
+   "pickRandom": "Выбрать рандом",
+   "showTopicTags": "Показать теги"
 }

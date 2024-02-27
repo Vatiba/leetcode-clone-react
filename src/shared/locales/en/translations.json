@@ -26,5 +26,7 @@
    "winnersOfLastOlimpiads": "Winners of last olimpiads",
    "title": "Title",
    "difficulty": "Difficulty",
-   "statusName": "Status"
+   "statusName": "Status",
+   "pickRandom": "Pick random",
+   "showTopicTags": "Show topic tags"
 }
