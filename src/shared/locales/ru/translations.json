@@ -31,5 +31,9 @@
    "showTopicTags": "Показать теги",
    "activeContests": "Активные конкурсы",
    "futureContents": "Будущие конкурсы",
-   "pastContests": "Прошедшие конкурсы"
+   "pastContests": "Прошедшие конкурсы",
+   "newestToOldest": "От нового к старому",
+   "mostVotes": "Большинство голосов",
+   "mostViewed": "Наиболее просматриваемые",
+   "new": "Новый"
 }

@@ -1,78 +1,92 @@
 import clsx from 'clsx';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-import { GoCalendar } from "react-icons/go";
+import { MdOutlineCheckCircleOutline } from "react-icons/md";
 
 const problems = [
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Easy',
+		acceptance: 48
 	},
 	{
 		status: false,
 		title: 'Median of Two Sorted Arrays',
 		difficulty: 'Easy',
+		acceptance: 48
 	},
 	{
 		status: false,
 		title: '100. Same Tree',
 		difficulty: 'Medium',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Hard',
+		acceptance: 48
 	},
 	{
 		status: false,
 		title: 'Median of Two Sorted Arrays',
 		difficulty: 'Easy',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: 'Median of Two Sorted Arrays',
 		difficulty: 'Medium',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Medium',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Hard',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Hard',
+		acceptance: 48
 	},
 	{
 		status: false,
 		title: 'Median of Two Sorted Arrays',
 		difficulty: 'Easy',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Hard',
+		acceptance: 48
 	},
 	{
 		status: false,
 		title: 'Median of Two Sorted Arrays',
 		difficulty: 'Easy',
+		acceptance: 48
 	},
 	{
 		status: true,
 		title: '100. Same Tree',
 		difficulty: 'Hard',
+		acceptance: 48
 	},
 	{
 		status: false,
 		title: 'Median of Two Sorted Arrays',
 		difficulty: 'Easy',
+		acceptance: 48
 	},
 ]
 
@@ -93,6 +107,7 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 					<tr>
 						<th>{t('statusName')}</th>
 						<th>{t('title')}</th>
+						<th>{t('acceptance')}</th>
 						<th>{t('difficulty')}</th>
 					</tr>
 				</thead>
@@ -102,7 +117,7 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 							return (
 								<tr>
 									<td>
-										{problem.status && <GoCalendar className='text-green-600' />}
+										{problem.status && <MdOutlineCheckCircleOutline className='text-green-600' />}
 									</td>
 									<td>
 										<div className='flex flex-col'>
@@ -122,6 +137,9 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 												</div>
 											}
 										</div>
+									</td>
+									<td>
+										{problem.acceptance}%
 									</td>
 									<td className={clsx({
 										'text-green-600': problem.difficulty === 'Easy',

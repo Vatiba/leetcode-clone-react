@@ -31,5 +31,9 @@
    "showTopicTags": "Show topic tags",
    "activeContests": "Active contests",
    "futureContents": "Future contests",
-   "pastContests": "Past contests"
+   "pastContests": "Past contests",
+   "newestToOldest": "Newest to oldest",
+   "mostVotes": "Most votes",
+   "mostViewed": "Most viewed",
+   "new": "New"
 }

@@ -8,7 +8,7 @@ const navigation = [
 	{ name: 'Problems', href: '/problems' },
 	{ name: 'Contest', href: '/contest' },
 	{ name: 'Discuss', href: '/discuss' },
-	{ name: 'Top rating', href: '/top-rating' },
+	// { name: 'Top rating', href: '/top-rating' },
 ];
 
 function Logo() {

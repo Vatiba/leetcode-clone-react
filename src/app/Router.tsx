@@ -11,6 +11,7 @@ const ContestScreen = lazy(() => import('pages/Contest'));
 const LoginScreen = lazy(() => import('pages/Login'));
 const NotFoundScreen = lazy(() => import('pages/NotFound'));
 const AboutUsScreen = lazy(() => import('pages/AboutUs'));
+const DiscussScreen = lazy(() => import('pages/Discuss'));
 
 function Layout() {
 	return (
@@ -44,12 +45,12 @@ function Routes() {
 				},
 				{
 					path: '/discuss',
-					element: <ProtectedScreen />,
+					element: <DiscussScreen />,
 				},
-				{
-					path: '/top-rating',
-					element: <ProtectedScreen />,
-				},
+				// {
+				// 	path: '/top-rating',
+				// 	element: <ProtectedScreen />,
+				// },
 				{
 					path: '/profile',
 					element: (
