@@ -22,8 +22,8 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
                <input type="text" className="grow bg-transparent outline-none" placeholder="Search" />
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
             </label>
-            <select className="select select-sm select-bordered max-w-xs">
-               <option disabled selected>Difficulty</option>
+            <select className="select select-sm select-bordered max-w-xs" defaultValue={'difficulty'}>
+               <option disabled value={'difficulty'}>Difficulty</option>
                <option className='text-green-500' value={'easy'}>Easy</option>
                <option className='text-orange-500' value={'easy'}>Medium</option>
                <option className='text-red-500' value={'easy'}>Hard</option>
@@ -35,7 +35,7 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                   <li>
                      <a className='flex' onClick={() => setShowTopicTags(prev => !prev)}>
-                        <input type="checkbox" checked={showTopicTags} className="checkbox checkbox-sm" />
+                        <input type="checkbox" checked={showTopicTags} className="checkbox checkbox-sm" onChange={() => { }} />
                         <span>{t('showTopicTags')}</span>
                      </a>
                   </li>

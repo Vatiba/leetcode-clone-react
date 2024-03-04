@@ -35,5 +35,7 @@
    "newestToOldest": "Newest to oldest",
    "mostVotes": "Most votes",
    "mostViewed": "Most viewed",
-   "new": "New"
+   "new": "New",
+   "desc": "Description",
+   "solution": "Solution"
 }

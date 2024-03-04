@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
 import { RequireAuth } from 'entities/auth';
 import { Navbar, Footer } from 'widgets';
@@ -7,18 +7,19 @@ import { Loading } from 'shared/ui';
 const HomeScreen = lazy(() => import('pages/Home'));
 const ProtectedScreen = lazy(() => import('pages/Protected'));
 const ProblemsScreen = lazy(() => import('pages/Problems'));
+const ProblemScreen = lazy(() => import('pages/Problem'));
 const ContestScreen = lazy(() => import('pages/Contest'));
 const LoginScreen = lazy(() => import('pages/Login'));
 const NotFoundScreen = lazy(() => import('pages/NotFound'));
 const AboutUsScreen = lazy(() => import('pages/AboutUs'));
 const DiscussScreen = lazy(() => import('pages/Discuss'));
 
-function Layout() {
+function Layout({ children }: { children: ReactNode }) {
 	return (
 		<div className='wrapper'>
 			<Navbar />
 			<div className="main">
-				<Outlet />
+				{children}
 			</div>
 			<Footer />
 		</div>
@@ -29,23 +30,45 @@ function Routes() {
 	const routes: RouteObject[] = [
 		{
 			path: '/',
-			element: <Layout />,
+			element: <Outlet />,
 			children: [
 				{
 					index: true,
-					element: <HomeScreen />,
+					element: (
+						<Layout>
+							<HomeScreen />
+						</Layout>
+					),
 				},
 				{
 					path: '/problems',
-					element: <ProblemsScreen />,
+					element: (
+						<Layout>
+							<ProblemsScreen />
+						</Layout>
+					),
+				},
+				{
+					path: '/problems/:problemSlug',
+					element: (
+						<ProblemScreen />
+					),
 				},
 				{
 					path: '/contest',
-					element: <ContestScreen />,
+					element: (
+						<Layout>
+							<ContestScreen />
+						</Layout>
+					),
 				},
 				{
 					path: '/discuss',
-					element: <DiscussScreen />,
+					element: (
+						<Layout>
+							<DiscussScreen />
+						</Layout>
+					),
 				},
 				// {
 				// 	path: '/top-rating',
@@ -54,26 +77,44 @@ function Routes() {
 				{
 					path: '/profile',
 					element: (
-						<RequireAuth>
-							<ProtectedScreen />
-						</RequireAuth>
+						<Layout>
+							<RequireAuth>
+								<ProtectedScreen />
+							</RequireAuth>
+						</Layout>
 					),
 				},
 				{
 					path: '/about-us',
-					element: <AboutUsScreen />,
+					element: (
+						<Layout>
+							<AboutUsScreen />
+						</Layout>
+					),
 				},
 				{
 					path: '/contact',
-					element: <AboutUsScreen />,
+					element: (
+						<Layout>
+							<AboutUsScreen />
+						</Layout>
+					),
 				},
 				{
 					path: '/login',
-					element: <LoginScreen />,
+					element: (
+						<Layout>
+							<LoginScreen />
+						</Layout>
+					),
 				},
 				{
 					path: '*',
-					element: <NotFoundScreen />,
+					element: (
+						<Layout>
+							<NotFoundScreen />
+						</Layout>
+					),
 				},
 			],
 		},
