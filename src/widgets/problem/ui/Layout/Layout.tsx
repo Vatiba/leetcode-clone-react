@@ -9,7 +9,7 @@ function Layout() {
          <div className='w-1/2 h-full pb-3 px-1'>
             <Description />
          </div>
-         <div className='w-1/2 flex flex-col pb-3 px-1'>
+         <div className='w-1/2 flex flex-col pb-3 px-1 gap-2'>
             <div className='h-2/3'>
                <Code />
             </div>
