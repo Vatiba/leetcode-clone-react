@@ -7,7 +7,6 @@ import { AuthStatus } from 'entities/auth';
 import { Link } from 'react-router-dom';
 import { ThemeBtn } from 'features/ui';
 
-
 function Head() {
 	return (
 		<div className='flex items-center justify-between h-[6%]' style={{minWidth: '1000px'}}>

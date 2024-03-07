@@ -157,12 +157,12 @@ function DiscussesTableWidget() {
 					{
 						discusses.map((discuss, index) => {
 							return (
-								<Link key={index} to="#" className='flex justify-start items-center border-b border-gray-200 py-2 text-sm sm:text-base'>
-									<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 hidden sm:block' />
-									<div className='flex flex-col flex-1'>
+								<Link key={index} to="#" className='flex justify-start items-center border-b border-gray-200 py-2 text-xs sm:text-base'>
+									<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
+									<div className='flex flex-col flex-1 ml-3'>
 										<p className='font-bold line-clamp-2'>{discuss.title}</p>
-										<span className='text-sm'>User name: {discuss.user}</span>
-										<div className='mt-1 flex flex-wrap items-center text-gray-600 text-sm'>
+										<span className=''>User name: {discuss.user}</span>
+										<div className='mt-1 flex flex-wrap items-center text-gray-600'>
 											<span className='flex items-center mr-2'>
 												<RxCountdownTimer className='mr-2' />
 												<span className='truncate'>Posted time:</span>
