@@ -10,7 +10,7 @@ import { ThemeBtn } from 'features/ui';
 
 function Head() {
 	return (
-		<div className='flex items-center justify-between h-[6%]'>
+		<div className='flex items-center justify-between h-[6%]' style={{minWidth: '1000px'}}>
 			<Link to="/">
 				<img src={LogoImg} alt="Logo" width={30} height={30} />
 			</Link>

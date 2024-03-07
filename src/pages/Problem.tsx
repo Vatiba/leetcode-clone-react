@@ -8,7 +8,7 @@ function ProblemScreen() {
 	console.log(params['problemSlug']);
 
 	return (
-		<div className='px-3 bg-slate-100 h-screen'>
+		<div className='px-3 bg-slate-100 h-screen overflow-x-auto'>
 			<ProblemHead />
 			<ProblemLayouts />
 		</div>
