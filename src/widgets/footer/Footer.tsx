@@ -10,7 +10,7 @@ const Footer = () => {
          </nav>
          <nav>
             <div className="grid grid-flow-col gap-4">
-               <ThemeBtn />
+               {/* <ThemeBtn /> */}
                <LangBtn />
             </div>
          </nav>

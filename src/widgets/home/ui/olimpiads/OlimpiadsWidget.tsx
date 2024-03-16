@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 // trash
 import img1 from 'shared/assets/trash/1.jpg';
-import img2 from 'shared/assets/trash/2.jpg';
-import img3 from 'shared/assets/trash/3.jpg';
+import img2 from 'shared/assets/trash/1.jpg';
+import img3 from 'shared/assets/trash/1.jpg';
 
 const OlimpiadsWidget = () => {
 	const { t } = useTranslation();

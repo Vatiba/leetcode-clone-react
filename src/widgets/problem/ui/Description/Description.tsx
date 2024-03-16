@@ -7,6 +7,8 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { ImLab } from "react-icons/im";
 import { FaTag } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
+import { GoCommentDiscussion } from "react-icons/go";
+import { CiViewTimeline } from "react-icons/ci";
 
 function Description() {
 	const { t } = useTranslation();
@@ -20,7 +22,7 @@ function Description() {
 				<button
 					className={
 						clsx('flex items-center p-2 rounded-md bg-gray-100 hover:bg-gray-200', {
-							'bg-gray-200': activeTab.get('desc') !== 'solution'
+							'bg-gray-200': activeTab.get('desc') === 'desc' || !activeTab.get('desc')
 						})
 					}
 					onClick={() => setActiveTab({ desc: 'desc' })}
@@ -43,6 +45,19 @@ function Description() {
 						{t('solution')}
 					</span>
 				</button>
+				<button
+					className={
+						clsx('flex items-center p-2 rounded-md bg-gray-100 hover:bg-gray-200', {
+							'bg-gray-200': activeTab.get('desc') === 'discussion'
+						})
+					}
+					onClick={() => setActiveTab({ desc: 'discussion' })}
+				>
+					<GoCommentDiscussion />
+					<span className='ml-2'>
+						Discussion
+					</span>
+				</button>
 			</div>
 			<div className='h-[92%] overflow-y-auto px-3 pt-6 pb-4 overflow-x-hidden scroll-smooth' ref={contentRef}>
 				<h1 className='text-xl font-bold mb-3'>
@@ -58,6 +73,13 @@ function Description() {
 					>
 						<FaTag className='text-sm mr-1' />
 						Tags
+					</button>
+					<button
+						className='bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 flex items-center mr-1'
+						onClick={() => contentRef.current?.scrollTo(0, tagsRef.current?.offsetTop || 0)}
+					>
+						<CiViewTimeline className='text-sm mr-1' />
+						Requirements
 					</button>
 				</div>
 				<div className='my-3'>
@@ -223,6 +245,17 @@ function Description() {
 					</span>
 					<span className='flex justify-center items-center bg-gray-200 rounded-full p-2 py-1 text-xs text-gray-500'>
 						Binary Tree
+					</span>
+				</div>
+				<div className='flex mt-3'>
+					<span id='#tags' className='flex items-center mr-1' ref={tagsRef}>
+						<CiViewTimeline className='text-sm mr-1' />
+						Requirements
+					</span>
+				</div>
+				<div className='flex flex-wrap gap-1 mt-3'>
+					<span className='flex justify-center items-center bg-gray-200 rounded-full px-2 py-1 text-xs text-gray-500'>
+						Tree
 					</span>
 				</div>
 			</div>

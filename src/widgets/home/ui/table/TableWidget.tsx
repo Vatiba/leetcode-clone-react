@@ -81,13 +81,13 @@ const TableWidget = () => {
 					</tr>
 				</tbody>
 				{/* foot */}
-				<tfoot>
+				{/* <tfoot>
 					<tr>
 						<th>Name</th>
 						<th>Score</th>
 						<th></th>
 					</tr>
-				</tfoot>
+				</tfoot> */}
 
 			</table>
 		</div>

@@ -24,9 +24,9 @@ function Head() {
 				</button>
 			</div>
 			<div className='flex items-center'>
-				<div className='ml-3 flex items-center scale-75'>
+				{/* <div className='ml-3 flex items-center scale-75'>
 					<ThemeBtn />
-				</div>
+				</div> */}
 				<AuthStatus />
 			</div>
 		</div>

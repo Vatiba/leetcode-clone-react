@@ -120,10 +120,12 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 			<table className="table w-full">
 				<thead>
 					<tr>
+						<th></th>
 						<th>{t('statusName')}</th>
 						<th>{t('title')}</th>
 						<th>{t('acceptance')}</th>
 						<th>{t('difficulty')}</th>
+						<th>Score</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -131,6 +133,7 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 						problems.map((problem, index) => {
 							return (
 								<tr key={index}>
+								<td>{index + 1}</td>
 									<td>
 										<Link to={`/problems/${problem.slug}`}>
 											{problem.status && <MdOutlineCheckCircleOutline className='text-green-600' />}
@@ -171,6 +174,7 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 											{problem.difficulty}
 										</Link>
 									</td>
+									<td>🔥 121123</td>
 								</tr>
 							)
 						})
