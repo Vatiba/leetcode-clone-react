@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { userStatus } from 'entities/constants';
 import { RegistrationForm, RegistrationSchema } from 'entities/login';
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { userStatus } from 'entities/constants';
 import { useSearchParams } from 'react-router-dom';
 
 type SignUpProps = {
@@ -19,13 +18,13 @@ const SignUp = (props: SignUpProps) => {
 	return (
 		<Formik<RegistrationForm>
 			initialValues={{
-				firstName: '',
-				lastName: '',
+				first_name: '',
+				last_name: '',
 				email: '',
-				phoneNumber: '',
-				location: '',
+				phone: '',
 				status: 'student',
 				password: '',
+				location: '',
 			}}
 			validationSchema={RegistrationSchema(t)}
 			onSubmit={(values, { setSubmitting }) => {
@@ -101,12 +100,12 @@ const SignUp = (props: SignUpProps) => {
 									name="firstName"
 									onChange={handleChange}
 									onBlur={handleBlur}
-									value={values.firstName}
+									value={values.first_name}
 								/>
 								<div className="label">
 									{
-										errors.firstName && touched.firstName &&
-										<span className="label-text-alt text-error">{errors.firstName}</span>
+										errors.first_name && touched.first_name &&
+										<span className="label-text-alt text-error">{errors.first_name}</span>
 									}
 								</div>
 							</label>
@@ -120,12 +119,12 @@ const SignUp = (props: SignUpProps) => {
 									name="lastName"
 									onChange={handleChange}
 									onBlur={handleBlur}
-									value={values.lastName}
+									value={values.last_name}
 								/>
 								<div className="label">
 									{
-										errors.lastName && touched.lastName &&
-										<span className="label-text-alt text-error">{errors.lastName}</span>
+										errors.last_name && touched.last_name &&
+										<span className="label-text-alt text-error">{errors.last_name}</span>
 									}
 								</div>
 							</label>
@@ -192,8 +191,8 @@ const SignUp = (props: SignUpProps) => {
 									<input type="number" className="input input-bordered w-full" />
 									<div className="label">
 										{
-											errors.school && touched.school &&
-											<span className="label-text-alt text-error">{errors.school}</span>
+											errors.school_number && touched.school_number &&
+											<span className="label-text-alt text-error">{errors.school_number}</span>
 										}
 									</div>
 								</label>
@@ -232,8 +231,8 @@ const SignUp = (props: SignUpProps) => {
 									<input type="text" className="input input-sm input-bordered w-full" />
 									<div className="label">
 										{
-											errors.worker && touched.worker &&
-											<span className="label-text-alt text-error">{errors.worker}</span>
+											errors.company_name && touched.company_name &&
+											<span className="label-text-alt text-error">{errors.company_name}</span>
 										}
 									</div>
 								</label>
