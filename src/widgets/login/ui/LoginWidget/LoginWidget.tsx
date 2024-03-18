@@ -15,7 +15,7 @@ const Login = () => {
 			<div className='shadow-md rounded-lg p-5 w-96'>
 				<div className='flex flex-col justify-center items-center'>
 					<img src={logo} width={50} />
-					<span className='mt-2 font-bold text-lg'>Oguzcode</span>
+					<span className='mt-2 font-bold text-lg'>Prokod</span>
 				</div>
 				{
 					activeTab.get('loginType') === 'signUp' || !activeTab.get('loginType') ?

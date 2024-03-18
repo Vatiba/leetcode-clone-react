@@ -184,18 +184,45 @@ const SignUp = (props: SignUpProps) => {
 							</label>
 							{
 								values.status === 'schooler' &&
-								<label className="form-control w-full">
-									<div className="label">
-										<span className="label-text">{t('school')}</span>
-									</div>
-									<input type="number" className="input input-bordered w-full" />
-									<div className="label">
-										{
-											errors.school_number && touched.school_number &&
-											<span className="label-text-alt text-error">{errors.school_number}</span>
-										}
-									</div>
-								</label>
+								<>
+									<label className="form-control w-full">
+										<div className="label">
+											<span className="label-text">{t('school')}</span>
+										</div>
+										<input type="number" className="input input-bordered w-full" />
+										<div className="label">
+											{
+												errors.school_number && touched.school_number &&
+												<span className="label-text-alt text-error">{errors.school_number}</span>
+											}
+										</div>
+									</label>
+
+									<label className="form-control w-full">
+										<div className="label">
+											<span className="label-text">{t('selectSchool')}</span>
+										</div>
+										<select
+											className="select select-bordered capitalize"
+											name="status"
+											onChange={handleChange}
+											onBlur={handleBlur}
+											value={values.status}
+										>
+											{
+												userStatus.map(item => (
+													<option key={item} className='capitalize'>{item}</option>
+												))
+											}
+										</select>
+										<div className="label">
+											{
+												errors.status && touched.status &&
+												<span className="label-text-alt text-error">{errors.status}</span>
+											}
+										</div>
+									</label>
+								</>
 							}
 							{
 								values.status === 'student' &&
