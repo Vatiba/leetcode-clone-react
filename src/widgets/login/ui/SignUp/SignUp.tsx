@@ -3,6 +3,10 @@ import { RegistrationForm, RegistrationSchema } from 'entities/login';
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+// queries
+import { useGetLocations } from 'entities/locations';
+import { useGetSpecialSchools } from 'entities/specialSchools';
+import { useGetUniversities } from 'entities/universities';
 
 type SignUpProps = {
 	setLoginType: Function
@@ -14,6 +18,22 @@ const SignUp = (props: SignUpProps) => {
 	} = props;
 	const { t } = useTranslation();
 	const [activeTab, setActiveTab] = useSearchParams('1');
+
+	const {
+		data: locations,
+		// isLoading: locationsLoading,
+		// isError: locationsError,
+	} = useGetLocations();
+	const {
+		data: specialSchools,
+		// isLoading: specialSchoolsLoading,
+		// isError: specialSchoolsError
+	} = useGetSpecialSchools();
+	const {
+		data: universities,
+		// isLoading: universitiesLoading,
+		// isError: universitiesError
+	} = useGetUniversities();
 
 	return (
 		<Formik<RegistrationForm>
@@ -144,12 +164,15 @@ const SignUp = (props: SignUpProps) => {
 									onBlur={handleBlur}
 									value={values.location}
 								>
-									<option>Pick one</option>
-									<option>Star Wars</option>
-									<option>Harry Potter</option>
-									<option>Lord of the Rings</option>
-									<option>Planet of the Apes</option>
-									<option>Star Trek</option>
+									{
+										locations?.map(location => {
+											return (
+												<option key={location.id} value={location.id}>
+													{location.name}
+												</option>
+											)
+										})
+									}
 								</select>
 								<div className="label">
 									{
@@ -204,21 +227,23 @@ const SignUp = (props: SignUpProps) => {
 										</div>
 										<select
 											className="select select-bordered capitalize"
-											name="status"
+											name="special_school"
 											onChange={handleChange}
 											onBlur={handleBlur}
-											value={values.status}
+											value={values.special_school}
 										>
 											{
-												userStatus.map(item => (
-													<option key={item} className='capitalize'>{item}</option>
+												specialSchools?.map(specialSchool => (
+													<option key={specialSchool.id} value={specialSchool.id} className='capitalize'>
+														{specialSchool.name}
+													</option>
 												))
 											}
 										</select>
 										<div className="label">
 											{
-												errors.status && touched.status &&
-												<span className="label-text-alt text-error">{errors.status}</span>
+												errors.special_school && touched.special_school &&
+												<span className="label-text-alt text-error">{errors.special_school}</span>
 											}
 										</div>
 									</label>
@@ -237,9 +262,15 @@ const SignUp = (props: SignUpProps) => {
 										onBlur={handleBlur}
 										value={values.university}
 									>
-										<option>TITU</option>
-										<option>TDU</option>
-										<option>etc...</option>
+										{
+											universities?.map(university => {
+												return (
+													<option key={university.id} value={university.id}>
+														{university.name}
+													</option>
+												)
+											})
+										}
 									</select>
 									<div className="label">
 										{
@@ -281,7 +312,12 @@ const SignUp = (props: SignUpProps) => {
 					{
 						activeTab.get('step') === '1' || !activeTab.get('step') &&
 						<div className='flex justify-end'>
-							<button className="btn btn-primary capitalize text-white" type='submit' onClick={() => setActiveTab({ step: '2' })}>
+							<button
+								className="btn btn-primary capitalize text-white"
+								type='submit'
+								onClick={() => setActiveTab({ step: '2' })}
+								disabled={isSubmitting}
+							>
 								{t('next')}
 							</button>
 						</div>
