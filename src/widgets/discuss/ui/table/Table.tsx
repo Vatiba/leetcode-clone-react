@@ -120,7 +120,7 @@ function DiscussesTableWidget() {
 		<div className="overflow-x-auto w-full mb-4">
 
 			<div className='flex flex-col bg-gray-50 rounded-md'>
-				<div className='flex flex-wrap gap-3 items-center justify-between py-3 px-1 bg-gray-100 rounded-t-md border-b border-gray-200'>
+				<div className='flex flex-wrap gap-3 items-center justify-between py-3 px-1 bg-gray-200 rounded-t-md border-b border-gray-200'>
 
 					<select
 						className="select select-xs select-bordered block md:hidden order-2 sm:order-1"
@@ -138,14 +138,14 @@ function DiscussesTableWidget() {
 							{t('mostViewed')}
 						</option>
 					</select>
-					<div className='hidden md:flex order-2 sm:order-1'>
-						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-200 pr-4', {
+					<div className='hidden md:flex order-2 sm:order-1 select-none'>
+						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-300 pr-4', {
 							'font-bold text-black': type == '1'
 						})}>
 							<input className='opacity-0' type='radio' name='type' value={1} checked={!!type} onClick={(e) => setType(e.currentTarget.value)} />
 							{t('newestToOldest')}
 						</label>
-						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-200 pr-4', {
+						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-300 pr-4', {
 							'font-bold text-black': type == '2'
 						})}>
 							<input className='opacity-0' type='radio' name='type' value={2} checked={!!type} onClick={(e) => setType(e.currentTarget.value)} />
