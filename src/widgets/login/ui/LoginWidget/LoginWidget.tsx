@@ -12,7 +12,7 @@ const Login = () => {
 	return (
 		<div className='flex flex-col'>
 
-			<div className='shadow-md rounded-lg p-5 w-96'>
+			<div className='shadow-sm rounded-lg p-5 w-96 bg-white'>
 				<div className='flex flex-col justify-center items-center'>
 					<img src={logo} width={50} />
 					<span className='mt-2 font-bold text-lg'>Prokod</span>

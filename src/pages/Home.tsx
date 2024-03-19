@@ -11,15 +11,15 @@ export default function HomeScreen() {
 		<>
 			<Head title="Home" />
 			<Container>
-				<div className='flex flex-wrap justify-around items-center h-[600px] lg:h-[800px]'>
-					<h1 className='text-5xl font-bold max-w-md leading-snug'>
+				<div className='flex flex-wrap justify-around items-center my-10'>
+					<h1 className='text-center text-3xl lg:text-5xl font-bold max-w-md lg:leading-snug mb-10'>
 						{t('inspiration')}
 					</h1>
 					<LoginWidget />
 				</div>
 
 				<OlimpiadsWidget />
-				
+
 				{/* <CommentsWidget /> */}
 
 				<TablesWidget />

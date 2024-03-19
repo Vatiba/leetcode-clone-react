@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
 import clsx from 'clsx';
+import { useState } from 'react';
 
 const tags = [
 	{
@@ -35,7 +35,7 @@ type ProblemTagsWidgetProps = {}
 
 function ProblemTagsWidget(props: ProblemTagsWidgetProps) {
 	const { } = props;
- 
+
 	const [selectedId, setSelectedId] = useState<number>();
 
 	return (

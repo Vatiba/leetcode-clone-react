@@ -7,7 +7,6 @@ const TableWidget = () => {
 					<tr>
 						<th>Name</th>
 						<th>Score</th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>

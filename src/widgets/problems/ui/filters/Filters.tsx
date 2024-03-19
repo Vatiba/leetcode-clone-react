@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRandom } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
@@ -6,17 +6,19 @@ import { MdOutlineSettings } from "react-icons/md";
 type ProblemFiltersWidgetProps = {
    showTopicTags: boolean
    setShowTopicTags: Dispatch<SetStateAction<boolean>>
+   onClickPickRandom: Function
 }
 
 function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
    const {
       showTopicTags,
-      setShowTopicTags
+      setShowTopicTags,
+      onClickPickRandom,
    } = props;
    const { t } = useTranslation();
 
    return (
-      <div className='flex mb-3 justify-between'>
+      <div className='flex flex-wrap gap-3 mb-3 justify-between'>
          <div className='flex gap-2'>
             <label className="input input-sm input-bordered flex items-center gap-2">
                <input type="text" className="grow bg-transparent outline-none" placeholder="Search" />
@@ -42,7 +44,10 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
                </ul>
             </div>
          </div>
-         <button className='flex gap-1 bg-transparent items-center'>
+         <button
+            className='flex gap-1 bg-transparent items-center'
+            onClick={() => onClickPickRandom()}
+         >
             <span className='flex justify-center items-center w-9 h-9 rounded-full bg-gradient-to-b from-green-500 to-green-600'>
                <FaRandom color='white' />
             </span>

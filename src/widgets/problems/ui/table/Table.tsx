@@ -1,117 +1,18 @@
 import clsx from 'clsx';
-import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
-const problems = [
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: false,
-		title: '100. Same Tree',
-		difficulty: 'Medium',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Medium',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Medium',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree'
-	},
-]
 
 type ProblemsTableWidgetProps = {
 	showTopicTags: boolean
+	problems: any
 }
 
 function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 	const {
-		showTopicTags
+		showTopicTags,
+		problems
 	} = props;
 	const { t } = useTranslation();
 
@@ -130,10 +31,10 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 				</thead>
 				<tbody>
 					{
-						problems.map((problem, index) => {
+						problems.map((problem: any, index: number) => {
 							return (
 								<tr key={index}>
-								<td>{index + 1}</td>
+									<td>{index + 1}</td>
 									<td>
 										<Link to={`/problems/${problem.slug}`}>
 											{problem.status && <MdOutlineCheckCircleOutline className='text-green-600' />}
