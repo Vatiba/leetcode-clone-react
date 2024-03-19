@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { RxCountdownTimer } from "react-icons/rx";
 import { BiSolidUpArrow } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
+import { RxCountdownTimer } from "react-icons/rx";
 
 // trash
-import DefaultUserImg from 'shared/assets/img/default_avatar.jpg'
-import { numberFormatter } from 'shared/libs';
+import clsx from 'clsx';
+import { useState } from 'react';
 import { IoEyeSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import clsx from 'clsx';
+import DefaultUserImg from 'shared/assets/img/default_avatar.jpg';
+import { numberFormatter } from 'shared/libs';
 
 const discusses = [
 	{
@@ -120,8 +120,25 @@ function DiscussesTableWidget() {
 		<div className="overflow-x-auto w-full mb-4">
 
 			<div className='flex flex-col bg-gray-50 rounded-md'>
-				<div className='flex items-center justify-between py-3 px-1 bg-gray-100 rounded-t-md border-b border-gray-200'>
-					<div className='flex'>
+				<div className='flex flex-wrap gap-3 items-center justify-between py-3 px-1 bg-gray-100 rounded-t-md border-b border-gray-200'>
+
+					<select
+						className="select select-xs select-bordered block md:hidden order-2 sm:order-1"
+						name="location"
+						onChange={({ target: { value } }) => setType(value)}
+						value={type}
+					>
+						<option value={'1'}>
+							{t('newestToOldest')}
+						</option>
+						<option value={'2'}>
+							{t('mostVotes')}
+						</option>
+						<option value={'3'}>
+							{t('mostViewed')}
+						</option>
+					</select>
+					<div className='hidden md:flex order-2 sm:order-1'>
 						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-200 pr-4', {
 							'font-bold text-black': type == '1'
 						})}>
@@ -142,7 +159,7 @@ function DiscussesTableWidget() {
 						</label>
 					</div>
 
-					<div className='flex items-center mr-3'>
+					<div className='flex items-center mr-3 order-1 sm:order-2'>
 						<label className="input input-xs input-bordered flex items-center gap-2 mr-2">
 							<input type="text" className="grow bg-transparent outline-none" placeholder="Search" />
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
@@ -153,31 +170,34 @@ function DiscussesTableWidget() {
 						</button>
 					</div>
 				</div>
-				<div className='flex flex-col'>
+				<div className='flex flex-col px-2'>
 					{
 						discusses.map((discuss, index) => {
 							return (
-								<Link key={index} to="#" className='flex justify-start items-center border-b border-gray-200 py-2 text-xs sm:text-base'>
+								<Link key={index} to="#" className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
 									<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
-									<div className='flex flex-col flex-1 ml-3'>
+									<div className='flex flex-col flex-grow ml-3'>
 										<p className='font-bold line-clamp-2'>{discuss.title}</p>
-										<span className=''>User name: {discuss.user}</span>
+										<div>
+											<span className='hidden sm:inline pr-2'>User name:</span>
+											<span className=''>{discuss.user}</span>
+										</div>
 										<div className='mt-1 flex flex-wrap items-center text-gray-600'>
 											<span className='flex items-center mr-2'>
-												<RxCountdownTimer className='mr-2' />
-												<span className='truncate'>Posted time:</span>
+												<RxCountdownTimer className='mr-0 sm:mr-2' />
+												<span className='truncate hidden sm:inline'>Posted time:</span>
 											</span>
 											<span>{discuss.time}</span>
 										</div>
 									</div>
-									<div className='flex'>
-										<div className="flex justify-start items-center ml-7">
+									<div className='flex flex-shrink-1 flex-wrap max-w-[75px] sm:max-w-[90px] md:max-w-none'>
+										<div className="flex justify-end w-full md:w-1/2 items-center border-b md:border-b-0 pb-2 md:pb-0 mb-2 md:mb-0">
 											<BiSolidUpArrow color='gray' />
-											<span className='ml-3 w-16'>{numberFormatter(discuss.upvotedCount)}</span>
+											<span className='ml-3 w-10 sm:w-12 md:w-16'>{numberFormatter(discuss.upvotedCount)}</span>
 										</div>
-										<div className="flex justify-start items-center ml-7">
+										<div className="flex justify-end w-full md:w-1/2 items-center">
 											<IoEyeSharp color='gray' />
-											<span className='ml-3 w-16'>{numberFormatter(discuss.viewedCount)}</span>
+											<span className='ml-3 w-10 sm:w-12 md:w-16'>{numberFormatter(discuss.viewedCount)}</span>
 										</div>
 									</div>
 								</Link>
