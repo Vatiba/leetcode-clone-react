@@ -1,8 +1,8 @@
 /* global VoidFunction */
-import { ReactNode, useState } from 'react';
 import { AuthStatus } from 'entities/auth';
-import { NavItem } from 'widgets/navbar';
+import { ReactNode, useState } from 'react';
 import logo from 'shared/assets/img/logo.png';
+import { NavItem } from 'widgets/navbar';
 
 const navigation = [
 	{ name: 'Problems', href: '/problems' },
@@ -88,7 +88,7 @@ type NavContainerProps = {
 
 function NavContainer({ children, isMenuOpen }: NavContainerProps) {
 	return (
-		<nav className="shadow-lg">
+		<nav className="bg-white border-b fixed w-full" style={{ zIndex: 100000 }}>
 			<div className="max-w-6xl mx-auto px-4">
 				<div className="flex justify-between">{children}</div>
 			</div>
