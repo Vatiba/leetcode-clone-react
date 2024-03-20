@@ -7,11 +7,11 @@ type RegistrationForm = {
 	email: string
 	password: string
 	location: number | ''
-	university?: number
-	school_number?: number
-	special_school?: number
-	company_name?: string
-	status: UserStatus
+	university: number | ''
+	school_number: number | ''
+	special_school: number | ''
+	company_name: string
+	status: UserStatus | ''
 }
 
 export default RegistrationForm;

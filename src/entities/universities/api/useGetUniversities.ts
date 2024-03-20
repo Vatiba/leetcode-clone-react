@@ -5,7 +5,7 @@ import UniversitiesGetApi from "./UniversitiesGetApi";
 const useGetUniversities = () => {
    return useQuery({
       queryKey: [
-         "specialSchools",
+         "universities",
          i18n.language
       ],
       queryFn: () => UniversitiesGetApi.getUniversities(),

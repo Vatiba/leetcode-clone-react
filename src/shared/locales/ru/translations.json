@@ -6,7 +6,7 @@
    "location": "Введите вашу локацию",
    "status": "Введите ваш статус",
    "school": "Введите номер вашей школы ",
-   "selectSchool": "или выберите школу",
+   "selectSchool": "или",
    "university": "Выберите свой университет",
    "worker": "Введите место работы",
    "signUp": "Регистрация",
@@ -38,5 +38,12 @@
    "mostViewed": "Наиболее просматриваемые",
    "new": "Новый",
    "desc": "Описание",
-   "solution": "Решение"
+   "solution": "Решение",
+   "forgetPassword": "Забыли пароль?",
+   "selectLocation": "Выберите местоположение",
+   "selectStatus": "Выберите статус",
+   "selectUniversity": "Выберите университет",
+   "selectSpecialSchool": "Выбрать спец школу",
+   "correctPhone": "Введите правильный номер телефона",
+   "shouldBeNumber": "Должен быть числом"
 }

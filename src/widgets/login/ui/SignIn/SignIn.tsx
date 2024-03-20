@@ -1,8 +1,6 @@
-import React from 'react';
-import { LoginForm } from 'entities/login';
+import { LoginForm, LoginSchema } from 'entities/login';
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { LoginSchema } from 'entities/login';
 
 type SignInProps = {
 	setLoginType: Function
@@ -84,7 +82,14 @@ const SignIn = (props: SignInProps) => {
 					<button className="btn btn-primary btn-block mt-6 text-white" type='submit' disabled={isSubmitting}>
 						{t('signIn')}
 					</button>
-					<div className='flex justify-end'>
+					<div className='flex justify-between'>
+						<button
+							className="btn btn-link p-0 first-letter:uppercase lowercase inline-block"
+							onClick={() => setLoginType({ loginType: 'signUp' })}
+							type='button'
+						>
+							{t('forgetPassword')}
+						</button>
 						<button
 							className="btn btn-link capitalize p-0"
 							onClick={() => setLoginType({ loginType: 'signUp' })}

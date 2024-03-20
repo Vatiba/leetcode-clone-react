@@ -1,8 +1,8 @@
+import { RequireAuth } from 'entities/auth';
 import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
-import { RequireAuth } from 'entities/auth';
-import { Navbar, Footer } from 'widgets';
 import { Loading } from 'shared/ui';
+import { Footer, Navbar } from 'widgets';
 
 const HomeScreen = lazy(() => import('pages/Home'));
 const ProtectedScreen = lazy(() => import('pages/Protected'));
@@ -12,7 +12,7 @@ const ContestScreen = lazy(() => import('pages/Contest'));
 const LoginScreen = lazy(() => import('pages/Login'));
 const NotFoundScreen = lazy(() => import('pages/NotFound'));
 const AboutUsScreen = lazy(() => import('pages/AboutUs'));
-const DiscussScreen = lazy(() => import('pages/Discuss'));
+const DiscussesScreen = lazy(() => import('pages/Discusses'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -66,7 +66,7 @@ function Routes() {
 					path: '/discuss',
 					element: (
 						<Layout>
-							<DiscussScreen />
+							<DiscussesScreen />
 						</Layout>
 					),
 				},

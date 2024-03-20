@@ -6,7 +6,7 @@
    "location": "What is your location?",
    "status": "What is your status?",
    "school": "Enter your school number",
-   "selectSchool": "Or select school",
+   "selectSchool": "Or",
    "university": "Select your university",
    "worker": "Enter where you work",
    "signUp": "Registration",
@@ -38,5 +38,12 @@
    "mostViewed": "Most viewed",
    "new": "New",
    "desc": "Description",
-   "solution": "Solution"
+   "solution": "Solution",
+   "forgetPassword": "Forget password?",
+   "selectLocation": "Select location",
+   "selectStatus": "Select status",
+   "selectUniversity": "Select university",
+   "selectSpecialSchool": "Select special school",
+   "correctPhone": "Enter correct phone number",
+   "shouldBeNumber": "Should be number"
 }

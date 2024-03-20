@@ -6,7 +6,7 @@
    "location": "Lokasiýaňyzy giriziň",
    "status": "Ýagdaýyňyzy giriziň",
    "school": "Mekdep belgiňizi giriziň ýa-da saýlaň",
-   "selectSchool": "Ýa-da mekdebiňizi saýlaň",
+   "selectSchool": "Ýa-da",
    "university": "Uniwersitetiňizi saýlaň",
    "worker": "Işleýän ýeriňize giriň",
    "signUp": "Registrasiýa",
@@ -38,5 +38,12 @@
    "mostViewed": "Iň köp görülýän",
    "new": "Täze",
    "desc": "Düşündiriş",
-   "solution": "Çözüwi"
+   "solution": "Çözüwi",
+   "forgetPassword": "Paroly ýatdan çykardyňyzmy?",
+   "selectLocation": "Ýerleşýän ýeriňizi giriziň",
+   "selectStatus": "Status saýlaň",
+   "selectUniversity": "Uniwersitetiňizi saýlaň",
+   "selectSpecialSchool": "Ýöriteleşdirilen mekdebi saýlaň",
+   "correctPhone": "Dogry telefon belgisini giriziň",
+   "shouldBeNumber": "San bolmaly"
 }

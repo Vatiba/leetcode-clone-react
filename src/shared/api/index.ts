@@ -18,9 +18,9 @@ const api = Instance.extend({
                 //     }
                 // }
                 if (i18n.language) {
-                    req.headers.set("lang", i18n.language);
+                    req.headers.set("Accept-language", i18n.language);
                 } else {
-                    req.headers.set("lang", "tk");
+                    req.headers.set("Accept-language", "tk");
                 }
             }
         ],
