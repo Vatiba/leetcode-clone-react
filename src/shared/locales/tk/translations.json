@@ -45,5 +45,9 @@
    "selectUniversity": "Uniwersitetiňizi saýlaň",
    "selectSpecialSchool": "Ýöriteleşdirilen mekdebi saýlaň",
    "correctPhone": "Dogry telefon belgisini giriziň",
-   "shouldBeNumber": "San bolmaly"
+   "shouldBeNumber": "San bolmaly",
+   "writeSchoolNumberOrSelectSpecialSchool": "Mekdep belgisini ýazyň ýa-da ýörite mekdebi saýlaň",
+   "enterCode": "E-poçtaňyza gelen kody giriziň",
+   "writePhone": "Telefon belgiňizi giriziň",
+   "send": "Ugratmak"
 }

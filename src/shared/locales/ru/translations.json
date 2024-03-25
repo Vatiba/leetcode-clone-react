@@ -45,5 +45,9 @@
    "selectUniversity": "Выберите университет",
    "selectSpecialSchool": "Выбрать спец школу",
    "correctPhone": "Введите правильный номер телефона",
-   "shouldBeNumber": "Должен быть числом"
+   "shouldBeNumber": "Должен быть числом",
+   "writeSchoolNumberOrSelectSpecialSchool": "Напишите номер школы или выберите спец школу",
+   "enterCode": "Введите код, который вы получите на свою электронную почту",
+   "writePhone": "Введите свой номер телефона",
+   "send": "Отправить"
 }

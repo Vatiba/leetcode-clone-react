@@ -3,7 +3,7 @@ import api from "shared/api";
 
 const AuthApi = {
     activateAccount: async (dto: ActivateParamsDto) => {
-        const res = await api.post('/authentication/activate/', {
+        const res = await api.post('authentication/activate/', {
             json: {
                 ...dto,
             }
@@ -11,7 +11,7 @@ const AuthApi = {
         return res.json();
     },
     changePassword: async (dto: ChangePasswordParamsDto) => {
-        const res = await api.post('/authentication/password/change/', {
+        const res = await api.post('authentication/password/change/', {
             json: {
                 ...dto
             }
@@ -19,7 +19,7 @@ const AuthApi = {
         return res.json();
     },
     forgetPassword: async (dto: ForgetPasswordParamsDto) => {
-        const res = await api.post('/authentication/password/forget/', {
+        const res = await api.post('authentication/password/forget/', {
             json: {
                 ...dto
             }
@@ -27,7 +27,7 @@ const AuthApi = {
         return res.json();
     },
     register: async (dto: RegisterParamsDto) => {
-        const res = await api.post('/authentication/register/', {
+        const res = await api.post('authentication/register/', {
             json: {
                 ...dto
             }
@@ -35,7 +35,7 @@ const AuthApi = {
         return res.json();
     },
     login: async (dto: LoginParamsDto) => {
-        const res = await api.post('/authentication/token/', {
+        const res = await api.post('authentication/token/', {
             json: {
                 ...dto
             }

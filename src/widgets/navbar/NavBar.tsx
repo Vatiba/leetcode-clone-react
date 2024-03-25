@@ -88,7 +88,7 @@ type NavContainerProps = {
 
 function NavContainer({ children, isMenuOpen }: NavContainerProps) {
 	return (
-		<nav className="bg-white border-b fixed w-full" style={{ zIndex: 100000 }}>
+		<nav className="bg-white border-b fixed w-full" style={{ zIndex: 1000 }}>
 			<div className="max-w-6xl mx-auto px-4">
 				<div className="flex justify-between">{children}</div>
 			</div>

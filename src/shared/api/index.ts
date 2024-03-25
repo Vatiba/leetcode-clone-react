@@ -1,5 +1,5 @@
 import baseUrl from 'entities/constants/baseUrl';
-import ky from 'ky';
+import ky, { HTTPError } from 'ky';
 import { i18n } from 'shared/libs';
 
 const Instance = ky.create({ prefixUrl: baseUrl });
@@ -25,7 +25,22 @@ const api = Instance.extend({
             }
         ],
         afterResponse: [
-            (_req, _opt, res) => { }
+            async (_req, _opt, res) => {
+            },
+        ],
+        beforeError: [
+            async (error) => {
+                if (error instanceof HTTPError && error.response.status === 400) {
+                    const errorText = await error.response.text();
+                    try {
+                        const errorData = JSON.parse(errorText); // Assuming the backend sends JSON in the 400 response
+                        return errorData;
+                    } catch (parseError) {
+                        console.error('Failed to parse error response:', errorText);
+                    }
+                }
+                return error;
+            }
         ]
     }
 });

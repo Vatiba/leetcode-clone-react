@@ -2,11 +2,15 @@ import { userStatus } from 'entities/constants';
 import { RegistrationForm, RegistrationSchema } from 'entities/login';
 import { Form, Formik, FormikErrors } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { FaPhone } from "react-icons/fa6";
 import { useSearchParams } from 'react-router-dom';
 // queries
 import { useGetLocations } from 'entities/locations';
 import { useGetSpecialSchools } from 'entities/specialSchools';
 import { useGetUniversities } from 'entities/universities';
+import { useActivateAccount, useRegister } from 'features/auth';
+import toast from 'react-hot-toast';
+import AccountActivate from '../AccountActivate';
 
 type SignUpProps = {
 	setLoginType: Function
@@ -21,19 +25,20 @@ const SignUp = (props: SignUpProps) => {
 
 	const {
 		data: locations,
-		// isLoading: locationsLoading,
-		// isError: locationsError,
 	} = useGetLocations();
 	const {
 		data: specialSchools,
-		// isLoading: specialSchoolsLoading,
-		// isError: specialSchoolsError
 	} = useGetSpecialSchools();
 	const {
 		data: universities,
-		// isLoading: universitiesLoading,
-		// isError: universitiesError
 	} = useGetUniversities();
+	const {
+		mutateAsync: register,
+	} = useRegister();
+
+	// useEffect(() => {
+	// 	setActiveTab({ step: '1' });
+	// }, []);
 
 	const goNext = (errors: FormikErrors<RegistrationForm>, dirty: boolean) => {
 		if (
@@ -64,11 +69,40 @@ const SignUp = (props: SignUpProps) => {
 				special_school: '',
 			}}
 			validationSchema={RegistrationSchema(t)}
-			onSubmit={(values, { setSubmitting }) => {
-				setTimeout(() => {
-					console.log(JSON.stringify(values, undefined, 2))
+			onSubmit={async (values, { setSubmitting, setFieldValue }) => {
+				if (values.status === 'schooler' && !values.special_school && !values.school_number) {
+					toast.error(t('writeSchoolNumberOrSelectSpecialSchool'));
 					setSubmitting(false);
-				}, 400);
+					return;
+				}
+
+				await register({
+					phone: values.phone,
+					email: values.email,
+					first_name: values.first_name,
+					last_name: values.last_name,
+					location: values.location as number,
+					password: values.password,
+					company_name: values.status === 'worker' ? values.company_name : undefined,
+					school_number: values.status === 'schooler' && values.school_number ? values.school_number : undefined,
+					special_school: values.status === 'schooler' && values.special_school ? values.special_school : undefined,
+					university: values.status === 'student' ? values.university as number : undefined
+				}, {
+					onSuccess() {
+						setActiveTab({ step: '3' });
+					},
+					onError(err: any) {
+						if (err?.password) {
+							err.password?.map((item: string) => {
+								toast.error(item)
+							});
+							setFieldValue('password', '');
+							setActiveTab({ step: '1' });
+							setSubmitting(false);
+						}
+					}
+				})
+				setSubmitting(false);
 			}}
 		>
 			{({
@@ -86,6 +120,29 @@ const SignUp = (props: SignUpProps) => {
 						{
 							activeTab.get('step') === '1' || !activeTab.get('step') ?
 								<>
+									<label className="form-control w-full">
+										<div className="label">
+											<span className="label-text">{t('writePhone')}</span>
+										</div>
+										<label className="input input-sm input-bordered flex items-center gap-2">
+											<FaPhone color='gray' />
+											<input
+												className="grow bg-transparent outline-none"
+												type="text"
+												name="phone"
+												onChange={handleChange}
+												onBlur={handleBlur}
+												value={values.phone}
+												placeholder='+99361123456'
+											/>
+										</label>
+										<div className="label">
+											{
+												errors.phone && touched.phone &&
+												<span className="label-text-alt text-error">{errors.email}</span>
+											}
+										</div>
+									</label>
 									<label className="form-control w-full">
 										<div className="label">
 											<span className="label-text">{t('email')}</span>
@@ -170,196 +227,199 @@ const SignUp = (props: SignUpProps) => {
 									</label>
 								</>
 								:
-								activeTab.get('step') === '2' &&
-								<>
-									<label className="form-control w-full">
-										<div className="label">
-											<span className="label-text">{t('location')}</span>
-										</div>
-										<select
-											className="select select-sm select-bordered"
-											name="location"
-											onChange={handleChange}
-											onBlur={handleBlur}
-											value={values.location}
-										>
-											<option value={''} disabled>
-												{t('selectLocation')}
-											</option>
-											{
-												locations?.map(location => {
-													return (
-														<option key={location.id} value={location.id}>
-															{location.name}
-														</option>
-													)
-												})
-											}
-										</select>
-										{
-											locations?.find(location => location.id == values.location) ?
-												<select
-													className="mt-3 select select-sm select-bordered"
-													name="location"
-													onChange={handleChange}
-													onBlur={handleBlur}
-													value={values.location}
-												>
-													<option value={''} disabled>
-														{t('selectLocation')}
-													</option>
-													{
-														locations?.find(location => location.id == values.location)?.children?.map(location => {
-															return (
-																<option key={location.id} value={location.id}>
-																	{location.name}
-																</option>
-															)
-														})
-													}
-												</select> : null
-										}
-										<div className="label">
-											{
-												errors.location && touched.location &&
-												<span className="label-text-alt text-error">{errors.location}</span>
-											}
-										</div>
-									</label>
-									<label className="form-control w-full">
-										<div className="label">
-											<span className="label-text">{t('status')}</span>
-										</div>
-										<select
-											className="select select-sm select-bordered capitalize"
-											name="status"
-											onChange={handleChange}
-											onBlur={handleBlur}
-											value={values.status}
-										>
-											<option value={''} disabled>
-												{t('selectStatus')}
-											</option>
-											{
-												userStatus.map(item => (
-													<option key={item} className='capitalize'>{item}</option>
-												))
-											}
-										</select>
-										<div className="label">
-											{
-												errors.status && touched.status &&
-												<span className="label-text-alt text-error">{errors.status}</span>
-											}
-										</div>
-									</label>
-									{
-										values.status === 'schooler' &&
-										<>
-											<label className="form-control w-full">
-												<div className="label">
-													<span className="label-text">{t('school')}</span>
-												</div>
-												<input
-													className="input input-sm input-bordered w-full"
-													type="number"
-													name="school_number"
-													onChange={handleChange}
-													onBlur={handleBlur}
-													value={values.school_number}
-												/>
-												<div className="label">
-													{
-														errors.school_number && touched.school_number &&
-														<span className="label-text-alt text-error">{errors.school_number}</span>
-													}
-												</div>
-											</label>
-
-											<label className="form-control w-full">
-												<div className="label">
-													<span className="label-text">{t('selectSchool')}</span>
-												</div>
-												<select
-													className="select select-sm select-bordered capitalize"
-													name="special_school"
-													onChange={handleChange}
-													onBlur={handleBlur}
-													value={values.special_school}
-												>
-													<option value={''} disabled>
-														{t('selectSpecialSchool')}
-													</option>
-													{
-														specialSchools?.map(specialSchool => (
-															<option key={specialSchool.id} value={specialSchool.id} className='capitalize'>
-																{specialSchool.name}
-															</option>
-														))
-													}
-												</select>
-												<div className="label">
-													{
-														errors.special_school && touched.special_school &&
-														<span className="label-text-alt text-error">{errors.special_school}</span>
-													}
-												</div>
-											</label>
-										</>
-									}
-									{
-										values.status === 'student' &&
+								activeTab.get('step') === '2' ?
+									<>
 										<label className="form-control w-full">
 											<div className="label">
-												<span className="label-text">{t('university')}</span>
+												<span className="label-text">{t('location')}</span>
 											</div>
 											<select
 												className="select select-sm select-bordered"
-												name="university"
+												name="location"
 												onChange={handleChange}
 												onBlur={handleBlur}
-												value={values.university}
+												value={values.location}
 											>
 												<option value={''} disabled>
-													{t('selectUniversity')}
+													{t('selectLocation')}
 												</option>
 												{
-													universities?.map(university => {
+													locations?.map(location => {
 														return (
-															<option key={university.id} value={university.id}>
-																{university.name}
+															<option key={location.id} value={location.id}>
+																{location.name}
 															</option>
 														)
 													})
 												}
 											</select>
+											{
+												locations?.find(location => location.id == values.location) ?
+													<select
+														className="mt-3 select select-sm select-bordered"
+														name="location"
+														onChange={handleChange}
+														onBlur={handleBlur}
+														value={values.location}
+													>
+														<option value={''} disabled>
+															{t('selectLocation')}
+														</option>
+														{
+															locations?.find(location => location.id == values.location)?.children?.map(location => {
+																return (
+																	<option key={location.id} value={location.id}>
+																		{location.name}
+																	</option>
+																)
+															})
+														}
+													</select> : null
+											}
 											<div className="label">
 												{
-													errors.university && touched.university &&
-													<span className="label-text-alt text-error">{errors.university}</span>
+													errors.location && touched.location &&
+													<span className="label-text-alt text-error">{errors.location}</span>
 												}
 											</div>
 										</label>
-									}
-									{
-										values.status === 'worker' &&
 										<label className="form-control w-full">
 											<div className="label">
-												<span className="label-text">{t('worker')}</span>
+												<span className="label-text">{t('status')}</span>
 											</div>
-											<textarea rows={4} maxLength={200} className="input input-bordered w-full leading-tight" />
+											<select
+												className="select select-sm select-bordered capitalize"
+												name="status"
+												onChange={handleChange}
+												onBlur={handleBlur}
+												value={values.status}
+											>
+												<option value={''} disabled>
+													{t('selectStatus')}
+												</option>
+												{
+													userStatus.map(item => (
+														<option key={item} className='capitalize'>{item}</option>
+													))
+												}
+											</select>
 											<div className="label">
 												{
-													errors.company_name && touched.company_name &&
-													<span className="label-text-alt text-error">{errors.company_name}</span>
+													errors.status && touched.status &&
+													<span className="label-text-alt text-error">{errors.status}</span>
 												}
 											</div>
 										</label>
-									}
-									<button className="btn btn-primary btn-block mb-3 capitalize text-white" type='submit' disabled={isSubmitting}>
-										{t('signUp')}
-									</button>
-								</>
+										{
+											values.status === 'schooler' &&
+											<>
+												<label className="form-control w-full">
+													<div className="label">
+														<span className="label-text">{t('school')}</span>
+													</div>
+													<input
+														className="input input-sm input-bordered w-full"
+														type="number"
+														name="school_number"
+														onChange={handleChange}
+														onBlur={handleBlur}
+														value={values.school_number}
+													/>
+													<div className="label">
+														{
+															errors.school_number && touched.school_number &&
+															<span className="label-text-alt text-error">{errors.school_number}</span>
+														}
+													</div>
+												</label>
+
+												<label className="form-control w-full">
+													<div className="label">
+														<span className="label-text">{t('selectSchool')}</span>
+													</div>
+													<select
+														className="select select-sm select-bordered capitalize"
+														name="special_school"
+														onChange={handleChange}
+														onBlur={handleBlur}
+														value={values.special_school}
+													>
+														<option value={''} disabled>
+															{t('selectSpecialSchool')}
+														</option>
+														{
+															specialSchools?.map(specialSchool => (
+																<option key={specialSchool.id} value={specialSchool.id} className='capitalize'>
+																	{specialSchool.name}
+																</option>
+															))
+														}
+													</select>
+													<div className="label">
+														{
+															errors.special_school && touched.special_school &&
+															<span className="label-text-alt text-error">{errors.special_school}</span>
+														}
+													</div>
+												</label>
+											</>
+										}
+										{
+											values.status === 'student' &&
+											<label className="form-control w-full">
+												<div className="label">
+													<span className="label-text">{t('university')}</span>
+												</div>
+												<select
+													className="select select-sm select-bordered"
+													name="university"
+													onChange={handleChange}
+													onBlur={handleBlur}
+													value={values.university}
+												>
+													<option value={''} disabled>
+														{t('selectUniversity')}
+													</option>
+													{
+														universities?.map(university => {
+															return (
+																<option key={university.id} value={university.id}>
+																	{university.name}
+																</option>
+															)
+														})
+													}
+												</select>
+												<div className="label">
+													{
+														errors.university && touched.university &&
+														<span className="label-text-alt text-error">{errors.university}</span>
+													}
+												</div>
+											</label>
+										}
+										{
+											values.status === 'worker' &&
+											<label className="form-control w-full">
+												<div className="label">
+													<span className="label-text">{t('worker')}</span>
+												</div>
+												<textarea rows={4} maxLength={200} className="input input-bordered w-full leading-tight" />
+												<div className="label">
+													{
+														errors.company_name && touched.company_name &&
+														<span className="label-text-alt text-error">{errors.company_name}</span>
+													}
+												</div>
+											</label>
+										}
+										<button className="btn btn-primary btn-block mb-3 capitalize text-white" type='submit' disabled={isSubmitting}>
+											{t('signUp')}
+										</button>
+									</>
+									:
+									activeTab.get('step') === '3' &&
+									<AccountActivate email={values.email} />
 						}
 						<div className='flex justify-end'>
 							<button

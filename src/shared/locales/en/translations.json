@@ -45,5 +45,10 @@
    "selectUniversity": "Select university",
    "selectSpecialSchool": "Select special school",
    "correctPhone": "Enter correct phone number",
-   "shouldBeNumber": "Should be number"
+   "shouldBeNumber": "Should be number",
+   "writeSchoolNumberOrSelectSpecialSchool": "Write school number or select special school",
+   "enterCode": "Enter code that you get to your email",
+   "writePhone": "Enter your phone number",
+   "send": "Send",
+   "write": "Write correct"
 }
