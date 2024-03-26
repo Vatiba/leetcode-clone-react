@@ -8,7 +8,8 @@ import { useSearchParams } from 'react-router-dom';
 import { useGetLocations } from 'entities/locations';
 import { useGetSpecialSchools } from 'entities/specialSchools';
 import { useGetUniversities } from 'entities/universities';
-import { useActivateAccount, useRegister } from 'features/auth';
+import { useRegister } from 'features/auth';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import AccountActivate from '../AccountActivate';
 
@@ -36,9 +37,9 @@ const SignUp = (props: SignUpProps) => {
 		mutateAsync: register,
 	} = useRegister();
 
-	// useEffect(() => {
-	// 	setActiveTab({ step: '1' });
-	// }, []);
+	useEffect(() => {
+		setActiveTab({ step: '1' });
+	}, []);
 
 	const goNext = (errors: FormikErrors<RegistrationForm>, dirty: boolean) => {
 		if (
@@ -92,11 +93,15 @@ const SignUp = (props: SignUpProps) => {
 						setActiveTab({ step: '3' });
 					},
 					onError(err: any) {
-						if (err?.password) {
+						if (err?.password || err?.email) {
+							err.email?.map((item: string) => {
+								toast.error(item)
+							});
 							err.password?.map((item: string) => {
 								toast.error(item)
 							});
 							setFieldValue('password', '');
+							setFieldValue('email', '');
 							setActiveTab({ step: '1' });
 							setSubmitting(false);
 						}

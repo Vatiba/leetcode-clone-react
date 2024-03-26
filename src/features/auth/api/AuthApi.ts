@@ -1,8 +1,9 @@
 import { ActivateParamsDto, ChangePasswordParamsDto, ForgetPasswordParamsDto, LoginParamsDto, RegisterParamsDto } from "entities/auth";
+import { Token, User } from "entities/types";
 import api from "shared/api";
 
 const AuthApi = {
-    activateAccount: async (dto: ActivateParamsDto) => {
+    activateAccount: async (dto: ActivateParamsDto): Promise<{ token: Token, user: User }> => {
         const res = await api.post('authentication/activate/', {
             json: {
                 ...dto,

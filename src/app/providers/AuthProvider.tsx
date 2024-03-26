@@ -1,11 +1,15 @@
 /* global VoidFunction, JSX */
 import { AuthContext } from 'entities/auth';
+import { Token, User } from 'entities/types';
 import { ReactNode, useState } from 'react';
 
-function AuthProvider({ children }: { children: ReactNode }) {
-	const [user, setUser] = useState<any>(null);
+const storageUser = localStorage.getItem('user');
+const storageToken = localStorage.getItem('token');
 
-	const signin = (newUser: string, callback?: VoidFunction) => {
+function AuthProvider({ children }: { children: ReactNode }) {
+	const [user, setUser] = useState<{ token: Token, user: User } | null>({ token: storageToken, user: storageUser });
+
+	const signin = (newUser: { token: Token, user: User }, callback?: VoidFunction) => {
 		setUser(newUser);
 		callback?.();
 	};

@@ -50,5 +50,6 @@
    "enterCode": "Enter code that you get to your email",
    "writePhone": "Enter your phone number",
    "send": "Send",
-   "write": "Write correct"
+   "write": "Write correct",
+   "somethingWentWrong": "Something went wrong"
 }
