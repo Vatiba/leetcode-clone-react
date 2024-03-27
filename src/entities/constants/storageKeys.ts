@@ -1,5 +1,7 @@
 const storageKeys = {
-   languageKey: "language",
+   language: "language",
+   user: "user",
+   token: "token"
 }
 
 export default storageKeys;

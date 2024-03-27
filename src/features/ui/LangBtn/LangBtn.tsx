@@ -6,7 +6,7 @@ const LanguageBtn = () => {
 
    const changeLanguage = (value: string) => {
       i18n.changeLanguage(value);
-      localStorage.setItem(storageKeys.languageKey, value);
+      localStorage.setItem(storageKeys.language, value);
    }
 
 

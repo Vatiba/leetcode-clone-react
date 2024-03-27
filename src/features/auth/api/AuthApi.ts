@@ -1,10 +1,18 @@
-import { ActivateParamsDto, ChangePasswordParamsDto, ForgetPasswordParamsDto, LoginParamsDto, RegisterParamsDto } from "entities/auth";
-import { Token, User } from "entities/types";
+import { ActivateParamsDto, ChangePasswordParamsDto, ForgetPasswordParamsDto, LoginParamsDto, RefreshTokenParamsDto, RegisterParamsDto } from "entities/auth";
+import { TokenUser } from "entities/types";
 import api from "shared/api";
 
 const AuthApi = {
-    activateAccount: async (dto: ActivateParamsDto): Promise<{ token: Token, user: User }> => {
+    activateAccount: async (dto: ActivateParamsDto): Promise<TokenUser> => {
         const res = await api.post('authentication/activate/', {
+            json: {
+                ...dto,
+            }
+        });
+        return res.json();
+    },
+    refreshToken: async (dto: RefreshTokenParamsDto): Promise<{ access: string }> => {
+        const res = await api.post('authentication/token/refresh/', {
             json: {
                 ...dto,
             }
@@ -35,7 +43,7 @@ const AuthApi = {
         });
         return res.json();
     },
-    login: async (dto: LoginParamsDto) => {
+    login: async (dto: LoginParamsDto): Promise<TokenUser> => {
         const res = await api.post('authentication/token/', {
             json: {
                 ...dto

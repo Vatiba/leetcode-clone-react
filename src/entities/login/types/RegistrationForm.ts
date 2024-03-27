@@ -6,6 +6,7 @@ type RegistrationForm = {
 	phone: string
 	email: string
 	password: string
+	passwordConfirm: string
 	location: number | ''
 	university: number | ''
 	school_number: number | ''

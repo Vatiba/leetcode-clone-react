@@ -1,8 +1,10 @@
-export type {
-   RegistrationForm,
-   LoginForm
-} from './types';
 export {
-   RegistrationSchema,
-   LoginSchema
+   ActivateSchema, LoginSchema,
+   RegistrationSchema
 } from './model';
+export type {
+   ActivateForm,
+   LoginForm,
+   RegistrationForm
+} from './types';
+

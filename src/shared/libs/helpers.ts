@@ -28,3 +28,4 @@ export function generateRandom(min = 0, max = 100) {
 
 	return rand;
 }
+

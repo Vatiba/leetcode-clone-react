@@ -1,25 +1,34 @@
 /* global VoidFunction, JSX */
 import { AuthContext } from 'entities/auth';
-import { Token, User } from 'entities/types';
+import { storageKeys } from 'entities/constants';
+import clearAuthData from 'entities/libs/clearAuthData';
+import { isTokenObj, isUser } from 'entities/libs/typeCheckers';
+import { TokenUser } from 'entities/types';
 import { ReactNode, useState } from 'react';
+import { LocalStorageWorker } from 'shared/libs';
 
-const storageUser = localStorage.getItem('user');
-const storageToken = localStorage.getItem('token');
+const storageWorker = LocalStorageWorker.getInstance();
+
+const storageUser = storageWorker.getItem(storageKeys.user, isUser);
+const storageToken = storageWorker.getItem(storageKeys.token, isTokenObj);
 
 function AuthProvider({ children }: { children: ReactNode }) {
-	const [user, setUser] = useState<{ token: Token, user: User } | null>({ token: storageToken, user: storageUser });
+	const [data, setData] = useState<TokenUser | null>({ token: storageToken, user: storageUser });
 
-	const signin = (newUser: { token: Token, user: User }, callback?: VoidFunction) => {
-		setUser(newUser);
+	const signin = (tokenUser: TokenUser, callback?: VoidFunction) => {
+		setData(tokenUser);
+		storageWorker.setItem(storageKeys.token, tokenUser.token);
+		storageWorker.setItem(storageKeys.user, tokenUser.user);
 		callback?.();
 	};
 
 	const signout = (callback?: VoidFunction) => {
-		setUser(null);
+		setData(null);
+		clearAuthData();
 		callback?.();
 	};
 
-	const value = { user, signin, signout };
+	const value = { data, signin, signout };
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

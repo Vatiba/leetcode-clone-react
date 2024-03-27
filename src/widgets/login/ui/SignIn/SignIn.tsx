@@ -1,6 +1,9 @@
+import { useAuth } from 'entities/auth';
 import { LoginForm, LoginSchema } from 'entities/login';
+import { useLogin } from 'features/auth';
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 type SignInProps = {
 	setLoginType: Function
@@ -10,7 +13,14 @@ const SignIn = (props: SignInProps) => {
 	const {
 		setLoginType
 	} = props;
+	const navigate = useNavigate();
+	const { signin } = useAuth();
 	const { t } = useTranslation();
+
+	const {
+		mutateAsync: login,
+		isPending: loginPending
+	} = useLogin();
 
 	return (
 		<Formik<LoginForm>
@@ -19,11 +29,16 @@ const SignIn = (props: SignInProps) => {
 				password: '',
 			}}
 			validationSchema={LoginSchema(t)}
-			onSubmit={(values, { setSubmitting }) => {
-				setTimeout(() => {
-					console.log(JSON.stringify(values, undefined, 2))
-					setSubmitting(false);
-				}, 400);
+			onSubmit={async (values, { setSubmitting, resetForm }) => {
+
+				const res = await login({
+					email: values.email,
+					password: values.password,
+				});
+				signin(res);
+				setSubmitting(false);
+				resetForm();
+				navigate('/');
 			}}
 		>
 			{({
@@ -79,21 +94,26 @@ const SignIn = (props: SignInProps) => {
 							}
 						</div>
 					</label>
-					<button className="btn btn-primary btn-block mt-6 text-white" type='submit' disabled={isSubmitting}>
+					<button
+						className="btn btn-primary btn-block mt-6 text-white"
+						type='submit'
+						disabled={isSubmitting}
+					>
 						{t('signIn')}
 					</button>
 					<div className='flex justify-between'>
 						<button
-							className="btn btn-link p-0 first-letter:uppercase lowercase inline-block"
+							className="btn btn-link disabled:bg-transparent p-0 first-letter:uppercase lowercase inline-block"
 							onClick={() => setLoginType({ loginType: 'signUp' })}
 							type='button'
 						>
 							{t('forgetPassword')}
 						</button>
 						<button
-							className="btn btn-link capitalize p-0"
+							className="btn btn-link disabled:bg-transparent capitalize p-0"
 							onClick={() => setLoginType({ loginType: 'signUp' })}
 							type='button'
+							disabled={loginPending}
 						>
 							{t('registration')}
 						</button>

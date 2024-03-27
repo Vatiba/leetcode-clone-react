@@ -1,10 +1,10 @@
-import { Token, User } from "entities/types";
+import { TokenUser } from "entities/types";
 import { createContext } from "react";
 
 interface AuthContextType {
-   user: any;
-   signin: (user: { token: Token, user: User }, callback?: VoidFunction) => void;
-   signout: (callback: VoidFunction) => void;
+   data: TokenUser | null;
+   signin: (token: TokenUser, callback?: VoidFunction) => void;
+   signout: (callback?: VoidFunction) => void;
 }
 
 const AuthContext = createContext<AuthContextType>(null!);

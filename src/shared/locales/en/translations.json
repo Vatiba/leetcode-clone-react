@@ -14,13 +14,14 @@
    "password": "Password",
    "passwordMin": "Password should be minimum {{val}} characters",
    "phoneMin": "Phone number should be minimum {{val}} digits",
+   "codeMin": "Code should be minimum {{val}} digits",
    "email": "E-mail",
    "signOut": "Sign out",
    "correctEmail": "Enter correct email address",
    "step1": "Step 1",
    "step2": "Step 2",
    "next": "Next",
-   "doYouHaveAccount": "Do you already have account?",
+   "doYouHaveAccount": "Do you have account?",
    "olimpiads": "Olimpiads",
    "comments": "Comments",
    "topRating": "Top rating",
@@ -51,5 +52,8 @@
    "writePhone": "Enter your phone number",
    "send": "Send",
    "write": "Write correct",
-   "somethingWentWrong": "Something went wrong"
+   "somethingWentWrong": "Something went wrong",
+   "enterYourEmailHaveRegistered": "Enter your email that you have registered",
+   "confirmPassword": "Confirm password",
+   "passwordMustMatch": "Password must match"
 }

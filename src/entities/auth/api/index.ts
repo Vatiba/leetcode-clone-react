@@ -3,5 +3,6 @@ export type {
     ChangePasswordParamsDto,
     ForgetPasswordParamsDto,
     LoginParamsDto,
-    RegisterParamsDto
+    RegisterParamsDto,
+    RefreshTokenParamsDto
 } from './types';

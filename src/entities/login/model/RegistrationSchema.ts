@@ -9,6 +9,9 @@ const RegistrationSchema = (t: TFunction) => Yup.object().shape(
 		email: Yup.string().required(t('requiredField')).email(t('correctEmail')),
 		phone: Yup.string().matches(/[6-7][1-5][0-9]{6}$/, { message: t('correctPhone') }).required(t('requiredField')),
 		password: Yup.string().required(t('requiredField')).min(4, t('passwordMin', { val: 4 })),
+		passwordConfirm: Yup.string()
+			.oneOf([Yup.ref('password'), ''], t('passwordMustMatch') as string)
+			.required(t('requiredField') as string),
 		location: Yup.string().required(t('requiredField')),
 		status: Yup.string().oneOf(userStatus).required(t('requiredField')),
 		school_number: Yup.string(),

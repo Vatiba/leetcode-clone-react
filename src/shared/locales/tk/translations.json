@@ -14,6 +14,7 @@
    "password": "Parol",
    "passwordMin": "Parol uzynlygy minimum {{val}} bolmaly",
    "phoneMin": "Telefon nomer uzynlygy minimum {{val}} bolmaly",
+   "codeMin": "Kodyň uzynlygy minimum {{val}} bolmalyов",
    "email": "E-poçta",
    "signOut": "Çykmak",
    "correctEmail": "Dogry e-poçta giriziň",
@@ -50,5 +51,8 @@
    "enterCode": "E-poçtaňyza gelen kody giriziň",
    "writePhone": "Telefon belgiňizi giriziň",
    "send": "Ugratmak",
-   "somethingWentWrong": "Bir zat nädogry boldy"
+   "somethingWentWrong": "Bir zat nädogry boldy",
+   "enterYourEmailHaveRegistered": "Hasaba alnan e-poçtaňyzy giriziň",
+   "confirmPassword": "Paroly tassyklaň",
+   "passwordMustMatch": "Parol gabat gelmeli"
 }

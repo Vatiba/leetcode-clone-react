@@ -2,8 +2,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // language translations
-import translationsRu from 'shared/locales/ru/translations.json';
 import translationsEn from 'shared/locales/en/translations.json';
+import translationsRu from 'shared/locales/ru/translations.json';
 import translationsTk from 'shared/locales/tk/translations.json';
 
 // language storage key
@@ -26,9 +26,9 @@ export const resources = {
    },
 }
 
-const langFromStorage = localStorage.getItem(storageKeys.languageKey);
+const langFromStorage = localStorage.getItem(storageKeys.language);
 
-if (!langFromStorage) localStorage.setItem(storageKeys.languageKey, 'en')
+if (!langFromStorage) localStorage.setItem(storageKeys.language, 'en')
 
 i18n.use(initReactI18next).init({
    resources,
