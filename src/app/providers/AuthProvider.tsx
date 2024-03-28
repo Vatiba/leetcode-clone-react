@@ -13,7 +13,7 @@ const storageUser = storageWorker.getItem(storageKeys.user, isUser);
 const storageToken = storageWorker.getItem(storageKeys.token, isTokenObj);
 
 function AuthProvider({ children }: { children: ReactNode }) {
-	const [data, setData] = useState<TokenUser | null>({ token: storageToken, user: storageUser });
+	const [data, setData] = useState<TokenUser | null>(storageToken && storageUser ? { token: storageToken, user: storageUser } : null);
 
 	const signin = (tokenUser: TokenUser, callback?: VoidFunction) => {
 		setData(tokenUser);

@@ -1,4 +1,5 @@
 import { RequireAuth } from 'entities/auth';
+import Profile from 'pages/Profile';
 import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
 import { Loading } from 'shared/ui';
@@ -79,7 +80,7 @@ function Routes() {
 					element: (
 						<Layout>
 							<RequireAuth>
-								<ProtectedScreen />
+								<Profile />
 							</RequireAuth>
 						</Layout>
 					),

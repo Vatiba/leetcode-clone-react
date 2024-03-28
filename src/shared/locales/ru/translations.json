@@ -54,5 +54,6 @@
    "somethingWentWrong": "Что-то пошло не так.",
    "enterYourEmailHaveRegistered": "Введите адрес электронной почты, который вы зарегистрировали",
    "confirmPassword": "Подтвердите пароль",
-   "passwordMustMatch": "Пароли должны совпадать"
+   "passwordMustMatch": "Пароли должны совпадать",
+   "profile": "Профиль"
 }

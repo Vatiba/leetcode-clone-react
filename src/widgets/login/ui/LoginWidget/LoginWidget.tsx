@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import SignIn from '../SignIn';
-import SignUp from '../SignUp';
 import { useSearchParams } from 'react-router-dom';
 import logo from 'shared/assets/img/logo.png';
+import SignIn from '../SignIn';
+import SignUp from '../SignUp';
 
 const Login = () => {
 	const { t } = useTranslation();
