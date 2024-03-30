@@ -2,6 +2,7 @@ import { RequireAuth } from 'entities/auth';
 import Profile from 'pages/Profile';
 import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
+import Logo from 'shared/assets/img/logo.png';
 import { Loading } from 'shared/ui';
 import { Footer, Navbar } from 'widgets';
 
@@ -17,13 +18,19 @@ const DiscussesScreen = lazy(() => import('pages/Discusses'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
-		<div className='wrapper'>
-			<Navbar />
-			<div className="main">
-				{children}
+		<Suspense fallback={
+			<div className='flex justify-center items-center w-screen h-screen'>
+				<img src={Logo} alt="Logo" />
 			</div>
-			<Footer />
-		</div>
+		}>
+			<div className='wrapper'>
+				<Navbar />
+				<div className="main">
+					{children}
+				</div>
+				<Footer />
+			</div>
+		</Suspense>
 	);
 }
 

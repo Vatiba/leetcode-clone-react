@@ -5,8 +5,8 @@ type Props = {
   description?: string;
 };
 
-const APP_TITLE = import.meta.env.VITE_APP_TITLE;
-const APP_DESCRIPTION = import.meta.env.VITE_APP_DESCRIPTION;
+const APP_TITLE = import.meta.env.VITE_APP_TITLE || 'Oguzcode';
+const APP_DESCRIPTION = import.meta.env.VITE_APP_DESCRIPTION || 'Oguzcode';
 
 export default function Head({ title, description }: Props) {
   return (
