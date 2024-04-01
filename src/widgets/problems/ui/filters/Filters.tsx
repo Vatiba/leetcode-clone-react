@@ -1,4 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
+import clsx from 'clsx';
+import problemDifficulties from 'entities/constants/problemDifficulties';
+import { ProblemDifficulties } from 'entities/types';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRandom } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
@@ -16,19 +19,45 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 		onClickPickRandom,
 	} = props;
 	const { t } = useTranslation();
+	const [search, setSearch] = useState('');
+	const [difficulty, setDifficulty] = useState<ProblemDifficulties | ''>('');
+	const [tag, setTag] = useState<number>();
 
 	return (
 		<div className='flex flex-wrap gap-3 mb-3 justify-between'>
 			<div className='flex gap-2'>
 				<label className="input input-sm input-bordered flex items-center gap-2">
-					<input type="text" className="grow bg-transparent outline-none" placeholder="Search" />
+					<input
+						type="text"
+						className="grow bg-transparent outline-none"
+						placeholder="Search"
+						value={search}
+						onChange={({ target: { value } }) => setSearch(value)}
+					/>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
 				</label>
-				<select className="select select-sm select-bordered max-w-xs" defaultValue={'difficulty'}>
-					<option disabled value={'difficulty'}>Difficulty</option>
-					<option className='text-green-500' value={'easy'}>Easy</option>
-					<option className='text-orange-500' value={'easy'}>Medium</option>
-					<option className='text-red-500' value={'easy'}>Hard</option>
+				<select
+					className="select select-sm select-bordered max-w-xs"
+					value={difficulty}
+					onChange={({ target: { value } }) => setDifficulty(value as ProblemDifficulties)}
+				>
+					<option disabled value={''}>Difficulty</option>
+					{
+						problemDifficulties.map(item => {
+							return (
+								<option
+									className={clsx('capitalize', {
+										'text-green-500': item === 'easy',
+										'text-orange-500': item === 'medium',
+										'text-red-500': item === 'hard'
+									})}
+									value={item}
+								>
+									{item}
+								</option>
+							)
+						})
+					}
 				</select>
 				<div className="dropdown">
 					<div tabIndex={0} role="button" className="btn btn-outline btn-sm border-none">

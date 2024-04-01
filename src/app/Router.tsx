@@ -18,11 +18,13 @@ const DiscussesScreen = lazy(() => import('pages/Discusses'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
-		<Suspense fallback={
-			<div className='flex justify-center items-center w-screen h-screen'>
-				<img src={Logo} alt="Logo" />
-			</div>
-		}>
+		<Suspense
+			fallback={
+				<div className='flex justify-center items-center w-screen h-screen'>
+					<img src={Logo} alt="Logo" />
+				</div>
+			}
+		>
 			<div className='wrapper'>
 				<Navbar />
 				<div className="main">

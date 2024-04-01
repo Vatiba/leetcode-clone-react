@@ -119,6 +119,12 @@ export default function Problems() {
 		navigate(`/problems/${randomSlug}`)
 	}
 
+	// const {
+
+	// } = useGetProblems({
+
+	// })
+
 	return (
 		<>
 			<Head title="Problems" />
