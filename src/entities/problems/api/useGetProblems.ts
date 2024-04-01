@@ -14,7 +14,7 @@ const useGetProblems = ({ category, difficulty, limit, offset, search }: Problem
          search,
          i18n.language
       ],
-      queryFn: () => ProblemsGetApi.getProblems(),
+      queryFn: () => ProblemsGetApi.getProblems({ category, difficulty, limit, offset, search }),
    });
 };
 

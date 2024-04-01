@@ -1,147 +1,81 @@
 import Head from 'entities/Head';
-import { useState } from 'react';
+import { useGetProblems } from 'entities/problems';
+import { ProblemDifficulties } from 'entities/types';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container } from 'shared';
-import { generateRandom } from 'shared/libs/helpers';
+import { generateRandom, getPageOffset } from 'shared/libs/helpers';
+import { Pagination } from 'shared/ui';
 import {
 	ProblemFiltersWidget,
 	ProblemsTableWidget,
 	ProblemsTagsWidget
 } from 'widgets/problems';
 
-const problems = [
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree1'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree2'
-	},
-	{
-		status: false,
-		title: '100. Same Tree',
-		difficulty: 'Medium',
-		acceptance: 48,
-		slug: 'same-tree3'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree4'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree5'
-	},
-	{
-		status: true,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Medium',
-		acceptance: 48,
-		slug: 'same-tree6'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Medium',
-		acceptance: 48,
-		slug: 'same-tree7'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree8'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree9'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree10'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree11'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree12'
-	},
-	{
-		status: true,
-		title: '100. Same Tree',
-		difficulty: 'Hard',
-		acceptance: 48,
-		slug: 'same-tree13'
-	},
-	{
-		status: false,
-		title: 'Median of Two Sorted Arrays',
-		difficulty: 'Easy',
-		acceptance: 48,
-		slug: 'same-tree14'
-	},
-]
+const limit = 15;
 
 export default function Problems() {
 	const [showTopicTags, setShowTopicTags] = useState(false);
 	const navigate = useNavigate();
 
+	const [search, setSearch] = useState('');
+	const [difficulty, setDifficulty] = useState<ProblemDifficulties | ''>('');
+	const [tag, setTag] = useState<number>();
+	const [page, setPage] = useState<number>(1);
+
+	const offset = useMemo(() => {
+		return getPageOffset(page, limit);
+	}, [page, limit]);
+
+	const {
+		data: problems,
+		isLoading: problemsLoading,
+		isError: problemsError,
+	} = useGetProblems({
+		category: tag || '',
+		search: search || '',
+		difficulty: difficulty || '',
+		limit: limit || '',
+		offset: offset || '',
+	});
+
 	const onClickPickRandom = () => {
-		const randomSlug = problems[generateRandom(0, problems.length - 1)].slug;
-		navigate(`/problems/${randomSlug}`)
+		if (problems?.results.length) {
+			const randomSlug = problems.results[generateRandom(0, problems.results.length - 1)].slug;
+			navigate(`/problems/${randomSlug}`)
+		}
 	}
-
-	// const {
-
-	// } = useGetProblems({
-
-	// })
 
 	return (
 		<>
 			<Head title="Problems" />
 			<Container>
 				<div className='flex flex-col mt-24'>
-					<ProblemsTagsWidget />
+					<ProblemsTagsWidget
+						onTagChange={(tag) => setTag(tag)}
+					/>
 
 					<ProblemFiltersWidget
 						showTopicTags={showTopicTags}
 						setShowTopicTags={setShowTopicTags}
 						onClickPickRandom={onClickPickRandom}
+						onDifficultyChange={(value) => setDifficulty(value)}
+						onSearchChange={(value) => setSearch(value)}
 					/>
 
 					<ProblemsTableWidget
 						showTopicTags={showTopicTags}
-						problems={problems}
+						problems={problems?.results}
+						problemsLoading={problemsLoading}
+						problemsError={problemsError}
 					/>
+					{
+						problems && problems.count / limit > 1 ?
+							<Pagination
+								pageCount={problems.count / limit}
+								onPageChange={({ selected }) => setPage(selected)}
+							/> : null
+					}
 				</div>
 			</Container>
 		</>

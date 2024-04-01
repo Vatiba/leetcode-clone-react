@@ -1,61 +1,63 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import useGetCategories from 'entities/problems/api/useGetCategories';
+import { useEffect, useState } from 'react';
+import { useDebounceValue } from 'shared/hooks';
 
-const tags = [
-	{
-		id: 1,
-		name: 'Array'
-	},
-	{
-		id: 2,
-		name: 'String'
-	},
-	{
-		id: 3,
-		name: 'Hash table'
-	},
-	{
-		id: 4,
-		name: 'Math'
-	},
-	{
-		id: 5,
-		name: 'Dynamic programming'
-	},
-	{
-		id: 6,
-		name: 'Sorting'
-	},
-	{
-		id: 7,
-		name: 'Greedy'
-	},
-]
-type ProblemTagsWidgetProps = {}
+type ProblemTagsWidgetProps = {
+	onTagChange: (tag: number) => void
+}
 
 function ProblemTagsWidget(props: ProblemTagsWidgetProps) {
-	const { } = props;
+	const {
+		onTagChange,
+	} = props;
 
-	const [selectedId, setSelectedId] = useState<number>();
+	const [tag, setTag] = useState<number>();
+
+	const debounceTag = useDebounceValue(tag, 800);
+
+	useEffect(() => {
+		onTagChange(debounceTag);
+	}, [debounceTag])
+
+	const {
+		data: categories,
+		isLoading: categoriesLoading,
+		isError: categoriesError
+	} = useGetCategories();
 
 	return (
 		<div className='flex flex-wrap mb-5 gap-1'>
 			{
-				tags.map(tag => {
-					return (
-						<button
-							key={tag.id}
-							className={
-								clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
-									'border-green-600 text-white bg-green-600': selectedId === tag.id
-								})
-							}
-							onClick={() => setSelectedId(tag.id)}
-						>
-							{tag.name}
-						</button>
-					)
-				})
+				!categoriesError ?
+					!categoriesLoading ?
+						categories?.length ?
+							categories.map(item => {
+								return (
+									<button
+										key={item.id}
+										className={
+											clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
+												'border-green-600 text-white bg-green-600': tag === item.id
+											})
+										}
+										onClick={() => setTag(item.id)}
+									>
+										{item.name}
+									</button>
+								)
+							})
+							: null
+						:
+						new Array(5).fill(0).map((_, index) => {
+							return (
+								<div
+									key={index}
+									className='animate-pulse bg-gray-200 rounded-full h-9 w-16'
+								/>
+							)
+						})
+					: null
 			}
 		</div>
 	)

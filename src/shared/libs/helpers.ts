@@ -29,3 +29,13 @@ export function generateRandom(min = 0, max = 100) {
 	return rand;
 }
 
+export function getPageOffset(pageNumber: number, itemsPerPage: number): number {
+	// Handle edge cases (negative page or zero items per page)
+	if (pageNumber <= 0 || itemsPerPage <= 0) {
+		throw new Error("Invalid arguments: pageNumber and itemsPerPage must be positive integers");
+	}
+
+	// Calculate the offset by subtracting 1 from the page number 
+	// (since offset starts from 0) and multiplying by itemsPerPage
+	return (pageNumber - 1) * itemsPerPage;
+}

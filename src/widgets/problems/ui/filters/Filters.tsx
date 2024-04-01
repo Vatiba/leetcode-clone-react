@@ -1,15 +1,18 @@
 import clsx from 'clsx';
 import problemDifficulties from 'entities/constants/problemDifficulties';
 import { ProblemDifficulties } from 'entities/types';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRandom } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
+import { useDebounceValue } from 'shared/hooks';
 
 type ProblemFiltersWidgetProps = {
 	showTopicTags: boolean
 	setShowTopicTags: Dispatch<SetStateAction<boolean>>
 	onClickPickRandom: Function
+	onSearchChange: (value: string) => void
+	onDifficultyChange: (value: ProblemDifficulties | '') => void
 }
 
 function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
@@ -17,11 +20,22 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 		showTopicTags,
 		setShowTopicTags,
 		onClickPickRandom,
+		onDifficultyChange,
+		onSearchChange
 	} = props;
 	const { t } = useTranslation();
 	const [search, setSearch] = useState('');
 	const [difficulty, setDifficulty] = useState<ProblemDifficulties | ''>('');
-	const [tag, setTag] = useState<number>();
+
+	const debounceSearch = useDebounceValue(search, 800);
+	const debounceDifficulty = useDebounceValue(difficulty, 800);
+
+	useEffect(() => {
+		onSearchChange(debounceSearch);
+	}, [debounceSearch]);
+	useEffect(() => {
+		onDifficultyChange(debounceDifficulty);
+	}, [debounceDifficulty]);
 
 	return (
 		<div className='flex flex-wrap gap-3 mb-3 justify-between'>
@@ -46,6 +60,7 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 						problemDifficulties.map(item => {
 							return (
 								<option
+									key={item}
 									className={clsx('capitalize', {
 										'text-green-500': item === 'easy',
 										'text-orange-500': item === 'medium',
@@ -65,8 +80,8 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 					</div>
 					<ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
 						<li>
-							<a className='flex' onClick={() => setShowTopicTags(prev => !prev)}>
-								<input type="checkbox" checked={showTopicTags} className="checkbox checkbox-sm" onChange={() => { }} />
+							<a className='flex' >
+								<input type="checkbox" checked={showTopicTags} className="checkbox checkbox-sm" onChange={() => setShowTopicTags(prev => !prev)} />
 								<span>{t('showTopicTags')}</span>
 							</a>
 						</li>
