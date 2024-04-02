@@ -56,5 +56,6 @@
    "enterYourEmailHaveRegistered": "Enter your email that you have registered",
    "confirmPassword": "Confirm password",
    "passwordMustMatch": "Password must match",
-   "profile": "Profile"
+   "profile": "Profile",
+   "all": "All"
 }

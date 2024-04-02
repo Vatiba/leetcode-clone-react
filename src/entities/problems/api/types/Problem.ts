@@ -4,11 +4,12 @@ type Problem = {
    id: number
    slug: string
    title: string
-   success_rate: number
-   category: {
+   acceptance: number
+   categories: {
       id: number
       name: string
-   },
+   }[]
+   is_solved: boolean
    score: number
    difficulty: ProblemDifficulties
 }
