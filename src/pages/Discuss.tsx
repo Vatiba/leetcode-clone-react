@@ -9,7 +9,7 @@ export default function DiscussScreen() {
 		<>
 			<Head title={`Disscuss `} />
 			<Container>
-
+				awsf
 			</Container>
 		</>
 	);

@@ -11,7 +11,6 @@ export default function DiscussesScreen() {
 			<Head title="Discuss" />
 			<Container>
 				<div className='mt-6'>
-
 					<DiscussesTableWidget />
 				</div>
 			</Container>

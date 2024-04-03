@@ -116,6 +116,8 @@ function DiscussesTableWidget() {
 	const { t } = useTranslation();
 	const [type, setType] = useState<string>('1');
 
+
+
 	return (
 		<div className="overflow-x-auto w-full mb-4">
 
