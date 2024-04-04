@@ -4,8 +4,8 @@ import { LocalStorageWorker } from "shared/libs";
 const storageWorker = LocalStorageWorker.getInstance();
 
 const clearAuthData = () => {
-   storageWorker.setItem(storageKeys.token, null);
-   storageWorker.setItem(storageKeys.user, null);
+   storageWorker.setItem(storageKeys.token);
+   storageWorker.setItem(storageKeys.user);
 }
 
 export default clearAuthData;

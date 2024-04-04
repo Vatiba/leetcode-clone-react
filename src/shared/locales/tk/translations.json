@@ -56,5 +56,8 @@
    "confirmPassword": "Paroly tassyklaň",
    "passwordMustMatch": "Parol gabat gelmeli",
    "profile": "Profil",
-   "all": "Hemmesi"
+   "all": "Hemmesi",
+   "search": "Gözleg",
+   "postedTime": "Goýulan wagty",
+   "userName": "Ullanyjyň a ady"
 }

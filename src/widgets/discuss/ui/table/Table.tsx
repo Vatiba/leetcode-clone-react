@@ -5,168 +5,114 @@ import { RxCountdownTimer } from "react-icons/rx";
 
 // trash
 import clsx from 'clsx';
+import { useGetComments } from 'entities/discuss';
+import { DiscussOrdering } from 'entities/types';
+import { DiscussSearch } from 'features/discuss';
 import { useState } from 'react';
 import { IoEyeSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import DefaultUserImg from 'shared/assets/img/default_avatar.jpg';
 import { numberFormatter } from 'shared/libs';
+import { getPageOffset } from 'shared/libs/helpers';
+import { Pagination } from 'shared/ui';
+import { useAuth } from 'entities/auth';
 
-const discusses = [
-	{
-		title: 'Meta phone screen',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 2305,
-		viewedCount: 2305,
-	},
-	{
-		title: 'DoorDash US | Phone screen | Maximum Profit in Job Scheduling',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 23,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 23,
-	},
-	{
-		title: 'Google | L5 | Unmerge two words from given ',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 514,
-		viewedCount: 514,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 5105,
-		viewedCount: 5105,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 842,
-		viewedCount: 842,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 1,
-		viewedCount: 1,
-	},
-	{
-		title: 'Google | L5 | Unmerge two words from given Dictionary which are merged with merge',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 44,
-		viewedCount: 44,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 23,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 23,
-	},
-	{
-		title: 'Google | L5 | Unmerge two words from given Dictionary which are merged with merge',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 2305,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 32,
-		viewedCount: 2305,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 2305,
-	},
-	{
-		title: 'Weekly contest',
-		user: 'Bezirgen Yaylymow',
-		time: '20.01.2024 07:38',
-		upvotedCount: 23,
-		viewedCount: 2305,
-	},
-]
+const limit = 24;
 
 function DiscussesTableWidget() {
 	const { t } = useTranslation();
-	const [type, setType] = useState<string>('1');
+	const { data } = useAuth();
 
+	const [page, setPage] = useState(1);
+	const [ordering, setOrdering] = useState<DiscussOrdering>('date_created');
+	const [search, setSearch] = useState('');
 
+	const {
+		data: comments,
+		isLoading: commentsLoading,
+		isError: commentsError
+	} = useGetComments({
+		limit: limit,
+		offset: getPageOffset(page, limit),
+		ordering: ordering,
+		search: search
+	})
 
 	return (
 		<div className="overflow-x-auto w-full mb-4">
-
 			<div className='flex flex-col bg-gray-50 rounded-md'>
 				<div className='flex flex-wrap gap-3 items-center justify-between py-3 px-1 bg-gray-200 rounded-t-md border-b border-gray-200'>
 
 					<select
 						className="select select-xs select-bordered block md:hidden order-2 sm:order-1"
-						name="location"
-						onChange={({ target: { value } }) => setType(value)}
-						value={type}
+						onChange={({ target: { value } }) => setOrdering(value as DiscussOrdering)}
+						value={ordering}
 					>
-						<option value={'1'}>
+						<option value={''}>
+							{t('all')}
+						</option>
+						<option value={'date_created'}>
 							{t('newestToOldest')}
 						</option>
-						<option value={'2'}>
+						<option value={'votes_sum'}>
 							{t('mostVotes')}
 						</option>
-						<option value={'3'}>
+						<option value={'view_count'}>
 							{t('mostViewed')}
 						</option>
 					</select>
 					<div className='hidden md:flex order-2 sm:order-1 select-none'>
 						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-300 pr-4', {
-							'font-bold text-black': type == '1'
+							'font-bold text-black': ordering == 'date_created'
 						})}>
-							<input className='opacity-0' type='radio' name='type' value={1} checked={!!type} onClick={(e) => setType(e.currentTarget.value)} />
+							<input
+								className='opacity-0'
+								type='radio'
+								name='ordering'
+								value={'date_created'}
+								checked={ordering == 'date_created'}
+								onChange={({ currentTarget: { value } }) => setOrdering(value as DiscussOrdering)}
+							/>
 							{t('newestToOldest')}
 						</label>
 						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer border-r border-gray-300 pr-4', {
-							'font-bold text-black': type == '2'
+							'font-bold text-black': ordering == 'votes_sum'
 						})}>
-							<input className='opacity-0' type='radio' name='type' value={2} checked={!!type} onClick={(e) => setType(e.currentTarget.value)} />
+							<input
+								className='opacity-0'
+								type='radio'
+								name='ordering'
+								value={'votes_sum'}
+								checked={ordering == 'view_count'}
+								onChange={({ currentTarget: { value } }) => setOrdering(value as DiscussOrdering)}
+							/>
 							{t('mostVotes')}
 						</label>
 						<label className={clsx('transition-all text-gray-400 text-xs cursor-pointer pr-4', {
-							'font-bold text-black': type == '3'
+							'font-bold text-black': ordering == 'view_count'
 						})}>
-							<input className='opacity-0' type='radio' name='type' value={3} checked={!!type} onClick={(e) => setType(e.currentTarget.value)} />
+							<input
+								className='opacity-0'
+								type='radio'
+								name='ordering'
+								value={'view_count'}
+								checked={ordering == 'view_count'}
+								onChange={({ currentTarget: { value } }) => setOrdering(value as DiscussOrdering)}
+							/>
 							{t('mostViewed')}
 						</label>
 					</div>
 
 					<div className='flex items-center mr-3 order-1 sm:order-2'>
-						<label className="input input-xs input-bordered flex items-center gap-2 mr-2">
-							<input type="text" className="grow bg-transparent outline-none" placeholder="Search" />
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-						</label>
-						<button className="btn btn-xs flex items-center">
+						<DiscussSearch
+							onChange={(value) => setSearch(value)}
+						/>
+						<button
+							className="btn btn-xs flex items-center"
+							onClick={() => {
+
+							}}
+						>
 							{t('new')}
 							<IoMdAdd className='ml-1' />
 						</button>
@@ -174,40 +120,74 @@ function DiscussesTableWidget() {
 				</div>
 				<div className='flex flex-col px-2'>
 					{
-						discusses.map((discuss, index) => {
-							return (
-								<Link key={index} to="#" className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
-									<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
-									<div className='flex flex-col flex-grow ml-3'>
-										<p className='font-bold line-clamp-2'>{discuss.title}</p>
-										<div>
-											<span className='hidden sm:inline pr-2'>User name:</span>
-											<span className=''>{discuss.user}</span>
+						!commentsError ?
+							!commentsLoading ?
+								comments?.results.length ?
+									comments?.results.map((comment, index) => {
+										return (
+											<Link key={index} to="#" className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
+												<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
+												<div className='flex flex-col flex-grow ml-3'>
+													<p className='font-bold line-clamp-2'>{comment.problem.title}</p>
+													<div>
+														<span className='hidden sm:inline pr-2'>{t('userName')}:</span>
+														<span className=''>{`${comment.user.first_name ? comment.user.first_name : ''} ${comment.user.last_name ? comment.user.last_name : ''}`}</span>
+													</div>
+													<div className='mt-1 flex flex-wrap items-center text-gray-600'>
+														<span className='flex items-center mr-2'>
+															<RxCountdownTimer className='mr-0 sm:mr-2' />
+															<span className='truncate hidden sm:inline'>{t('postedTime')}</span>
+														</span>
+														<span>{comment.date_created}</span>
+													</div>
+												</div>
+												<div className='flex flex-shrink-1 flex-wrap max-w-[75px] sm:max-w-[90px] md:max-w-none'>
+													<div className="flex justify-end w-full md:w-1/2 items-center border-b md:border-b-0 pb-2 md:pb-0 mb-2 md:mb-0">
+														<BiSolidUpArrow color='gray' />
+														<span className='ml-3 w-10 sm:w-12 md:w-16'>{comment.votes_sum ? numberFormatter(comment.votes_sum) : 0}</span>
+													</div>
+													<div className="flex justify-end w-full md:w-1/2 items-center">
+														<IoEyeSharp color='gray' />
+														<span className='ml-3 w-10 sm:w-12 md:w-16'>{comment.view_count ? numberFormatter(comment.view_count) : 0}</span>
+													</div>
+												</div>
+											</Link>
+										)
+									})
+									:
+									<>No results</>
+								:
+								new Array(14).fill(0).map((_, index) => {
+									return (
+										<div key={index} className='animate-pulse flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
+											<div className='rounded-full bg-gray-200 w-10 h-10 m-3 mr-0 hidden md:block' />
+											<div className='flex flex-col flex-grow ml-3'>
+												<div className='font-bold line-clamp-2 bg-gray-200 rounded-md h-4 w-36 mb-3' />
+												<div className='h-3 w-60 rounded-md bg-gray-200 mb-1' />
+												<div className='h-3 w-44 rounded-md bg-gray-200' />
+												{/* <div className='mt-1 flex flex-wrap items-center text-gray-600'>
+													<span className='flex items-center mr-2'>
+														<RxCountdownTimer className='mr-0 sm:mr-2' />
+														<span className='truncate hidden sm:inline'>{t('postedTime')}</span>
+													</span>
+													<span>{comment.date_created}</span>
+												</div> */}
+											</div>
 										</div>
-										<div className='mt-1 flex flex-wrap items-center text-gray-600'>
-											<span className='flex items-center mr-2'>
-												<RxCountdownTimer className='mr-0 sm:mr-2' />
-												<span className='truncate hidden sm:inline'>Posted time:</span>
-											</span>
-											<span>{discuss.time}</span>
-										</div>
-									</div>
-									<div className='flex flex-shrink-1 flex-wrap max-w-[75px] sm:max-w-[90px] md:max-w-none'>
-										<div className="flex justify-end w-full md:w-1/2 items-center border-b md:border-b-0 pb-2 md:pb-0 mb-2 md:mb-0">
-											<BiSolidUpArrow color='gray' />
-											<span className='ml-3 w-10 sm:w-12 md:w-16'>{numberFormatter(discuss.upvotedCount)}</span>
-										</div>
-										<div className="flex justify-end w-full md:w-1/2 items-center">
-											<IoEyeSharp color='gray' />
-											<span className='ml-3 w-10 sm:w-12 md:w-16'>{numberFormatter(discuss.viewedCount)}</span>
-										</div>
-									</div>
-								</Link>
-							)
-						})
+									)
+								})
+							:
+							<>No results</>
 					}
 				</div>
 			</div>
+			{
+				comments && comments.count / limit > 1 ?
+					<Pagination
+						pageCount={comments.count / limit}
+						onPageChange={({ selected }) => setPage(selected)}
+					/> : null
+			}
 		</div>
 	)
 }

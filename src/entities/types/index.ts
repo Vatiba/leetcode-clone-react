@@ -1,3 +1,4 @@
+export type { default as DiscussOrdering } from './DiscussOrdering';
 export type { default as Language } from './Language';
 export type { default as PaginationDto } from './PaginationDto';
 export type { default as ProblemDifficulties } from './ProblemDifficulties';

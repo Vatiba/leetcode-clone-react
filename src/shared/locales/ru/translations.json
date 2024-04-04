@@ -56,5 +56,8 @@
    "confirmPassword": "Подтвердите пароль",
    "passwordMustMatch": "Пароли должны совпадать",
    "profile": "Профиль",
-   "all": "Все"
+   "all": "Все",
+   "search": "Поиск",
+   "postedTime": "Время публикации",
+   "userName": "Имя пользователя"
 }

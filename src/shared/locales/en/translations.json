@@ -57,5 +57,8 @@
    "confirmPassword": "Confirm password",
    "passwordMustMatch": "Password must match",
    "profile": "Profile",
-   "all": "All"
+   "all": "All",
+   "search": "Search",
+   "postedTime": "Posted time",
+   "userName": "User name"
 }

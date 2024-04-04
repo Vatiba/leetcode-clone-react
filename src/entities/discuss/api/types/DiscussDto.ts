@@ -7,7 +7,7 @@ type DiscussDto = {
    }
    replies_count: number
    votes_sum: number | null
-   view_count: number
+   view_count: number | null
    date_created: string
    date_updated: string
    user: {

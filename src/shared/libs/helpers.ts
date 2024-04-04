@@ -39,3 +39,12 @@ export function getPageOffset(pageNumber: number, itemsPerPage: number): number 
 	// (since offset starts from 0) and multiplying by itemsPerPage
 	return (pageNumber - 1) * itemsPerPage;
 }
+
+export function removeUndefined(obj: object) {
+	return Object.entries(obj)
+		.filter(([_, value]) => value !== undefined)
+		.reduce((obj, [key, value]) => {
+			(obj as any)[key] = value;
+			return obj;
+		}, {});
+}
