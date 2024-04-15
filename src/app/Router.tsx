@@ -1,4 +1,3 @@
-import { RequireAuth } from 'entities/auth';
 import Profile from 'pages/Profile';
 import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
@@ -94,12 +93,12 @@ function Routes() {
 				// 	element: <ProtectedScreen />,
 				// },
 				{
-					path: '/profile',
+					path: '/profile/:userId',
 					element: (
 						<Layout>
-							<RequireAuth>
-								<Profile />
-							</RequireAuth>
+							{/* <RequireAuth> */}
+							<Profile />
+							{/* </RequireAuth> */}
 						</Layout>
 					),
 				},

@@ -1,4 +1,4 @@
-import { BiUpArrow, BiDownArrow } from "react-icons/bi"
+import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi"
 import { numberFormatter } from "shared/libs"
 
 function UpDownVote() {
@@ -8,7 +8,7 @@ function UpDownVote() {
                 className="flex justify-center items-center h-10 w-10 border-none bg-gray-200 rounded-md hover:bg-gray-300"
                 onClick={() => { }}
             >
-                <BiUpArrow />
+                <BiSolidUpArrow className="text-gray-500" />
             </button>
             <span className="font-bold">
                 {numberFormatter(12)}
@@ -17,7 +17,7 @@ function UpDownVote() {
                 className="flex justify-center items-center h-10 w-10 border-none bg-gray-200 rounded-md hover:bg-gray-300"
                 onClick={() => { }}
             >
-                <BiDownArrow />
+                <BiSolidDownArrow className="text-gray-500" />
             </button>
         </div>
     )

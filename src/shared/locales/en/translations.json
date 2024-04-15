@@ -61,5 +61,11 @@
    "search": "Search",
    "postedTime": "Posted time",
    "userName": "User name",
-   "reply": "Reply"
+   "reply": "Reply",
+   "save": "Save",
+   "editProfile": "Edit profile",
+   "communityStats": "Community stats",
+   "discuss": "Discuss",
+   "languages": "Languages",
+   "skills": "Skills"
 }

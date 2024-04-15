@@ -23,7 +23,7 @@ function Reply(props: ReplyProps) {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const [canReply, setCanReply] = useState(false);
+    const [canReply, setCanReply] = useState(!isMinimizedBtn);
 
     return (
         <div className="flex flex-col">
@@ -61,7 +61,7 @@ function Reply(props: ReplyProps) {
                     {
                         isMinimizedBtn ?
                             <BiChat /> :
-                            t('reply')
+                            t('save')
                     }
                 </button>
             </div>

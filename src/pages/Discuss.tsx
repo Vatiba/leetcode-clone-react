@@ -12,12 +12,12 @@ export default function DiscussScreen() {
 			<Head title={`Disscuss `} />
 			<Container className='my-5'>
 				<CommentWidget isMain title={"This title of discussion/question"} />
+				<CommentWidget />
+				<CommentWidget />
+				<CommentWidget />
 				<div className="pb-3">
 					<Reply />
 				</div>
-				<CommentWidget />
-				<CommentWidget />
-				<CommentWidget />
 			</Container>
 		</>
 	);

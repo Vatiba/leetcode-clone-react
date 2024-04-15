@@ -16,6 +16,7 @@ type DiscussDto = {
       last_name: string
       avatar: string
    }
+   slug: string
 }
 
 export default DiscussDto;

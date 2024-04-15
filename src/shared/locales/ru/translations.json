@@ -60,5 +60,11 @@
    "search": "Поиск",
    "postedTime": "Время публикации",
    "userName": "Имя пользователя",
-   "reply": "Ответить"
+   "reply": "Ответить",
+   "save": "Сохранить",
+   "editProfile": "Редактировать профиль",
+   "communityStats": "Статистика сообщества",
+   "discuss": "Discuss",
+   "languages": "Languages",
+   "skills": "Skills"
 }

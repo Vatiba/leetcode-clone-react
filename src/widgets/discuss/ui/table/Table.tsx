@@ -125,7 +125,7 @@ function DiscussesTableWidget() {
 								comments?.results.length ?
 									comments?.results.map((comment, index) => {
 										return (
-											<Link key={index} to="#" className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
+											<Link key={index} to={`/discuss/${comment.slug}`} className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
 												<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
 												<div className='flex flex-col flex-grow ml-3'>
 													<p className='font-bold line-clamp-2'>{comment.problem.title}</p>
