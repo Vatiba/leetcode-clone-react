@@ -15,6 +15,7 @@ const LoginScreen = lazy(() => import('pages/Login'));
 const NotFoundScreen = lazy(() => import('pages/NotFound'));
 const AboutUsScreen = lazy(() => import('pages/AboutUs'));
 const DiscussesScreen = lazy(() => import('pages/Discusses'));
+const DiscussScreen = lazy(() => import('pages/Discuss'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -77,6 +78,14 @@ function Routes() {
 					element: (
 						<Layout>
 							<DiscussesScreen />
+						</Layout>
+					),
+				},
+				{
+					path: '/discuss/:discussSlug',
+					element: (
+						<Layout>
+							<DiscussScreen />
 						</Layout>
 					),
 				},
