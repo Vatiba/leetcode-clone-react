@@ -1,4 +1,6 @@
 export {
-   DiscussSearch
+   DiscussSearch,
+   UpDownVote,
+   Reply
 } from './ui';
 

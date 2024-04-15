@@ -7,4 +7,7 @@ export type {
    DiscussDto,
    DiscussListParamsDto
 } from './api';
+export {
+   CommentEntities
+} from './ui';
 

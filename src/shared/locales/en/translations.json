@@ -60,5 +60,6 @@
    "all": "All",
    "search": "Search",
    "postedTime": "Posted time",
-   "userName": "User name"
+   "userName": "User name",
+   "reply": "Reply"
 }

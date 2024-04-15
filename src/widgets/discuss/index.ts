@@ -1,3 +1,4 @@
 export {
-   DiscussesTableWidget
+   DiscussesTableWidget,
+   CommentWidget
 } from './ui';
