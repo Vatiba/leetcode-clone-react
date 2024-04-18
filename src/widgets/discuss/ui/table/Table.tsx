@@ -5,6 +5,7 @@ import { RxCountdownTimer } from "react-icons/rx";
 
 // trash
 import clsx from 'clsx';
+import { useAuth } from 'entities/auth';
 import { useGetComments } from 'entities/discuss';
 import { DiscussOrdering } from 'entities/types';
 import { DiscussSearch } from 'features/discuss';
@@ -15,11 +16,20 @@ import DefaultUserImg from 'shared/assets/img/default_avatar.jpg';
 import { numberFormatter } from 'shared/libs';
 import { getPageOffset } from 'shared/libs/helpers';
 import { Pagination } from 'shared/ui';
-import { useAuth } from 'entities/auth';
+
+type DiscussesTableWidgetProps = {
+	/**
+	 * @default false
+	 */
+	isMinimized?: boolean
+}
 
 const limit = 24;
 
-function DiscussesTableWidget() {
+function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
+	const {
+		isMinimized = false
+	} = props;
 	const { t } = useTranslation();
 	const { data } = useAuth();
 
@@ -40,8 +50,12 @@ function DiscussesTableWidget() {
 
 	return (
 		<div className="overflow-x-auto w-full mb-4">
-			<div className='flex flex-col bg-gray-50 rounded-md'>
-				<div className='flex flex-wrap gap-3 items-center justify-between py-3 px-1 bg-gray-200 rounded-t-md border-b border-gray-200'>
+			<div className={clsx('flex flex-col rounded-md', {
+				'bg-gray-50': !isMinimized
+			})}>
+				<div className={clsx('flex flex-wrap gap-3 items-center justify-between py-3 px-1 rounded-t-md border-b border-gray-200', {
+					'bg-gray-200': !isMinimized
+				})}>
 
 					<select
 						className="select select-xs select-bordered block md:hidden order-2 sm:order-1"

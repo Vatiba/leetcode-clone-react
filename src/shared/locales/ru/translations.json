@@ -1,10 +1,14 @@
 {
    "inspiration": "Твое будущее начинается здесь",
    "requiredField": "Обязательное поле",
-   "firstName": "Как вас зовут?",
-   "lastName": "Как ваше фамилия?",
-   "location": "Введите вашу локацию",
-   "status": "Введите ваш статус",
+   "firstName": "Имя",
+   "whatFirstName": "Как вас зовут?",
+   "lastName": "Ваше фамилия",
+   "whatLastName": "Как ваше фамилия?",
+   "whatLocation": "Введите вашу локацию",
+   "location": "Локацию",
+   "whatStatus": "Введите ваш статус",
+   "status": "Статус",
    "school": "Введите номер вашей школы ",
    "selectSchool": "или",
    "university": "Выберите свой университет",
@@ -65,6 +69,8 @@
    "editProfile": "Редактировать профиль",
    "communityStats": "Статистика сообщества",
    "discuss": "Discuss",
+   "discusses": "Discusses",
    "languages": "Languages",
-   "skills": "Skills"
+   "skills": "Skills",
+   "phoneNumber": "Номер телефона"
 }

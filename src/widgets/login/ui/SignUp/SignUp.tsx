@@ -225,7 +225,7 @@ const SignUp = (props: SignUpProps) => {
 										</label>
 										<label className="form-control w-full">
 											<div className="label">
-												<span className="label-text">{t('firstName')}</span>
+												<span className="label-text">{t('whatFirstName')}</span>
 											</div>
 											<input
 												className="input input-sm input-bordered w-full"
@@ -244,7 +244,7 @@ const SignUp = (props: SignUpProps) => {
 										</label>
 										<label className="form-control w-full">
 											<div className="label">
-												<span className="label-text">{t('lastName')}</span>
+												<span className="label-text">{t('whatLastName')}</span>
 											</div>
 											<input
 												className="input input-sm input-bordered w-full"
@@ -267,7 +267,7 @@ const SignUp = (props: SignUpProps) => {
 										<>
 											<label className="form-control w-full">
 												<div className="label">
-													<span className="label-text">{t('location')}</span>
+													<span className="label-text">{t('whatLocation')}</span>
 												</div>
 												<select
 													className="select select-sm select-bordered"
@@ -321,7 +321,7 @@ const SignUp = (props: SignUpProps) => {
 											</label>
 											<label className="form-control w-full">
 												<div className="label">
-													<span className="label-text">{t('status')}</span>
+													<span className="label-text">{t('whatStatus')}</span>
 												</div>
 												<select
 													className="select select-sm select-bordered capitalize"

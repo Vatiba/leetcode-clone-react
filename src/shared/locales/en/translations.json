@@ -1,10 +1,14 @@
 {
    "inspiration": "Your future begins here",
    "requiredField": "Required field",
-   "firstName": "What is your first name?",
-   "lastName": "What is your last name?",
-   "location": "What is your location?",
-   "status": "What is your status?",
+   "firstName": "First name",
+   "whatFirstName": "What is your first name?",
+   "lastName": "Last name",
+   "whatLastName": "What is your last name?",
+   "whatLocation": "What is your location?",
+   "location": "Location",
+   "whatStatus": "What is your status?",
+   "status": "Status",
    "school": "Enter your school number",
    "selectSchool": "Or",
    "university": "Select your university",
@@ -66,6 +70,8 @@
    "editProfile": "Edit profile",
    "communityStats": "Community stats",
    "discuss": "Discuss",
+   "discusses": "Discusses",
    "languages": "Languages",
-   "skills": "Skills"
+   "skills": "Skills",
+   "phoneNumber": "Phone number"
 }

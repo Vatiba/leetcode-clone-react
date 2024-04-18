@@ -1,10 +1,14 @@
 {
    "inspiration": "Seniň geljegiň şu ýerde başlanýar",
    "requiredField": "Hökmany meýdança",
-   "firstName": "Siziň adyňyz näme?",
-   "lastName": "Siziň familiýaňyz näme?",
-   "location": "Lokasiýaňyzy giriziň",
-   "status": "Ýagdaýyňyzy giriziň",
+   "firstName": "At",
+   "whatFirstName": "Siziň adyňyz näme?",
+   "lastName": "Familiýa",
+   "whatLastName": "Siziň familiýaňyz näme?",
+   "whatLocation": "Lokasiýaňyzy giriziň",
+   "location": "Lokasiýa",
+   "whatStatus": "Ýagdaýyňyzy giriziň",
+   "status": "Ýagdaý",
    "school": "Mekdep belgiňizi giriziň ýa-da saýlaň",
    "selectSchool": "Ýa-da",
    "university": "Uniwersitetiňizi saýlaň",
@@ -65,6 +69,8 @@
    "editProfile": "Profil üýtgetmek",
    "communityStats": "Jemgyýet statistikasy",
    "discuss": "Discuss",
+   "discusses": "Discusses",
    "languages": "Languages",
-   "skills": "Skills"
+   "skills": "Skills",
+   "phoneNumber": "Telefon belgi"
 }

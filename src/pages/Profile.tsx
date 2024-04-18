@@ -5,6 +5,7 @@ import { FaFire, FaPhone } from "react-icons/fa";
 import { Container } from "shared";
 // trash
 import AvatarPlaceholder from 'shared/assets/img/default_avatar.jpg';
+import { DiscussesTableWidget } from "widgets/discuss";
 import { EditProfileWidget } from "widgets/profile";
 
 function Profile() {
@@ -13,7 +14,7 @@ function Profile() {
 	return (
 		<Container className="my-3">
 			<div
-				className="flex flex-wrap sm:flex-nowrap gap-3"
+				className="flex flex-wrap items-start sm:flex-nowrap gap-3"
 			>
 				<div className="flex flex-col w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white py-3 px-3 rounded-md">
 					<div className="flex gap-3">
@@ -106,16 +107,18 @@ function Profile() {
 							</div>
 						</div>
 					</div>
+					<div className="flex flex-col bg-white w-full py-4 px-3 rounded-md">
+						<h3 className="font-bold mb-3">
+							{t('discusses')}
+						</h3>
+
+						<DiscussesTableWidget
+							isMinimized
+						/>
+					</div>
 
 					<div className="flex flex-col bg-white w-full py-4 px-3 rounded-md">
 						<EditProfileWidget />
-						<div className="flex justify-end mt-4">
-							<button
-								className="flex justify-center py-2 px-4 bg-gray-300 hover:bg-gray-400 rounded-md text-white font-bold"
-							>
-								{t('editProfile')}
-							</button>
-						</div>
 					</div>
 				</div>
 			</div>
