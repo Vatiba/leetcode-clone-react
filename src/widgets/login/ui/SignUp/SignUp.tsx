@@ -129,6 +129,7 @@ const SignUp = (props: SignUpProps) => {
 					isSubmitting,
 					dirty
 				}) => {
+					console.log(values)
 					return (
 						<Form>
 							{
@@ -440,7 +441,15 @@ const SignUp = (props: SignUpProps) => {
 													<div className="label">
 														<span className="label-text">{t('worker')}</span>
 													</div>
-													<textarea rows={4} maxLength={200} className="input input-bordered w-full leading-tight" />
+													<textarea
+														name='company_name'
+														rows={4}
+														maxLength={200}
+														className="input input-bordered w-full leading-tight"
+														onChange={handleChange}
+														onBlur={handleBlur}
+														value={values.company_name}
+													/>
 													<div className="label">
 														{
 															errors.company_name && touched.company_name &&

@@ -27,12 +27,13 @@ function AuthStatus() {
 					{`${data.user.first_name ? data.user.first_name : ''} ${data.user.last_name ? data.user.last_name : ''}`}
 				</h3>
 				<ul className='menu menu-compact'>
-					<li><a
-						className='rounded-md'
-						onClick={() => navigate('/profile')}
-					>
-						{t('profile')}
-					</a>
+					<li>
+						<a
+							className='rounded-md'
+							onClick={() => navigate(`/profile/${data.user?.id}`)}
+						>
+							{t('profile')}
+						</a>
 					</li>
 					<li>
 						<a

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BiChat } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { TextEditor } from "shared/ui";
 
 type ReplyProps = {
     /**
@@ -26,12 +27,11 @@ function Reply(props: ReplyProps) {
     const [canReply, setCanReply] = useState(!isMinimizedBtn);
 
     return (
-        <div className="flex flex-col">
+        <>
             {
                 canReply ?
-                    <textarea
-                        rows={4}
-                        className="rounded-md border py-2 px-3"
+                    <TextEditor
+                        className="h-64 mb-12"
                     />
                     : null
             }
@@ -50,7 +50,8 @@ function Reply(props: ReplyProps) {
                         }
 
                         // call reply api here
-
+                        console.log('reply')
+                        setCanReply(false);
 
                     }}
                     className={clsx('border-none bg-gray-200 hover:bg-gray-300 rounded-md font-medium py-2', {
@@ -59,14 +60,25 @@ function Reply(props: ReplyProps) {
                     })}
                 >
                     {
-                        isMinimizedBtn ?
+                        isMinimizedBtn && !canReply ?
                             <BiChat /> :
                             t('save')
                     }
                 </button>
             </div>
-        </div>
+        </>
     )
 }
+
+
+const modules = {
+    toolbar: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image', 'code'],
+        ['clean']
+    ],
+};
 
 export default Reply

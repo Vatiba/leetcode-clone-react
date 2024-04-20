@@ -11,7 +11,7 @@ import { DiscussOrdering } from 'entities/types';
 import { DiscussSearch } from 'features/discuss';
 import { useState } from 'react';
 import { IoEyeSharp } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DefaultUserImg from 'shared/assets/img/default_avatar.jpg';
 import { numberFormatter } from 'shared/libs';
 import { getPageOffset } from 'shared/libs/helpers';
@@ -30,8 +30,9 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 	const {
 		isMinimized = false
 	} = props;
+	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const { data } = useAuth();
+	const { data: authData } = useAuth();
 
 	const [page, setPage] = useState(1);
 	const [ordering, setOrdering] = useState<DiscussOrdering>('date_created');
@@ -124,7 +125,11 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 						<button
 							className="btn btn-xs flex items-center"
 							onClick={() => {
-
+								if (authData) {
+									navigate("/add/discuss");
+									return;
+								}
+								navigate('/login?loginType=signIn');
 							}}
 						>
 							{t('new')}

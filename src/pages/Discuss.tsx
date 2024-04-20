@@ -1,6 +1,7 @@
 import Head from 'entities/Head';
 import { Reply } from 'features/discuss';
 import { useTranslation } from 'react-i18next';
+
 import { Container } from 'shared/ui';
 import { CommentWidget } from 'widgets/discuss';
 

@@ -15,6 +15,7 @@ const NotFoundScreen = lazy(() => import('pages/NotFound'));
 const AboutUsScreen = lazy(() => import('pages/AboutUs'));
 const DiscussesScreen = lazy(() => import('pages/Discusses'));
 const DiscussScreen = lazy(() => import('pages/Discuss'));
+const AddDiscuss = lazy(() => import('pages/AddDiscuss'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -85,6 +86,14 @@ function Routes() {
 					element: (
 						<Layout>
 							<DiscussScreen />
+						</Layout>
+					),
+				},
+				{
+					path: '/add/discuss',
+					element: (
+						<Layout>
+							<AddDiscuss />
 						</Layout>
 					),
 				},

@@ -2,6 +2,7 @@ import { useAuth } from 'entities/auth';
 import { LoginForm, LoginSchema } from 'entities/login';
 import { useLogin } from 'features/auth';
 import { Form, Formik } from 'formik';
+import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ const SignIn = (props: SignInProps) => {
 	const { t } = useTranslation();
 
 	const {
-		mutateAsync: login,
+		mutate: login,
 		isPending: loginPending
 	} = useLogin();
 
@@ -31,14 +32,26 @@ const SignIn = (props: SignInProps) => {
 			validationSchema={LoginSchema(t)}
 			onSubmit={async (values, { setSubmitting, resetForm }) => {
 
-				const res = await login({
+				login({
 					email: values.email,
 					password: values.password,
+				}, {
+					onSuccess: (res) => {
+						signin(res);
+						resetForm();
+						navigate('/');
+						setSubmitting(false)
+					},
+					onError: (err: any) => {
+
+						if (err?.non_field_errors) {
+							err.non_field_errors?.map((item: string) => {
+								toast.error(item)
+							});
+							setSubmitting(false);
+						}
+					}
 				});
-				signin(res);
-				setSubmitting(false);
-				resetForm();
-				navigate('/');
 			}}
 		>
 			{({

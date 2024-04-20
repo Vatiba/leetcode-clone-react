@@ -1,3 +1,4 @@
+export type { default as DiscussCreateDto } from './types/DiscussCreateDto';
 export type { default as DiscussDto } from './types/DiscussDto';
 export type { default as DiscussListParamsDto } from './types/DiscussListParamsDto';
 
