@@ -5,6 +5,7 @@ export {
 } from './api';
 export type {
    DiscussCreateDto,
+   DiscussCreateResponseDto,
    DiscussDto,
    DiscussListParamsDto
 } from './api';
@@ -17,3 +18,4 @@ export type {
 export {
    CommentEntities
 } from './ui';
+

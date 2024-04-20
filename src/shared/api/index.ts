@@ -18,6 +18,7 @@ const api = Instance.extend({
 		beforeRequest: [
 			(req, _opt) => {
 				const storageToken = storageWorker.getItem(storageKeys.token, isTokenObj);
+				console.log(storageToken)
 				if (storageToken) {
 					const { access, refresh } = storageToken;
 					if (req.url.includes("refresh")) {
@@ -45,12 +46,13 @@ const api = Instance.extend({
 									refresh: storageToken?.refresh
 								});
 
-								if (storageToken)
+								if (storageToken) {
 									storageWorker.setItem(storageKeys.token, {
 										access: res.access,
 										refresh: storageToken.refresh
 									} as Token)
-
+									_request.headers.set("Authorization", `Bearer ${res.access}`);
+								}
 								return Instance(_request);
 							} catch (error) {
 								clearAuthData();

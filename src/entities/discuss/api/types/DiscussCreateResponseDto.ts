@@ -1,24 +1,21 @@
-type DiscussDto = {
+type DiscussCreateResponseDto = {
    id: number
+   slug: string
+   title: string
    content: string
    parent: number | null
-   title: string
    problem: {
       title: string
-      slug: string
-   }
-   replies_count: number
-   votes_sum: number | null
-   view_count: number | null
+   },
+   view_count: number
    date_created: string
    date_updated: string
    user: {
       id: number
       first_name: string
       last_name: string
-      avatar: string
+      avatar: string | null
    }
-   slug: string
 }
 
-export default DiscussDto;
+export default DiscussCreateResponseDto;

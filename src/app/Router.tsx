@@ -1,3 +1,4 @@
+import { RequireAuth } from 'entities/auth';
 import Profile from 'pages/Profile';
 import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Outlet, RouteObject, useRoutes } from 'react-router-dom';
@@ -93,7 +94,9 @@ function Routes() {
 					path: '/add/discuss',
 					element: (
 						<Layout>
-							<AddDiscuss />
+							<RequireAuth>
+								<AddDiscuss />
+							</RequireAuth>
 						</Layout>
 					),
 				},
@@ -105,9 +108,7 @@ function Routes() {
 					path: '/profile/:userId',
 					element: (
 						<Layout>
-							{/* <RequireAuth> */}
 							<Profile />
-							{/* </RequireAuth> */}
 						</Layout>
 					),
 				},

@@ -147,7 +147,11 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 											<Link key={index} to={`/discuss/${comment.slug}`} className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
 												<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
 												<div className='flex flex-col flex-grow ml-3'>
-													<p className='font-bold line-clamp-2'>{comment.problem.title}</p>
+													<p className='font-bold line-clamp-2'>{comment.title}</p>
+													{
+														comment.problem.title &&
+														<Link to={`/problems/${comment.problem.slug}`} className='font-bold line-clamp-2'>Problem: {comment.problem.title}</Link>
+													}
 													<div>
 														<span className='hidden sm:inline pr-2'>{t('userName')}:</span>
 														<span className=''>{`${comment.user.first_name ? comment.user.first_name : ''} ${comment.user.last_name ? comment.user.last_name : ''}`}</span>

@@ -1,11 +1,9 @@
-import { ActivateParamsDto } from "entities/auth";
-import { DiscussCreateDto } from "entities/discuss";
-import { TokenUser } from "entities/types";
+import { DiscussCreateDto, DiscussCreateResponseDto } from "entities/discuss";
 import api from "shared/api";
 
 const DiscussActionApi = {
-   activateAccount: async (dto: DiscussCreateDto): Promise<TokenUser> => {
-      const res = await api.post('authentication/activate/', {
+   createDiscuss: async (dto: DiscussCreateDto): Promise<DiscussCreateResponseDto> => {
+      const res = await api.post('comments/', {
          json: {
             ...dto,
          }
