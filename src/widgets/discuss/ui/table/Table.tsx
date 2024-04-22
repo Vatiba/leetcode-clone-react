@@ -150,7 +150,7 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 													<p className='font-bold line-clamp-2'>{comment.title}</p>
 													{
 														comment.problem.title &&
-														<Link to={`/problems/${comment.problem.slug}`} className='font-bold line-clamp-2'>Problem: {comment.problem.title}</Link>
+														<Link to={`/problems/${comment.problem.slug}`} className='font-medium line-clamp-2 hover:underline text-blue-500'>Problem: {comment.problem.title}</Link>
 													}
 													<div>
 														<span className='hidden sm:inline pr-2'>{t('userName')}:</span>

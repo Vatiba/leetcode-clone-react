@@ -28,6 +28,7 @@ function AddDiscuss() {
                createDiscuss(values, {
                   onSuccess: (res) => {
                      resetForm();
+                     toast.success(t('success'))
                      navigate(`/discuss/${res.slug}`);
                      setSubmitting(false);
                   },
@@ -58,57 +59,59 @@ function AddDiscuss() {
                setFieldValue,
                setFieldTouched,
                isSubmitting,
-            }) => (
-               <Form
-                  className="mt-5 flex flex-col gap-2"
-               >
-                  <label className="form-control w-full">
-                     <div className="label">
-                        <span className="label-text">{t('title')}</span>
+            }) => {
+               return (
+                  <Form
+                     className="mt-5 flex flex-col gap-2"
+                  >
+                     <label className="form-control w-full">
+                        <div className="label">
+                           <span className="label-text">{t('title')}</span>
+                        </div>
+                        <input
+                           className="input input-sm input-bordered w-full"
+                           type="text"
+                           name="title"
+                           onChange={handleChange}
+                           onBlur={handleBlur}
+                           value={values.title}
+                        />
+                        <div className="label">
+                           {
+                              errors.title && touched.title &&
+                              <span className="label-text-alt text-error">{errors.title}</span>
+                           }
+                        </div>
+                     </label>
+                     <label className="form-control w-full">
+                        <div className="label">
+                           <span className="label-text">{t('text')}</span>
+                        </div>
+                        <TextEditor
+                           onChange={(val) => setFieldValue('content', val)}
+                           className="h-64 mb-14"
+                           onBlur={() => setFieldTouched('content', true)}
+                           value={values.content}
+                        />
+                        <div className="label">
+                           {
+                              errors.content && touched.content &&
+                              <span className="label-text-alt text-error">{errors.content}</span>
+                           }
+                        </div>
+                     </label>
+                     <div className="flex justify-end">
+                        <button
+                           type="submit"
+                           disabled={isSubmitting}
+                           className={'border-none bg-gray-200 hover:bg-gray-300 rounded-md font-medium py-2 px-8'}
+                        >
+                           {t('save')}
+                        </button>
                      </div>
-                     <input
-                        className="input input-sm input-bordered w-full"
-                        type="text"
-                        name="title"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.title}
-                     />
-                     <div className="label">
-                        {
-                           errors.title && touched.title &&
-                           <span className="label-text-alt text-error">{errors.title}</span>
-                        }
-                     </div>
-                  </label>
-                  <label className="form-control w-full">
-                     <div className="label">
-                        <span className="label-text">{t('text')}</span>
-                     </div>
-                     <TextEditor
-                        onChange={(val) => setFieldValue('content', val)}
-                        className="h-64 mb-14"
-                        onBlur={() => setFieldTouched('content', true)}
-                        value={values.content}
-                     />
-                     <div className="label">
-                        {
-                           errors.content && touched.content &&
-                           <span className="label-text-alt text-error">{errors.content}</span>
-                        }
-                     </div>
-                  </label>
-                  <div className="flex justify-end">
-                     <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className={'border-none bg-gray-200 hover:bg-gray-300 rounded-md font-medium py-2 px-8'}
-                     >
-                        {t('save')}
-                     </button>
-                  </div>
-               </Form>
-            )}
+                  </Form>
+               )
+            }}
          </Formik>
       </Container>
    )

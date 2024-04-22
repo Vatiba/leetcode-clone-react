@@ -1,4 +1,6 @@
 export function numberFormatter(number: number): string {
+	if (!number)
+		return '0';
 	const suffixes = ["", "K", "M", "B", "T"];
 	const exponent = Math.floor(Math.log(Math.abs(number)) / Math.log(1000));
 	const divided = number / Math.pow(1000, exponent);
@@ -47,4 +49,8 @@ export function removeUndefined(obj: object) {
 			(obj as any)[key] = value;
 			return obj;
 		}, {});
+}
+
+export function concatUserName(firstName?: string | null, lastName?: string | null) {
+	return `${firstName ? firstName : ""}${lastName ? ` ${lastName}` : ''}`;
 }

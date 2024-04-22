@@ -10,6 +10,15 @@ const DiscussActionApi = {
       });
       return res.json();
    },
+   voteDiscuss: async (dto: DiscussVoteDto): Promise<void> => {
+      const res = await api.post(`comments/${dto.slug}/vote/`, {
+         json: {
+            comment: dto.comment,
+            value: dto.value
+         }
+      });
+      return res.json();
+   }
 }
 
 export default DiscussActionApi;

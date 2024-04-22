@@ -17,6 +17,7 @@ type DiscussDto = {
       first_name: string
       last_name: string
       avatar: string
+      score: number
    }
    slug: string
 }

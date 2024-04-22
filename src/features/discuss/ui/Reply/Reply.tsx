@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useAuth } from "entities/auth";
+import { useCreateDiscuss } from "features/discuss/api";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BiChat } from "react-icons/bi";
@@ -7,14 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { TextEditor } from "shared/ui";
 
 type ReplyProps = {
-    /**
-     * @default false
-     */
+    /** @default false  */
     isMinimizedBtn?: boolean
+    commentId: number
 }
 
 function Reply(props: ReplyProps) {
     const {
+        commentId,
         isMinimizedBtn = false
     } = props;
 
@@ -25,6 +26,11 @@ function Reply(props: ReplyProps) {
     const { t } = useTranslation();
 
     const [canReply, setCanReply] = useState(!isMinimizedBtn);
+    const [content, setContent] = useState('');
+
+    const {
+        mutate: createDisscuss
+    } = useCreateDiscuss();
 
     return (
         <>
@@ -32,6 +38,8 @@ function Reply(props: ReplyProps) {
                 canReply ?
                     <TextEditor
                         className="h-64 mb-12"
+                        value={content}
+                        onChange={(value) => setContent(value)}
                     />
                     : null
             }
@@ -49,8 +57,11 @@ function Reply(props: ReplyProps) {
                             return;
                         }
 
-                        // call reply api here
-                        console.log('reply')
+                        createDisscuss({
+                            content: content,
+                            title: '',
+                            parent: commentId,
+                        })
                         setCanReply(false);
 
                     }}

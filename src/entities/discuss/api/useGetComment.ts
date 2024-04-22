@@ -2,14 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import { i18n } from "shared/libs";
 import DiscussGetApi from "./DiscussGetApi";
 
-const useGetComment = (id: number) => {
+const useGetComment = (slug: string) => {
    return useQuery({
       queryKey: [
          "comment",
-         id,
+         slug,
          i18n.language,
       ],
-      queryFn: () => DiscussGetApi.getComment(id),
+      queryFn: () => DiscussGetApi.getComment(slug),
+      enabled: !!slug
    });
 };
 

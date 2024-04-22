@@ -1,6 +1,7 @@
 export {
    DiscussActionApi,
-   useCreateDiscuss
+   useCreateDiscuss,
+   useVoteDiscuss
 } from './api';
 export {
    DiscussSearch,

@@ -74,5 +74,8 @@
    "languages": "Languages",
    "skills": "Skills",
    "phoneNumber": "Phone number",
-   "text": "Text"
+   "text": "Text",
+   "success": "Success",
+   "score": "Score",
+   "cantVoteMoreOneTime": "User cannot vote more than one time"
 }

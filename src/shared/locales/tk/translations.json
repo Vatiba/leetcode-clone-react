@@ -73,5 +73,8 @@
    "languages": "Languages",
    "skills": "Skills",
    "phoneNumber": "Telefon belgi",
-   "text": "Tekst"
+   "text": "Tekst",
+   "success": "Üstünlikli",
+   "score": "Bal",
+   "cantVoteMoreOneTime": "Ulanyjy birden köp ses berip bilmeýär"
 }

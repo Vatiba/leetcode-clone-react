@@ -18,7 +18,6 @@ const api = Instance.extend({
 		beforeRequest: [
 			(req, _opt) => {
 				const storageToken = storageWorker.getItem(storageKeys.token, isTokenObj);
-				console.log(storageToken)
 				if (storageToken) {
 					const { access, refresh } = storageToken;
 					if (req.url.includes("refresh")) {

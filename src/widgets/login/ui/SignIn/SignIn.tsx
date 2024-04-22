@@ -40,7 +40,9 @@ const SignIn = (props: SignInProps) => {
 						signin(res);
 						resetForm();
 						navigate('/');
-						setSubmitting(false)
+						setSubmitting(false);
+
+						toast.success(t('success'));
 					},
 					onError: (err: any) => {
 

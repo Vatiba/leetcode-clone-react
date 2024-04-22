@@ -13,8 +13,8 @@ const DiscussGetApi = {
       });
       return res.json();
    },
-   getComment: async (id: number): Promise<DiscussDto> => {
-      const res = await api.get(`comments/${id}`);
+   getComment: async (slug: string): Promise<DiscussDto> => {
+      const res = await api.get(`comments/${slug}`);
       return res.json();
    },
 }
