@@ -1,12 +1,11 @@
-import { useGetLocations } from "entities/locations";
 import { useTranslation } from "react-i18next";
 import { BiChat } from "react-icons/bi";
-import { FaFire, FaPhone } from "react-icons/fa";
+import { FaFire } from "react-icons/fa";
 import { Container } from "shared";
 // trash
 import AvatarPlaceholder from 'shared/assets/img/default_avatar.jpg';
 import { DiscussesTableWidget } from "widgets/discuss";
-import { EditProfileWidget } from "widgets/profile";
+import { ChartWidget, EditProfileWidget } from "widgets/profile";
 
 function Profile() {
 	const { t } = useTranslation();
@@ -81,7 +80,7 @@ function Profile() {
 				<div className="flex flex-col w-full sm:w-1/2 md:w-2/3 lg:w-3/4 gap-2">
 					<div className="flex flex-wrap md:flex-nowrap gap-2">
 						<div className="bg-white w-full md:w-1/2 py-2 px-3 rounded-md">
-							chart
+							<ChartWidget />
 						</div>
 						<div className="bg-white w-full md:w-1/2 py-2 px-3 rounded-md">
 							<span className="font-medium">
