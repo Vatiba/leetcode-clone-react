@@ -1,7 +1,8 @@
 export {
    DiscussGetApi,
    useGetComment,
-   useGetComments
+   useGetComments,
+   useGetReplies
 } from './api';
 export type {
    DiscussCreateDto,

@@ -1,6 +1,6 @@
 import Head from 'entities/Head';
 import { useAuth } from 'entities/auth';
-import { useGetComment, useGetComments } from 'entities/discuss';
+import { useGetComment, useGetReplies } from 'entities/discuss';
 import { Reply } from 'features/discuss';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -32,14 +32,13 @@ export default function DiscussScreen() {
 		data: replies,
 		isLoading: repliesLoading,
 		isError: repliesError,
-	} = useGetComments({
+	} = useGetReplies({
 		limit: limit,
 		offset: offset,
 		ordering: 'date_created',
 		search: '',
 		parent: comment?.id,
-		isList: false,
-	})
+	});
 
 	return (
 		<>
@@ -54,7 +53,7 @@ export default function DiscussScreen() {
 					commentId={comment?.id}
 					commentSlug={comment?.slug}
 					loading={commentLoading || commentError}
-					isMain
+					userId={comment?.user.id}
 				/>
 				<h2 className='font-bold text-2xl mb-8'>
 					{t('reply')} ({replies?.count ? replies.count : 0})
@@ -71,6 +70,7 @@ export default function DiscussScreen() {
 								commentId={item?.id}
 								commentSlug={item?.slug}
 								loading={repliesLoading || repliesError}
+								userId={item.user.id}
 							/>
 						)
 					})

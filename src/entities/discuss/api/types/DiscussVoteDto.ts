@@ -3,3 +3,5 @@ type DiscussVoteDto = {
    comment: number
    value: number
 }
+
+export default DiscussVoteDto;

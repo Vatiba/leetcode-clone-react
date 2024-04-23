@@ -19,6 +19,7 @@ function UpDownVote(props: UpDownVoteProps) {
 
     const {
         mutate: voteDiscuss,
+        isPending: votePending
     } = useVoteDiscuss();
 
     return (
@@ -31,9 +32,10 @@ function UpDownVote(props: UpDownVoteProps) {
                             voteDiscuss({
                                 comment: commentId as number,
                                 slug: commentSlug as string,
-                                value: voteSum + 1
+                                value: 1
                             });
                         }}
+                        disabled={votePending}
                     >
                         <BiSolidUpArrow className="text-gray-500" />
                     </button>
@@ -56,9 +58,10 @@ function UpDownVote(props: UpDownVoteProps) {
                             voteDiscuss({
                                 comment: commentId as number,
                                 slug: commentSlug as string,
-                                value: voteSum - 1
+                                value: -1
                             });
                         }}
+                        disabled={votePending}
                     >
                         <BiSolidDownArrow className="text-gray-500" />
                     </button>

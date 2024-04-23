@@ -77,5 +77,6 @@
    "text": "Text",
    "success": "Success",
    "score": "Score",
-   "cantVoteMoreOneTime": "User cannot vote more than one time"
+   "cantVoteMoreOneTime": "User cannot vote more than one time",
+   "edit": "Edit"
 }

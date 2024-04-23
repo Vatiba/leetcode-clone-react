@@ -1,9 +1,8 @@
+import { useAuth } from "entities/auth";
 import { CommentEntities } from "entities/discuss";
-import { Reply, UpDownVote } from "features/discuss";
+import { EditComment, UpDownVote } from "features/discuss";
 
 type CommentProps = {
-	/** @default false */
-	isMain?: boolean
 	/** @default false */
 	loading?: boolean
 	title?: string
@@ -13,6 +12,7 @@ type CommentProps = {
 	voteSum: number
 	commentId?: number
 	commentSlug?: string
+	userId?: number
 }
 
 function Comment(props: CommentProps) {
@@ -24,37 +24,43 @@ function Comment(props: CommentProps) {
 		voteSum,
 		commentId,
 		commentSlug,
-		isMain = false,
+		userId,
 		loading = false
 	} = props;
 
+	const { data: authData } = useAuth();
+
 	return (
-		<div className="flex gap-3 md:gap-4 border-b border-gray-200 w-full pb-5 mb-4">
-
-			<UpDownVote
-				loading={loading}
-				voteSum={voteSum}
-				commentId={commentId}
-				commentSlug={commentSlug}
-			/>
-
-			<div className="flex flex-col gap-3 w-full">
-				<CommentEntities
-					htmlContent={content}
-					score={score}
-					title={title}
-					userName={userName}
+		<div className="border-b border-gray-200 w-full pb-5 mb-4">
+			<div className="flex gap-3 md:gap-4">
+				<UpDownVote
 					loading={loading}
+					voteSum={voteSum}
+					commentId={commentId}
+					commentSlug={commentSlug}
 				/>
-				{
-					!isMain && !loading ?
-						<Reply
-							commentId={commentId as number}
-							isMinimizedBtn
-						/>
-						: null
-				}
+
+				<div className="flex flex-col gap-3 w-full">
+					<CommentEntities
+						htmlContent={content}
+						score={score}
+						title={title}
+						userName={userName}
+						loading={loading}
+					/>
+				</div>
 			</div>
+			{
+				authData?.user?.id === userId && commentSlug ?
+					<div className="mt-2">
+						<EditComment
+							content={content}
+							commentSlug={commentSlug}
+						/>
+					</div>
+					:
+					null
+			}
 		</div>
 	)
 }
