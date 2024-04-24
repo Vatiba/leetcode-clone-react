@@ -7,6 +7,7 @@ type DiscussListParamsDto = {
    parent?: number
    problem?: number
    search: string
+   user?: number | string
 }
 
 export default DiscussListParamsDto;

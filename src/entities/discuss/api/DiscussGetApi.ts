@@ -9,6 +9,7 @@ const DiscussGetApi = {
       const res = await api.get('comments/', {
          searchParams: {
             ...removeUndefined(dto),
+            ordering: `-${dto.ordering}`,
          }
       });
       return res.json();

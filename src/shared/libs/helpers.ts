@@ -39,7 +39,7 @@ export function getPageOffset(pageNumber: number, itemsPerPage: number): number 
 
 	// Calculate the offset by subtracting 1 from the page number 
 	// (since offset starts from 0) and multiplying by itemsPerPage
-	return (pageNumber - 1) * itemsPerPage;
+	return Math.ceil((pageNumber - 1) * itemsPerPage);
 }
 
 export function removeUndefined(obj: object) {

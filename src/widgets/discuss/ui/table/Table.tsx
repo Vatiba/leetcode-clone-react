@@ -21,14 +21,16 @@ type DiscussesTableWidgetProps = {
 	/**
 	 * @default false
 	 */
-	isMinimized?: boolean
+	isMinimized?: boolean,
+	userId?: number | string
+	limit: number
 }
-
-const limit = 24;
 
 function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 	const {
-		isMinimized = false
+		userId,
+		isMinimized = false,
+		limit
 	} = props;
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -46,8 +48,9 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 		limit: limit,
 		offset: getPageOffset(page, limit),
 		ordering: ordering,
-		search: search
-	})
+		search: search,
+		user: userId
+	});
 
 	return (
 		<div className="overflow-x-auto w-full mb-4">
@@ -98,7 +101,7 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 								type='radio'
 								name='ordering'
 								value={'votes_sum'}
-								checked={ordering == 'view_count'}
+								checked={ordering == 'votes_sum'}
 								onChange={({ currentTarget: { value } }) => setOrdering(value as DiscussOrdering)}
 							/>
 							{t('mostVotes')}
@@ -180,7 +183,7 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 									:
 									<>No results</>
 								:
-								new Array(14).fill(0).map((_, index) => {
+								new Array(limit).fill(0).map((_, index) => {
 									return (
 										<div key={index} className='animate-pulse flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
 											<div className='rounded-full bg-gray-200 w-10 h-10 m-3 mr-0 hidden md:block' />
@@ -204,13 +207,10 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 					}
 				</div>
 			</div>
-			{
-				comments && comments.count / limit > 1 ?
-					<Pagination
-						pageCount={comments.count / limit}
-						onPageChange={({ selected }) => setPage(selected)}
-					/> : null
-			}
+			<Pagination
+				pageCount={comments ? comments.count / limit : 0}
+				onPageChange={({ selected }) => setPage(selected + 1)}
+			/>
 		</div>
 	)
 }

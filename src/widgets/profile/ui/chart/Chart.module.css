@@ -1,8 +1,14 @@
+@property --p {
+   syntax: '<number>';
+   inherits: true;
+   initial-value: 1;
+}
+
 .pie {
-   --p: 20;
-   --b: 22px;
-   --c: darkred;
-   --w: 150px;
+   --p: 50;
+   --b: 8px;
+   --c: #1DB756;
+   --w: 125px;
 
    width: var(--w);
    aspect-ratio: 1;
@@ -38,7 +44,7 @@
 }
 
 .animate {
-   animation: p 1s .5s both;
+   animation: animation 1s .5s both;
 }
 
 .no-round:before {
@@ -49,7 +55,7 @@
    content: none;
 }
 
-@keyframes p {
+@keyframes animation {
    from {
       --p: 0
    }
