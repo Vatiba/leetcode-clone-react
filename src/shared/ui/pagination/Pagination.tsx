@@ -17,9 +17,9 @@ function Pagination(props: PaginationProps) {
          previousLabel="<"
          renderOnZeroPageCount={null}
          className='flex items-center justify-end select-none text-lg'
-         nextClassName='h-10 w-10 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold text-xl cursor-pointer'
-         previousClassName='h-10 w-10 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold text-xl cursor-pointer'
-         pageClassName='h-10 w-10 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold cursor-pointer mx-1'
+         nextClassName='h-8 w-8 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold text-xl cursor-pointer'
+         previousClassName='h-8 w-8 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold text-xl cursor-pointer'
+         pageClassName='h-8 w-8 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold cursor-pointer mx-1'
          activeClassName='text-white bg-green-500'
          {...props}
       />

@@ -9,9 +9,9 @@
    "location": "Локацию",
    "whatStatus": "Введите ваш статус",
    "status": "Статус",
-   "school": "Введите номер вашей школы ",
-   "selectSchool": "или",
-   "university": "Выберите свой университет",
+   "school": "Номер школы",
+   "selectSchool": "Введите номер вашей школы",
+   "university": "Университет",
    "worker": "Введите место работы",
    "signUp": "Регистрация",
    "signIn": "Войти",
@@ -68,7 +68,7 @@
    "save": "Сохранить",
    "editProfile": "Редактировать профиль",
    "communityStats": "Статистика сообщества",
-   "discuss": "Discuss",
+   "discuss": "Обсуждение",
    "discusses": "Discusses",
    "languages": "Languages",
    "skills": "Skills",
@@ -77,5 +77,10 @@
    "success": "Успешно",
    "score": "Балл",
    "cantVoteMoreOneTime": "Пользователь не может проголосовать более одного раза",
-   "edit": "Редактировать"
+   "edit": "Редактировать",
+   "info": "Инфо",
+   "companyName": "Имя компании",
+   "solved": "Решено",
+   "notEnoughData": "Не достаточно данных",
+   "links": "Ссылки"
 }

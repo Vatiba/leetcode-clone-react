@@ -16,9 +16,6 @@
    display: inline-grid;
    margin: 5px;
    place-content: center;
-   font-size: 25px;
-   font-weight: bold;
-   font-family: sans-serif;
 }
 
 .pie:before,

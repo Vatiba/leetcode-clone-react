@@ -9,9 +9,9 @@
    "location": "Location",
    "whatStatus": "What is your status?",
    "status": "Status",
-   "school": "Enter your school number",
+   "school": "School number",
    "selectSchool": "Or",
-   "university": "Select your university",
+   "university": "University",
    "worker": "Enter where you work",
    "signUp": "Registration",
    "signIn": "Login",
@@ -78,5 +78,10 @@
    "success": "Success",
    "score": "Score",
    "cantVoteMoreOneTime": "User cannot vote more than one time",
-   "edit": "Edit"
+   "edit": "Edit",
+   "info": "Info",
+   "companyName": "Company name",
+   "solved": "Solved",
+   "notEnoughData": "Not enough data",
+   "links": "Links"
 }

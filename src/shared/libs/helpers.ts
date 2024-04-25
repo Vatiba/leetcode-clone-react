@@ -1,3 +1,6 @@
+import { LocationParent } from "entities/locations";
+import { ProfileDto } from "entities/profile";
+
 export function numberFormatter(number: number): string {
 	if (!number)
 		return '0';
@@ -53,4 +56,36 @@ export function removeUndefined(obj: object) {
 
 export function concatUserName(firstName?: string | null, lastName?: string | null) {
 	return `${firstName ? firstName : ""}${lastName ? ` ${lastName}` : ''}`;
+}
+
+export function getLocationString(location: LocationParent, loc: string): string {
+	if (!location)
+		return loc;
+
+	return getLocationString(location.parent, `${loc ? `${loc}, ` : ''}${location.name}`);
+}
+
+export function getProfileProgrammingLang(langs: ProfileDto['langs']): { name: string; count: number }[] {
+	return [
+		{
+			name: "C",
+			count: langs.c__count
+		},
+		{
+			name: "Java",
+			count: langs.java__count
+		},
+		{
+			name: "Node js",
+			count: langs.node__count
+		},
+		{
+			name: "Pascal",
+			count: langs.pascal__count
+		},
+		{
+			name: "Python",
+			count: langs.python__count
+		}
+	]
 }

@@ -1,5 +1,6 @@
 import { useAuth } from "entities/auth";
 import { useGetProfile } from "entities/profile";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { BiChat } from "react-icons/bi";
 import { FaFire } from "react-icons/fa";
@@ -7,9 +8,9 @@ import { useParams } from "react-router-dom";
 import { Container } from "shared";
 // trash
 import AvatarPlaceholder from 'shared/assets/img/default_avatar.jpg';
-import { concatUserName } from "shared/libs/helpers";
+import { concatUserName, getLocationString, getProfileProgrammingLang } from "shared/libs/helpers";
 import { DiscussesTableWidget } from "widgets/discuss";
-import { ChartWidget, EditProfileWidget } from "widgets/profile";
+import { ChartWidget } from "widgets/profile";
 
 function Profile() {
 	const params = useParams();
@@ -21,6 +22,12 @@ function Profile() {
 		isLoading: profileLoading,
 		isError: profileError
 	} = useGetProfile(params['userId'] as any as number)
+
+	const programmingLanguages = useMemo(() => {
+		if (profile)
+			return getProfileProgrammingLang(profile.langs);
+		return []
+	}, [profileLoading, profileError])
 
 	return (
 		<Container className="my-3">
@@ -42,22 +49,130 @@ function Profile() {
 										{concatUserName(profile?.first_name, profile?.last_name)}
 									</span>
 									:
-									<div className="rounded-md bg-gray-200 animate-pulse w-full h-2" />
+									<div className="rounded-md bg-gray-200 animate-pulse h-5 w-full" />
 							}
 							<span className="">
-								Student
+								Rank
 							</span>
+						</div>
+					</div>
+					<div className="border-b w-full pb-3 my-2">
+						<h2 className="font-medium">
+							{t('info')}
+						</h2>
+						<div className="flex flex-col">
+							{
+								!profileLoading && !profileError ?
+									<>
+										{
+											profile?.location &&
+											<>
+												<h4 className="mt-2 font-medium">{t('location')}</h4>
+												<p>
+													{getLocationString(profile.location, '')}
+												</p>
+											</>
+										}
+										{
+											profile?.company_name &&
+											<>
+												<h4 className="mt-2 font-medium">{t('companyName')}</h4>
+												<p>
+													{profile?.company_name}
+												</p>
+											</>
+										}
+										{
+											profile?.university &&
+											<>
+												<h4 className="mt-2 font-medium">{t('university')}</h4>
+												<p>
+													{profile?.university.name}
+												</p>
+											</>
+										}
+										{
+											profile?.school_number &&
+											<>
+												<h4 className="mt-2 font-medium">{t('school')}</h4>
+												<p>
+													{profile?.school_number}
+												</p>
+											</>
+										}
+										{
+											profile?.special_school &&
+											<>
+												<h4 className="mt-2 font-medium">{t('school')}</h4>
+												<p>
+													{profile?.special_school}
+												</p>
+											</>
+										}
+									</>
+									:
+									<>
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-1/2" />
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-2/3" />
+									</>
+							}
+						</div>
+					</div>
+					<div className="border-b w-full pb-3 my-2">
+						<span className="font-medium">
+							{t('links')}
+						</span>
+						<div className="flex flex-col mt-2">
+							{
+								!profileLoading && !profileError ?
+									profile?.links.map(item => {
+										return (
+											<div className="border rounded-md p-2">
+												{item}
+											</div>
+										)
+									})
+									:
+									<>
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
+									</>
+							}
+							{
+								!profileLoading && !profileError && !profile?.links.length &&
+								t('notEnoughData')
+							}
 						</div>
 					</div>
 					<div className="border-b w-full pb-3 my-3">
 						<span className="font-medium">
 							{t('languages')}
 						</span>
-						<div className="flex flex-col mt-3">
-							<div className="flex justify-between hover:bg-gray-100 select-none py-2 px-3 rounded-md ">
-								<span className="font-bold">Python</span>
-								<span className="">solved: 2</span>
-							</div>
+						<div className="flex flex-col mt-2">
+							{
+								!profileLoading && !profileError && profile?.langs ?
+									programmingLanguages.map(item => {
+										if (item.count)
+											return (
+												<div className="flex justify-between hover:bg-gray-100 select-none py-2 px-3 rounded-md ">
+													<span className="font-bold">{item.name}</span>
+													<span className="">{t('solved').toLowerCase()}: {item.count}</span>
+												</div>
+											)
+										return null
+									})
+									:
+									<>
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-9 w-full" />
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-9 w-full" />
+									</>
+							}
+							{
+								!profileLoading && !profileError && programmingLanguages.some(item => !item.count) &&
+								t('notEnoughData')
+							}
 						</div>
 					</div>
 					<div className="border-b w-full pb-3">
@@ -103,7 +218,9 @@ function Profile() {
 					<div className="flex flex-wrap md:flex-nowrap gap-2">
 						<div className="bg-white w-full md:w-1/2 py-2 px-3 rounded-md">
 							<ChartWidget
-								content={'90%'}
+								problemsCount={profile?.problems_count}
+								solvedProblemsCount={profile?.solved_problems_count}
+								loading={profileLoading || profileError}
 							/>
 						</div>
 						<div className="bg-white w-full md:w-1/2 py-2 px-3 rounded-md">
@@ -116,16 +233,16 @@ function Profile() {
 									{t('discuss')}
 								</span>
 								<span className="font-bold">
-									0
+									{profile?.comment_count ? profile.comment_count : 0}
 								</span>
 							</div>
 							<div className="flex items-center mt-3">
 								<FaFire size='25px' className="mr-3" />
 								<span className="font-medium mr-2">
-									Score
+									{t('score')}
 								</span>
 								<span className="font-bold">
-									0
+									{profile?.score ? profile.score : 0}
 								</span>
 							</div>
 						</div>
@@ -142,9 +259,6 @@ function Profile() {
 						/>
 					</div>
 
-					<div className="flex flex-col bg-white w-full py-4 px-3 rounded-md">
-						<EditProfileWidget />
-					</div>
 				</div>
 			</div>
 		</Container>

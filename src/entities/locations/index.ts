@@ -4,5 +4,7 @@ export {
 } from './api';
 
 export type {
-   Location
+   Location,
+   LocationParent
 } from './api';
+

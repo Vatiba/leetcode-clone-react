@@ -352,7 +352,7 @@ const SignUp = (props: SignUpProps) => {
 												<>
 													<label className="form-control w-full">
 														<div className="label">
-															<span className="label-text">{t('school')}</span>
+															<span className="label-text">{t('selectSchool')}</span>
 														</div>
 														<input
 															className="input input-sm input-bordered w-full"
@@ -372,7 +372,7 @@ const SignUp = (props: SignUpProps) => {
 
 													<label className="form-control w-full">
 														<div className="label">
-															<span className="label-text">{t('selectSchool')}</span>
+															<span className="label-text">{t('selectSpecialSchool')}</span>
 														</div>
 														<select
 															className="select select-sm select-bordered capitalize"
@@ -405,7 +405,7 @@ const SignUp = (props: SignUpProps) => {
 												values.status === 'student' &&
 												<label className="form-control w-full">
 													<div className="label">
-														<span className="label-text">{t('university')}</span>
+														<span className="label-text">{t('selectUniversity')}</span>
 													</div>
 													<select
 														className="select select-sm select-bordered"
