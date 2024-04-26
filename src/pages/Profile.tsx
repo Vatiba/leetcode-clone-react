@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { BiChat } from "react-icons/bi";
 import { FaFire } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Container } from "shared";
 // trash
 import AvatarPlaceholder from 'shared/assets/img/default_avatar.jpg';
@@ -32,9 +32,9 @@ function Profile() {
 	return (
 		<Container className="my-3">
 			<div
-				className="flex flex-wrap items-start sm:flex-nowrap gap-3"
+				className="flex flex-wrap items-start md:flex-nowrap gap-3"
 			>
-				<div className="flex flex-col w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white py-3 px-3 rounded-md">
+				<div className="flex flex-col w-full md:w-1/3 lg:w-1/4 bg-white py-3 px-3 rounded-md">
 					<div className="flex gap-3">
 						{
 							!profileLoading && !profileError ?
@@ -56,6 +56,18 @@ function Profile() {
 							</span>
 						</div>
 					</div>
+					{
+						authData?.user?.id === profile?.id ?
+							<div className="border-b w-full pb-3 my-2">
+								<Link
+									to={'/'}
+									className="flex justify-center bg-gray-200 w-full py-2 rounded-md font-medium hover:bg-gray-300"
+								>
+									{t('editProfile')}
+								</Link>
+							</div>
+							: null
+					}
 					<div className="border-b w-full pb-3 my-2">
 						<h2 className="font-medium">
 							{t('info')}
@@ -214,16 +226,16 @@ function Profile() {
 					</div>
 
 				</div>
-				<div className="flex flex-col w-full sm:w-1/2 md:w-2/3 lg:w-3/4 gap-2">
-					<div className="flex flex-wrap md:flex-nowrap gap-2">
-						<div className="bg-white w-full md:w-1/2 py-2 px-3 rounded-md">
+				<div className="flex flex-col w-full md:w-2/3 lg:w-3/4 gap-2">
+					<div className="flex flex-wrap lg:flex-nowrap gap-2">
+						<div className="bg-white w-full lg:w-1/2 py-2 px-3 rounded-md">
 							<ChartWidget
 								problemsCount={profile?.problems_count}
 								solvedProblemsCount={profile?.solved_problems_count}
 								loading={profileLoading || profileError}
 							/>
 						</div>
-						<div className="bg-white w-full md:w-1/2 py-2 px-3 rounded-md">
+						<div className="bg-white w-full lg:w-1/2 py-2 px-3 rounded-md">
 							<span className="font-medium">
 								{t('communityStats')}
 							</span>
