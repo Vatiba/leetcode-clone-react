@@ -21,7 +21,7 @@ function Profile() {
 		data: profile,
 		isLoading: profileLoading,
 		isError: profileError
-	} = useGetProfile(params['userId'] as any as number)
+	} = useGetProfile(params['userId'] as string)
 
 	const programmingLanguages = useMemo(() => {
 		if (profile)
@@ -60,7 +60,7 @@ function Profile() {
 						authData?.user?.id === profile?.id ?
 							<div className="border-b w-full pb-3 my-2">
 								<Link
-									to={'/'}
+									to={`/profile/me/edit`}
 									className="flex justify-center bg-gray-200 w-full py-2 rounded-md font-medium hover:bg-gray-300"
 								>
 									{t('editProfile')}
@@ -278,3 +278,4 @@ function Profile() {
 }
 
 export default Profile
+// polaroid

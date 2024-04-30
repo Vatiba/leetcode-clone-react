@@ -1,9 +1,16 @@
 export {
    ProfileGetApi,
+   useGetLinks,
    useGetProfile
 } from './api';
 
 export type {
-   ProfileDto
+   LinkDto,
+   LinksUpdateDto, ProfileDto,
+   ProfileUpdateDto
 } from './api';
+
+export {
+   EditProfileSchema
+} from './model';
 
