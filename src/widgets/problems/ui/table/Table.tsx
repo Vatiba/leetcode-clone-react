@@ -82,8 +82,8 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 														'text-orange-600': problem.difficulty === 'medium',
 														'text-red-600': problem.difficulty === 'hard',
 													})}>
-														<Link to={`/problems/${problem.slug}`} className='uppercase font-bold'>
-															{problem.difficulty}
+														<Link to={`/problems/${problem.slug}`} className='font-bold'>
+															{t(problem.difficulty)}
 														</Link>
 													</td>
 													<td>🔥 {problem.score}</td>

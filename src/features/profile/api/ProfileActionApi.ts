@@ -14,15 +14,17 @@ const ProfileActionApi = {
       });
       return res.json();
    },
-   updateLinks: async ({
-
+   updateLink: async ({
+      type,
+      url
    }: LinksUpdateDto): Promise<void> => {
-      // const res = await api.patch(`users/${userId}/`, {
-      //    json: {
-      //       ...removeUndefined(others),
-      //    }
-      // });
-      // return res.json();
+      const res = await api.patch(`users/links/`, {
+         json: {
+            type,
+            url
+         }
+      });
+      return res.json();
    }
 }
 

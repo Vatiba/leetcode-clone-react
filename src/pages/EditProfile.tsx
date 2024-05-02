@@ -19,9 +19,7 @@ function EditProfile() {
                <EditLinks />
             </div>
             <div className="flex flex-col w-full sm:w-1/2 md:w-2/3 lg:w-3/4 gap-2">
-               <div className="flex flex-col bg-white w-full py-4 px-3 rounded-md">
-                  <EditProfileWidget />
-               </div>
+               <EditProfileWidget />
             </div>
          </div>
       </Container>

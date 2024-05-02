@@ -5,7 +5,7 @@ import ProfileActionApi from "./ProfileActionApi";
 const useUpdateLinks = () => {
    const queryClient = useQueryClient();
    return useMutation({
-      mutationFn: (dto: LinksUpdateDto) => ProfileActionApi.updateLinks(dto),
+      mutationFn: (dto: LinksUpdateDto) => ProfileActionApi.updateLink(dto),
       onSuccess() {
          queryClient.invalidateQueries({ queryKey: ['links'] });
       }

@@ -84,5 +84,8 @@
    "companyName": "Company name",
    "solved": "Solved",
    "notEnoughData": "Not enough data",
-   "links": "Links"
+   "links": "Links",
+   "easy": "Easy",
+   "medium": "Medium",
+   "hard": "Hard"
 }

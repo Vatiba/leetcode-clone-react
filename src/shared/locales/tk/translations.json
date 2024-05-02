@@ -64,7 +64,7 @@
    "all": "Hemmesi",
    "search": "Gözleg",
    "postedTime": "Goýulan wagty",
-   "userName": "Ullanyjyň a ady",
+   "userName": "Ulanyjyň ady",
    "reply": "Jogap",
    "save": "Ýatda sakla",
    "editProfile": "Profil üýtgetmek",
@@ -83,5 +83,8 @@
    "companyName": "Kompaniýanyň ady",
    "solved": "Çözülen",
    "notEnoughData": "Maglumat ýeterlik däl",
-   "links": "Salgylar"
+   "links": "Salgylar",
+   "easy": "Aňsat",
+   "medium": "Ortaça",
+   "hard": "Kyn"
 }

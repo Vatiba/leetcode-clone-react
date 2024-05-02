@@ -13,7 +13,7 @@ function EditLinks() {
       data: links,
       isLoading: linksLoading,
       isError: linksError,
-   } = useGetLinks('');
+   } = useGetLinks();
    const {
       mutate: updateLinks,
       isPending: updatingLinks,
@@ -26,7 +26,7 @@ function EditLinks() {
 
    useEffect(() => {
       if (!linksLoading && !linksError) {
-         links?.forEach(item => {
+         links?.results.forEach(item => {
             switch (item.type) {
                case "github":
                   setGithubLink(item.url)
@@ -46,6 +46,21 @@ function EditLinks() {
          })
       }
    }, [linksLoading, linksError]);
+
+   const handleUpdateLinks = () => {
+      if (githubLink !== links?.results.find(item => item.type === 'github')?.url) {
+         updateLinks({ type: 'github', url: githubLink });
+      }
+      if (gitlabLink !== links?.results.find(item => item.type === 'gitlab')?.url) {
+         updateLinks({ type: 'gitlab', url: gitlabLink });
+      }
+      if (stackoverflowLink !== links?.results.find(item => item.type === 'stackoverflow')?.url) {
+         updateLinks({ type: 'stackoverflow', url: stackoverflowLink });
+      }
+      if (linkedinLink !== links?.results.find(item => item.type === 'linkedin')?.url) {
+         updateLinks({ type: 'linkedin', url: linkedinLink });
+      }
+   }
 
    return (
       <div>
@@ -109,6 +124,7 @@ function EditLinks() {
          <button
             className="mt-3 flex justify-center py-2 px-4 bg-green-500 hover:bg-green-600 rounded-md text-white font-bold"
             disabled={updatingLinks}
+            onClick={() => handleUpdateLinks()}
          >
             {t('save')}
          </button>

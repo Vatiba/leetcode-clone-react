@@ -55,8 +55,7 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 					value={difficulty}
 					onChange={({ target: { value } }) => setDifficulty(value as ProblemDifficulties)}
 				>
-					<option disabled value={''}>Difficulty</option>
-					<option value={''}>{t('all')}</option>
+					<option value={''}>{t('difficulty')}</option>
 					{
 						problemDifficulties.map(item => {
 							return (
@@ -69,7 +68,7 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 									})}
 									value={item}
 								>
-									{item}
+									{t(item)}
 								</option>
 							)
 						})
