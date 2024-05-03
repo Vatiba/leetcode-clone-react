@@ -3,7 +3,7 @@ import { useGetProfile } from "entities/profile";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { BiChat } from "react-icons/bi";
-import { FaFire } from "react-icons/fa";
+import { FaFire, FaGithub, FaGitlab, FaLinkedin, FaStackOverflow } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { Container } from "shared";
 // trash
@@ -117,7 +117,7 @@ function Profile() {
 											<>
 												<h4 className="mt-2 font-medium">{t('school')}</h4>
 												<p>
-													{profile?.special_school}
+													{profile?.special_school.name}
 												</p>
 											</>
 										}
@@ -136,22 +136,54 @@ function Profile() {
 							{t('links')}
 						</span>
 						<div className="flex flex-col mt-2">
-							{/* {
+							{
 								!profileLoading && !profileError ?
-									profile?.links.map(item => {
-										return (
-											<div className="border rounded-md p-2">
-												{item}
-											</div>
-										)
-									})
+									<>
+										{
+											profile?.link_github &&
+											<a href={profile.link_github} className="flex items-center border rounded-md p-2">
+												<FaGithub color='gray' />
+												<span className="ml-3">
+													{profile?.link_github}
+												</span>
+											</a>
+										}
+										{
+											profile?.link_gitlab &&
+											<a href={profile.link_gitlab} className="flex items-center border rounded-md p-2">
+												<FaGitlab color='gray' />
+												<span className="ml-3">
+													{profile?.link_gitlab}
+												</span>
+											</a>
+										}
+										{
+											profile?.link_stackoverflow &&
+											<a href={profile.link_stackoverflow} className="flex items-center border rounded-md p-2">
+												<FaStackOverflow color='gray' />
+												<span className="ml-3">
+													{profile?.link_stackoverflow}
+												</span>
+											</a>
+										}
+										{
+											profile?.link_linkedin &&
+											<a href={profile.link_linkedin} className="flex items-center border rounded-md p-2">
+												<FaLinkedin color='gray' />
+												<span className="ml-3">
+													{profile?.link_linkedin}
+												</span>
+											</a>
+										}
+									</>
 									:
 									<>
 										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
 										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
 										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
+										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
 									</>
-							} */}
+							}
 							{/* {
 								!profileLoading && !profileError && !profile?.links.length &&
 								t('notEnoughData')

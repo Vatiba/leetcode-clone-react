@@ -11,9 +11,37 @@ import trashImg1 from 'shared/assets/trash/biweekly.png';
 import trashImg2 from 'shared/assets/trash/card_img_1654.png';
 import trashImg3 from 'shared/assets/trash/card_img_1659.png';
 import trashImg4 from 'shared/assets/trash/weekly-default.png';
+import { useGetFutureContests, useGetFinishedContests, useGetOpenContests } from 'entities/contest';
+
 
 function Contest() {
 	const { t } = useTranslation();
+
+	const {
+		data: futureContests,
+		isLoading: futureContestsLoading,
+		isError: futureContestsError,
+	} = useGetFutureContests({
+		limit: 30,
+		offset: 0,
+	});
+	const {
+		data: finishedContests,
+		isLoading: finishedContestsLoading,
+		isError: finishedContestsError,
+	} = useGetFinishedContests({
+		limit: 30,
+		offset: 0,
+	});
+	const {
+		data: openContests,
+		isLoading: openContestsLoading,
+		isError: openContestsError,
+	} = useGetOpenContests({
+		limit: 30,
+		offset: 0,
+	});
+
 
 	return (
 		<>
@@ -32,14 +60,20 @@ function Contest() {
 							{t('activeContests')}
 						</h3>
 						<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-							<div className='md:w-1/3 w-1/2 lg:p-2 p-1'>
-								<img
-									className='rounded-lg'
-									src={trashImg1}
-									alt="img"
-								/>
-								<p className='mt-3 font-bold'>Weekly Contest 291</p>
-							</div>
+							{
+								openContests?.results.map(item => {
+									return (
+										<div className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+											<img
+												className='rounded-lg'
+												src={item.banner}
+												alt="img"
+											/>
+											<p className='mt-3 font-bold'>{item.title}</p>
+										</div>
+									)
+								})
+							}
 							<div className='md:w-1/3 w-1/2 lg:p-2 p-1'>
 								<img
 									className='rounded-lg'

@@ -48,7 +48,7 @@ function EditProfile() {
                 university: profile?.university?.id || '',
                 company_name: profile?.company_name || '',
                 school_number: profile?.school_number || '',
-                special_school: profile?.special_school || '',
+                special_school: profile?.special_school?.name || '',
                 link_github: profile?.link_github || '',
                 link_gitlab: profile?.link_gitlab || '',
                 link_stackoverflow: profile?.link_stackoverflow || '',

@@ -13,7 +13,7 @@ type ProfileDto = {
       name: string
    } | null
    school_number: string | null
-   special_school: string | null
+   special_school: { name: string } | null
    link_github: string
    link_gitlab: string
    link_linkedin: string
