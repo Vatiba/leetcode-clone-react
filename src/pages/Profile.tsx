@@ -136,7 +136,7 @@ function Profile() {
 							{t('links')}
 						</span>
 						<div className="flex flex-col mt-2">
-							{
+							{/* {
 								!profileLoading && !profileError ?
 									profile?.links.map(item => {
 										return (
@@ -151,11 +151,11 @@ function Profile() {
 										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
 										<div className="mb-1 rounded-md bg-gray-200 animate-pulse h-5 w-full" />
 									</>
-							}
-							{
+							} */}
+							{/* {
 								!profileLoading && !profileError && !profile?.links.length &&
 								t('notEnoughData')
-							}
+							} */}
 						</div>
 					</div>
 					<div className="border-b w-full pb-3 my-3">

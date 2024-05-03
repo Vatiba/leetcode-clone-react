@@ -14,7 +14,10 @@ type ProfileDto = {
    } | null
    school_number: string | null
    special_school: string | null
-   links: string[]
+   link_github: string
+   link_gitlab: string
+   link_linkedin: string
+   link_stackoverflow: string
    score: number
    comment_count: number
    company_name: string

@@ -1,12 +1,10 @@
 export {
    ProfileGetApi,
-   useGetLinks,
    useGetProfile
 } from './api';
 
 export type {
-   LinkDto,
-   LinksUpdateDto, ProfileDto,
+   ProfileDto,
    ProfileUpdateDto
 } from './api';
 

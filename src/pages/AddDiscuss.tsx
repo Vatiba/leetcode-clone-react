@@ -42,9 +42,7 @@ function AddDiscuss() {
                            })
                            setSubmitting(false);
                         }
-                     } catch (err) {
-
-                     }
+                     } catch (err) { }
                   },
                })
             }}

@@ -54,6 +54,15 @@ export function removeUndefined(obj: object) {
 		}, {});
 }
 
+export function removeEmptyString(obj: Object) {
+	return Object.entries(obj)
+		.filter(([_, value]) => typeof value == 'string' ? value.trim() !== '' : value !== '')
+		.reduce((obj, [key, value]) => {
+			(obj as any)[key] = value;
+			return obj;
+		}, {});
+}
+
 export function concatUserName(firstName?: string | null, lastName?: string | null) {
 	return `${firstName ? firstName : ""}${lastName ? ` ${lastName}` : ''}`;
 }

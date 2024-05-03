@@ -6,8 +6,8 @@ const EditProfileSchema = (t: TFunction) => Yup.object().shape(
       first_name: Yup.string(),
       last_name: Yup.string(),
       phone: Yup.string(),
-      password: Yup.string().min(4, t('passwordMin', { val: 4 })),
-      passwordConfirm: Yup.string()
+      password: Yup.string(),
+      passwordConfirm: Yup.string().required(t('requiredField') as string)
          .oneOf([Yup.ref('password'), ''], t('passwordMustMatch') as string),
       location: Yup.string(),
       school_number: Yup.string(),
@@ -20,6 +20,10 @@ const EditProfileSchema = (t: TFunction) => Yup.object().shape(
          is: (status: any) => status === 'student',
          then: () => Yup.string(),
       }),
+      link_github: Yup.string(),
+      link_gitlab: Yup.string(),
+      link_stackoverflow: Yup.string(),
+      link_linkedin: Yup.string()
    }
 );
 
