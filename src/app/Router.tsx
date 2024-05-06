@@ -18,6 +18,9 @@ const AboutUsScreen = lazy(() => import('pages/AboutUs'));
 const DiscussesScreen = lazy(() => import('pages/Discusses'));
 const DiscussScreen = lazy(() => import('pages/Discuss'));
 const AddDiscuss = lazy(() => import('pages/AddDiscuss'));
+const FutureContest = lazy(() => import('pages/FutureContest'));
+const OpenContest = lazy(() => import('pages/OpenContest'));
+const PastContest = lazy(() => import('pages/PastContest'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -72,6 +75,30 @@ function Routes() {
 					element: (
 						<Layout>
 							<ContestScreen />
+						</Layout>
+					),
+				},
+				{
+					path: '/contest/open/:contestId',
+					element: (
+						<Layout>
+							<OpenContest />
+						</Layout>
+					),
+				},
+				{
+					path: '/contest/future/:contestId',
+					element: (
+						<Layout>
+							<FutureContest />
+						</Layout>
+					),
+				},
+				{
+					path: '/contest/past/:contestId',
+					element: (
+						<Layout>
+							<PastContest />
 						</Layout>
 					),
 				},

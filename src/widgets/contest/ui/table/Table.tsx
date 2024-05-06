@@ -1,5 +1,7 @@
+import { ContestDto } from 'entities/contest';
 import { useTranslation } from 'react-i18next';
 import { RxCountdownTimer } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 // trash
 import trashImg1 from 'shared/assets/trash/biweekly.png';
@@ -80,7 +82,18 @@ const pastContests = [
 	},
 ]
 
-function PastContestsTableWidget() {
+type PastContestsTableWidgetProps = {
+	data?: ContestDto[]
+	isLoading: boolean
+	isError: boolean
+}
+
+function PastContestsTableWidget(props: PastContestsTableWidgetProps) {
+	const {
+		data,
+		isLoading,
+		isError
+	} = props;
 	const { t } = useTranslation();
 
 	return (
@@ -88,27 +101,50 @@ function PastContestsTableWidget() {
 			<table className="table w-full">
 				<tbody>
 					{
-						pastContests.map(contest => {
-							return (
-								<tr>
-									<td className='w-44'>
-										<img src={contest.img} alt="img" className='rounded-lg w-full' />
-									</td>
-									<td>
-										<div className='flex flex-col'>
-											<span>{contest.title}</span>
-											<div className='mt-1 flex items-center text-gray-600 text-sm'>
-												<span className='flex items-center mr-2'>
-													<RxCountdownTimer className='mr-2' />
-													End time:
-												</span>
-												<span>{contest.time}</span>
+						!isLoading && !isError ?
+							data?.map((contest, index) => {
+								return (
+									<tr key={index}>
+										<td className='w-44'>
+											<Link to={`/contest/past/${contest.id}`}>
+												<img src={contest.banner} alt="img" className='rounded-lg w-full' />
+											</Link>
+										</td>
+										<td>
+											<div className='flex flex-col'>
+												<Link to={`/contest/past/${contest.id}`}>
+													<span>{contest.title}</span>
+												</Link>
+												<div className='mt-1 flex items-center text-gray-600 text-sm'>
+													<span className='flex items-center mr-2'>
+														<RxCountdownTimer className='mr-2' />
+														{t('endTime')}:
+													</span>
+													<span>{contest.date_finished}</span>
+												</div>
 											</div>
-										</div>
-									</td>
-								</tr>
-							)
-						})
+										</td>
+									</tr>
+								)
+							})
+							:
+							new Array(6).fill(0).map((_, index) => {
+								return (
+									<tr key={index}>
+										<td className='w-10'>
+											<div className='animate-pulse bg-gray-200 w-20 h-20 rounded-md' />
+										</td>
+										<td>
+											<div className='flex flex-col'>
+												<div className='animate-pulse bg-gray-200 w-2/5 h-5 rounded-md' />
+												<div className='mt-1 flex items-center text-gray-600 text-sm'>
+													<div className='animate-pulse bg-gray-200 w-2/5 h-5 rounded-md' />
+												</div>
+											</div>
+										</td>
+									</tr>
+								)
+							})
 					}
 				</tbody>
 			</table>

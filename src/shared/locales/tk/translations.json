@@ -86,5 +86,7 @@
    "links": "Salgylar",
    "easy": "Aňsat",
    "medium": "Ortaça",
-   "hard": "Kyn"
+   "hard": "Kyn",
+   "startTime": "Başlaýan wagty",
+   "endTime": "Gutarýan wagty"
 }

@@ -87,5 +87,7 @@
    "links": "Links",
    "easy": "Easy",
    "medium": "Medium",
-   "hard": "Hard"
+   "hard": "Hard",
+   "startTime": "Start time",
+   "endTime": "End time"
 }
