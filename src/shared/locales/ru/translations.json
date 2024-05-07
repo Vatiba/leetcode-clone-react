@@ -88,5 +88,8 @@
    "medium": "Средний",
    "hard": "Тяжелый",
    "startTime": "Время начало",
-   "endTime": "Время окончания"
+   "endTime": "Время окончания",
+   "prizes": "Призы",
+   "subscribe": "Подписатся",
+   "alreadySubscribed": "Вы уже подписаны"
 }

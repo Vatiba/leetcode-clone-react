@@ -8,6 +8,7 @@ type ContestDto = {
    date_subscription_finished: string
    date_started: string
    date_finished: string
+   is_subscribed: boolean
    prizes: {
       from_place: number
       to_place: number
