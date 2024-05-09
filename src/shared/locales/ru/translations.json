@@ -89,7 +89,9 @@
    "hard": "Тяжелый",
    "startTime": "Время начало",
    "endTime": "Время окончания",
+   "endedTime": "Время окончания",
    "prizes": "Призы",
    "subscribe": "Подписатся",
-   "alreadySubscribed": "Вы уже подписаны"
+   "alreadySubscribed": "Вы уже подписаны",
+   "subscribtionStarted": "Регистрация началась"
 }

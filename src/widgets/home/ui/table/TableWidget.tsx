@@ -1,3 +1,9 @@
+import Img4 from '../../../../shared/assets/trash/azat.png';
+import Img2 from '../../../../shared/assets/trash/dowran.png';
+import Img3 from '../../../../shared/assets/trash/eziz.png';
+import Img1 from '../../../../shared/assets/trash/jasur.png';
+
+
 const TableWidget = () => {
 	return (
 		<div className="overflow-x-auto w-full">
@@ -16,12 +22,12 @@ const TableWidget = () => {
 							<div className="flex items-center gap-3">
 								<div className="avatar">
 									<div className="mask mask-squircle w-12 h-12">
-										<img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+										<img src={Img1} alt="Avatar Tailwind CSS Component" />
 									</div>
 								</div>
 								<div>
-									<div className="font-bold">Hart Hagerty</div>
-									<div className="text-sm opacity-50">United States</div>
+									<div className="font-bold">Jasurbek Aşyrbaýew</div>
+									<div className="text-sm opacity-50">Türmenistan, Aşgabat</div>
 								</div>
 							</div>
 						</td>
@@ -33,12 +39,12 @@ const TableWidget = () => {
 							<div className="flex items-center gap-3">
 								<div className="avatar">
 									<div className="mask mask-squircle w-12 h-12">
-										<img src="https://daisyui.com/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
+										<img src={Img2} alt="Avatar Tailwind CSS Component" />
 									</div>
 								</div>
 								<div>
-									<div className="font-bold">Brice Swyre</div>
-									<div className="text-sm opacity-50">China</div>
+									<div className="font-bold">Döwran Myradow</div>
+									<div className="text-sm opacity-50">Türmenistan, Aşgabat</div>
 								</div>
 							</div>
 						</td>
@@ -50,12 +56,12 @@ const TableWidget = () => {
 							<div className="flex items-center gap-3">
 								<div className="avatar">
 									<div className="mask mask-squircle w-12 h-12">
-										<img src="https://daisyui.com/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
+										<img src={Img3} alt="Avatar Tailwind CSS Component" />
 									</div>
 								</div>
 								<div>
-									<div className="font-bold">Marjy Ferencz</div>
-									<div className="text-sm opacity-50">Russia</div>
+									<div className="font-bold">Eziz Kakyşow</div>
+									<div className="text-sm opacity-50">Türmenistan, Aşgabat</div>
 								</div>
 							</div>
 						</td>
@@ -67,12 +73,12 @@ const TableWidget = () => {
 							<div className="flex items-center gap-3">
 								<div className="avatar">
 									<div className="mask mask-squircle w-12 h-12">
-										<img src="https://daisyui.com/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+										<img src={Img4} alt="Avatar Tailwind CSS Component" />
 									</div>
 								</div>
 								<div>
-									<div className="font-bold">Yancy Tear</div>
-									<div className="text-sm opacity-50">Brazil</div>
+									<div className="font-bold">Azat Jumanazarow</div>
+									<div className="text-sm opacity-50">Türmenistan, Aşgabat</div>
 								</div>
 							</div>
 						</td>

@@ -1,6 +1,10 @@
 export {
    ContestGetApi,
-   useGetContest, useGetFinishedContests, useGetFutureContests, useGetOpenContests
+   useGetContest,
+   useGetFinishedContests,
+   useGetFutureContests,
+   useGetOpenContests,
+   useGetSubscriptionStartedContests
 } from './api';
 
 export type {

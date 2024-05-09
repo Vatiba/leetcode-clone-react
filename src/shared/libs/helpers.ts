@@ -45,22 +45,22 @@ export function getPageOffset(pageNumber: number, itemsPerPage: number): number 
 	return Math.ceil((pageNumber - 1) * itemsPerPage);
 }
 
-export function removeUndefined(obj: object) {
+export function removeUndefined<T extends object>(obj: T): Required<T> {
 	return Object.entries(obj)
 		.filter(([_, value]) => value !== undefined)
 		.reduce((obj, [key, value]) => {
 			(obj as any)[key] = value;
 			return obj;
-		}, {});
+		}, {}) as any;
 }
 
-export function removeEmptyString(obj: Object) {
+export function removeEmptyString<T extends object>(obj: T): Required<T> {
 	return Object.entries(obj)
 		.filter(([_, value]) => typeof value == 'string' ? value.trim() !== '' : value !== '')
 		.reduce((obj, [key, value]) => {
 			(obj as any)[key] = value;
 			return obj;
-		}, {});
+		}, {}) as any;
 }
 
 export function concatUserName(firstName?: string | null, lastName?: string | null) {

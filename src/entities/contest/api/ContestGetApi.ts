@@ -17,6 +17,10 @@ const ContestGetApi = {
       const res = await api.get(`contests/${id}`);
       return res.json();
    },
+   getContestants: async (id: number): Promise<ContestDto> => {
+      const res = await api.get(`contests/${id}`);
+      return res.json();
+   },
 }
 
 export default ContestGetApi;

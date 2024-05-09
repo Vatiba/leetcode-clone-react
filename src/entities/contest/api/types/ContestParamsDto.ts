@@ -3,9 +3,9 @@ type ContestParamsDto = {
    future?: boolean
    limit: number
    offset: number
-   open?: boolean
+   in_progress?: boolean
    subscribed?: boolean
-   subscription_open?: boolean
+   subscription_in_progress?: boolean
 }
 
 export default ContestParamsDto;

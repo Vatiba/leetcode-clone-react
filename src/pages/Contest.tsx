@@ -6,12 +6,17 @@ import ContestImg from 'shared/assets/img/contest.jpg';
 import { PastContestsTableWidget } from 'widgets/contest';
 
 // trash
-import { useGetFinishedContests, useGetFutureContests, useGetOpenContests } from 'entities/contest';
+import { useGetFinishedContests, useGetFutureContests, useGetOpenContests, useGetSubscriptionStartedContests } from 'entities/contest';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getPageOffset } from 'shared/libs/helpers';
+import { Pagination } from 'shared/ui';
 
+const limit = 30;
 
 function Contest() {
 	const { t } = useTranslation();
+	const [page, setPage] = useState(1);
 
 	const {
 		data: futureContests,
@@ -26,14 +31,22 @@ function Contest() {
 		isLoading: finishedContestsLoading,
 		isError: finishedContestsError,
 	} = useGetFinishedContests({
-		limit: 30,
-		offset: 0,
+		limit: limit,
+		offset: getPageOffset(page, limit),
 	});
 	const {
 		data: openContests,
 		isLoading: openContestsLoading,
 		isError: openContestsError,
 	} = useGetOpenContests({
+		limit: 30,
+		offset: 0,
+	});
+	const {
+		data: subscriptionStartedContests,
+		isLoading: subscriptionStartedContestsLoading,
+		isError: subscriptionStartedContestsError
+	} = useGetSubscriptionStartedContests({
 		limit: 30,
 		offset: 0,
 	});
@@ -96,7 +109,51 @@ function Contest() {
 								</div>
 							</section>
 					}
-
+					{
+						!subscriptionStartedContestsLoading ?
+							!subscriptionStartedContestsLoading && !subscriptionStartedContestsError && subscriptionStartedContests?.results.length ?
+								<section className='flex flex-col mb-8'>
+									<h3 className='font-bold text-lg'>
+										{t('subscribtionStarted')}
+									</h3>
+									<div className='flex flex-wrap lg:-mx-2 -mx-1'>
+										{
+											subscriptionStartedContests?.results.map(item => {
+												return (
+													<Link to={`/contest/open/${item.id}`} key={item.id} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+														<img
+															className='rounded-lg'
+															src={item.banner}
+															alt="img"
+														/>
+														<p className='mt-3 font-bold'>{item.title}</p>
+													</Link>
+												)
+											})
+										}
+									</div>
+								</section>
+								:
+								null
+							:
+							<section className='flex flex-col mb-8'>
+								<h3 className='font-bold text-lg'>
+									{t('subscribtionStarted')}
+								</h3>
+								<div className='flex flex-wrap lg:-mx-2 -mx-1'>
+									{
+										new Array(3).fill(0).map((_, index) => {
+											return (
+												<div key={index} className='md:w-1/3 w-1/2 lg:p-2 p-1 animate-pulse'>
+													<div className='w-full h-44 bg-gray-200 mb-3 rounded-lg' />
+													<div className='w-8/12 h-6 rounded-md bg-gray-200' />
+												</div>
+											)
+										})
+									}
+								</div>
+							</section>
+					}
 					{
 						!futureContestsLoading ?
 							!futureContestsLoading && !futureContestsError && futureContests?.results.length ?
@@ -164,6 +221,13 @@ function Contest() {
 								isLoading={finishedContestsLoading}
 								isError={finishedContestsError}
 							/>
+							{
+								finishedContests && finishedContests.count / limit > 1 ?
+									<Pagination
+										pageCount={finishedContests.count / limit}
+										onPageChange={({ selected }) => setPage(selected)}
+									/> : null
+							}
 						</section>
 					}
 				</div>

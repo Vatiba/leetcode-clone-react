@@ -118,7 +118,7 @@ function PastContestsTableWidget(props: PastContestsTableWidgetProps) {
 												<div className='mt-1 flex items-center text-gray-600 text-sm'>
 													<span className='flex items-center mr-2'>
 														<RxCountdownTimer className='mr-2' />
-														{t('endTime')}:
+														{t('endedTime')}:
 													</span>
 													<span>{contest.date_finished}</span>
 												</div>

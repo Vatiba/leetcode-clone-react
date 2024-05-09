@@ -1,4 +1,5 @@
 type ProfileUpdateDto = Partial<{
+   avatar: File
    userId: string
    first_name: string
    last_name: string

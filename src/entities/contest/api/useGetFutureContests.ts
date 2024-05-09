@@ -3,7 +3,7 @@ import { i18n } from "shared/libs";
 import ContestGetApi from "./ContestGetApi";
 import ContestParamsDto from "./types/ContestParamsDto";
 
-const useGetFutureContests = ({ finished, future, limit, offset, open, subscribed, subscription_open }: ContestParamsDto) => {
+const useGetFutureContests = ({ finished, future, limit, offset, in_progress, subscribed, subscription_in_progress }: ContestParamsDto) => {
    return useQuery({
       queryKey: [
          "contestsFuture",
@@ -11,12 +11,12 @@ const useGetFutureContests = ({ finished, future, limit, offset, open, subscribe
          future,
          limit,
          offset,
-         open,
+         in_progress,
          subscribed,
-         subscription_open,
+         subscription_in_progress,
          i18n.language,
       ],
-      queryFn: () => ContestGetApi.getContests({ finished, future: true, limit, offset, open, subscribed, subscription_open }),
+      queryFn: () => ContestGetApi.getContests({ finished, future: true, limit, offset, in_progress, subscribed, subscription_in_progress }),
    });
 };
 

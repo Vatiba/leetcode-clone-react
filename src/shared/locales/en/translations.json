@@ -90,7 +90,9 @@
    "hard": "Hard",
    "startTime": "Start time",
    "endTime": "End time",
+   "endedTime": "Ended time",
    "prizes": "Prizes",
    "subscribe": "Subscribe",
-   "alreadySubscribed": "You already subscribed"
+   "alreadySubscribed": "You already subscribed",
+   "subscribtionStarted": "Subscribtion started"
 }

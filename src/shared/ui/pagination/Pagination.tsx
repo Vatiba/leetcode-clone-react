@@ -19,7 +19,7 @@ function Pagination(props: PaginationProps) {
          className='flex items-center justify-end select-none text-lg'
          nextClassName='h-8 w-8 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold text-xl cursor-pointer'
          previousClassName='h-8 w-8 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold text-xl cursor-pointer'
-         pageClassName='h-8 w-8 rounded-md bg-white flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold cursor-pointer mx-1'
+         pageClassName='h-8 w-8 rounded-md flex justify-center items-center transition-colors hover:bg-green-500 hover:text-white font-bold cursor-pointer mx-1'
          activeClassName='text-white bg-green-500'
          {...props}
       />

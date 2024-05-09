@@ -1,19 +1,28 @@
+import { useAuth } from 'entities/auth';
+import { storageKeys } from 'entities/constants';
 import { useGetLocations } from 'entities/locations';
 import { EditProfileSchema, useGetProfile } from 'entities/profile';
 import { useGetSpecialSchools } from 'entities/specialSchools';
 import { useGetUniversities } from 'entities/universities';
 import { useUpdateProfile } from 'features/profile';
 import { Form, Formik } from 'formik';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { FaPhone } from 'react-icons/fa';
 import { FaGithub, FaGitlab, FaLinkedin, FaStackOverflow } from 'react-icons/fa6';
 import { useParams } from 'react-router-dom';
+import { LocalStorageWorker } from 'shared/libs';
+
+const storageWorker = LocalStorageWorker.getInstance();
 
 function EditProfile() {
 
     const params = useParams();
     const { t } = useTranslation();
+    const [file, setFile] = useState<FileList>();
+    const { data } = useAuth();
+
 
     const {
         data: locations,
@@ -35,10 +44,10 @@ function EditProfile() {
     } = useUpdateProfile();
 
     return (
-
         <Formik
             enableReinitialize
             initialValues={{
+                avatar: [],
                 first_name: profile?.first_name || '',
                 last_name: profile?.last_name || '',
                 phone: profile?.phone || '',
@@ -58,6 +67,7 @@ function EditProfile() {
             onSubmit={async (values, { setSubmitting, resetForm }) => {
                 updateProfile({
                     userId: 'me',
+                    avatar: file?.[0],
                     first_name: values.first_name,
                     last_name: values.last_name,
                     location: values.location,
@@ -73,6 +83,10 @@ function EditProfile() {
                     link_stackoverflow: values.link_stackoverflow,
                 }, {
                     onSuccess: () => {
+                        storageWorker.setItem(storageKeys.user, {
+                            ...data?.user,
+
+                        });
                         toast.success(t('success'));
                     },
                     onError: (err: any) => {
@@ -99,7 +113,8 @@ function EditProfile() {
                 handleBlur,
                 handleSubmit,
                 isSubmitting,
-                dirty
+                dirty,
+                setFieldValue
             }) => {
                 return (
                     <Form>
@@ -108,7 +123,6 @@ function EditProfile() {
                             className="flex flex-wrap items-start sm:flex-nowrap gap-3"
                         >
                             <div className="flex flex-col w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white py-3 px-3 rounded-md">
-
                                 <label className="form-control w-full">
                                     <div className="label">
                                         <span className="label-text">Github</span>
@@ -206,6 +220,27 @@ function EditProfile() {
 
                                 <div className="flex flex-col bg-white w-full py-4 px-3 rounded-md mb-3">
                                     <div className='w-full md:w-2/3'>
+                                        <div className="label">
+                                            <span className="label-text">Avatar</span>
+                                        </div>
+                                        <input
+                                            className="p-0"
+                                            type="file"
+                                            name="avatar"
+                                            onChange={(e) => {
+                                                handleChange(e);
+                                                if (e.target.files)
+                                                    setFile(e.target.files);
+                                            }}
+                                            onBlur={handleBlur}
+                                            value={values.avatar}
+                                        />
+                                        <div className="label">
+                                            {
+                                                errors.avatar && touched.avatar &&
+                                                <span className="label-text-alt text-error">{errors.avatar}</span>
+                                            }
+                                        </div>
                                         <label className="form-control w-full">
                                             <div className="label">
                                                 <span className="label-text">{t('email')}</span>

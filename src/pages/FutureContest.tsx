@@ -1,8 +1,6 @@
 import dayjs from "dayjs";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useGetContest } from "entities/contest";
-import { useSubscribeContest } from "features/contest";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { Container } from "shared";
@@ -17,11 +15,6 @@ function FutureContest() {
       isLoading: contestLoading,
       isError: contestError
    } = useGetContest(Number(params['contestId'] as string));
-
-   const {
-      mutate: subscribeToContest,
-      isPending: subscribingToContest,
-   } = useSubscribeContest();
 
    return (
       <Container>
@@ -50,31 +43,6 @@ function FutureContest() {
                               </span>
                            </div>
                         </div> */}
-                        {
-                           dayjs(contest.date_subscription_finished, 'DD.MM.YYYY HH:ss').isBefore(dayjs()) &&
-                              dayjs(contest.date_subscription_started, 'DD.MM.YYYY HH:ss').isAfter(dayjs()) ?
-                              <div className="flex justify-end mt-3">
-                                 <button
-                                    className="bg-green-500 px-5 py-3 hover:bg-green-600 rounded-md text-white font-bold "
-                                    disabled={contest.is_subscribed || subscribingToContest}
-                                    onClick={() => {
-                                       subscribeToContest(contest.id, {
-                                          onSuccess() {
-                                             toast.success(t('success'))
-                                          }
-                                       })
-                                    }}
-                                 >
-                                    {
-                                       contest.is_subscribed ?
-                                          t('alreadySubscribed')
-                                          :
-                                          t('subscribe')
-                                    }
-                                 </button>
-                              </div>
-                              : null
-                        }
                      </div>
                      <div className="flex flex-col w-full md:w-1/4">
                         <div className="bg-white p-4 rounded-md min-h-[250px]">
@@ -96,7 +64,6 @@ function FutureContest() {
                   </div>
                   :
                   <div className="animate-pulse">
-
                      <div className="my-5 flex flex-wrap md:flex-nowrap gap-3">
                         <div className="flex flex-col w-full md:w-3/4">
                            <div className="bg-gray-200 h-8 rounded-md w-full" />
