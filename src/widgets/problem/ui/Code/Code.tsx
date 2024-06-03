@@ -1,21 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaCode } from "react-icons/fa";
 // code editor
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
 import { cpp } from '@codemirror/lang-cpp';
 import { java } from '@codemirror/lang-java';
+import { javascript } from '@codemirror/lang-javascript';
 import { python } from '@codemirror/lang-python';
-import { LanguageSupport, StreamLanguage } from "@codemirror/language"
-import { pascal } from "@codemirror/legacy-modes/mode/pascal"
+import { LanguageSupport, StreamLanguage } from "@codemirror/language";
+import { pascal } from "@codemirror/legacy-modes/mode/pascal";
+import CodeMirror from '@uiw/react-codemirror';
 
 function Code() {
 	const { t } = useTranslation();
 	const codeBlockRef = useRef<HTMLDivElement>(null);
 
 	const [value, setValue] = useState("console.log('hello world!');");
-	const [language, setLanguage] = useState<StreamLanguage<unknown> | LanguageSupport>(javascript({ typescript: true }));
+	const [language, setLanguage] = useState<StreamLanguage<unknown> | LanguageSupport | undefined>(javascript({ typescript: true }));
 	const onChange = React.useCallback((val: string) => {
 		setValue(val);
 	}, []);
@@ -28,25 +28,26 @@ function Code() {
 
 	const onLanguageChange = (value: string) => {
 		switch (value) {
-			case 'javascript':
+			case '63':
 				setLanguage(javascript({ typescript: true }));
 				break;
-			case 'python':
+			case '71':
 				setLanguage(python());
 				break;
-			case 'cpp':
+			case '54':
 				setLanguage(cpp());
 				break;
-			case 'c':
+			case '50':
 				setLanguage(cpp());
 				break;
-			case 'java':
+			case '62':
 				setLanguage(java());
 				break;
-			case 'pascal':
+			case '67':
 				setLanguage(StreamLanguage.define(pascal));
 				break;
 			default:
+				setLanguage(undefined)
 				break;
 		}
 	}
@@ -63,21 +64,24 @@ function Code() {
 					</span>
 				</span>
 				<select className='mr-1' onChange={({ target: { value } }) => onLanguageChange(value)}>
-					<option value="javascript" defaultChecked>Node js</option>
-					<option value="python">Python</option>
-					<option value="cpp">C++</option>
-					<option value="c">C</option>
-					<option value="java">Java</option>
-					<option value="pascal">Pascal</option>
+					<option value="63" defaultChecked>Node js (12.14)</option>
+					<option value="71">Python (3.8)</option>
+					<option value="54">C++ (GCC 9.2)</option>
+					<option value="50">C (GCC 9.2)</option>
+					<option value="62">Java (OpenJDK 13)</option>
+					<option value="67">Pascal (FPC 3)</option>
+					<option value="60">Go (1.13)</option>
+					<option value="73">Rust (1.40)</option>
+					<option value="72">Ruby (2.7)</option>
 				</select>
 			</div>
 			<div className='h-[94%] overflow-hidden' ref={codeBlockRef}>
 				<CodeMirror
 					value={value}
 					height={codeBlockRef.current?.clientHeight ? `${codeBlockRef.current.clientHeight}px` : '10000px'}
-					extensions={[
+					extensions={language ? [
 						language
-					]}
+					] : undefined}
 					onChange={onChange}
 				/>
 			</div>
