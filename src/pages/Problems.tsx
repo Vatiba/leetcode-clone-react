@@ -32,7 +32,7 @@ export default function Problems() {
 		isLoading: problemsLoading,
 		isError: problemsError,
 	} = useGetProblems({
-		category: tag || '',
+		categories: tag || '',
 		search: search || '',
 		difficulty: difficulty || '',
 		limit: limit || '',

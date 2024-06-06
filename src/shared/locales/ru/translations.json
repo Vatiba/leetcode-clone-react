@@ -69,7 +69,6 @@
    "save": "Сохранить",
    "editProfile": "Редактировать профиль",
    "communityStats": "Статистика сообщества",
-   "discuss": "Обсуждение",
    "discusses": "Discusses",
    "languages": "Languages",
    "skills": "Skills",
@@ -93,5 +92,13 @@
    "prizes": "Призы",
    "subscribe": "Подписатся",
    "alreadySubscribed": "Вы уже подписаны",
-   "subscribtionStarted": "Регистрация началась"
+   "subscribtionStarted": "Регистрация началась",
+   "problems": "Задачи",
+   "contest": "Соревнования",
+   "discuss": "Обсуждение",
+   "acceptedRate": "Принятый процент",
+   "tags": "Теги",
+   "requirements": "Требования",
+   "memoryUsageLimit": "Ограничение использования памяти",
+   "timeLimit": "Лимит времени"
 }

@@ -1,5 +1,6 @@
 import { PaginationDto } from "entities/types";
 import api from "shared/api";
+import { removeEmptyString } from 'shared/libs/helpers';
 import CategoryDto from "./types/CategoryDto";
 import Problem from "./types/Problem";
 import ProblemsParamsDto from "./types/ProblemsParamsDto";
@@ -8,7 +9,7 @@ const ProblemsGetApi = {
    getProblems: async (params: ProblemsParamsDto): Promise<PaginationDto<Problem[]>> => {
       const res = await api.get('problems/', {
          searchParams: {
-            ...params,
+            ...removeEmptyString(params),
          }
       });
       return res.json();

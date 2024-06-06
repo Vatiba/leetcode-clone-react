@@ -6,7 +6,7 @@ export {
 } from './api';
 export type {
    CategoryDto,
-   Problem,
-   ProblemsParamsDto
+   Problem, ProblemSubmissionDto,
+   ProblemSubmissionResponseDto, ProblemsParamsDto
 } from './api';
 

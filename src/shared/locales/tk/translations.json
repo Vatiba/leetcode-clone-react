@@ -69,7 +69,6 @@
    "save": "Ýatda sakla",
    "editProfile": "Profil üýtgetmek",
    "communityStats": "Jemgyýet statistikasy",
-   "discuss": "Maslahatlar",
    "discusses": "Discusses",
    "languages": "Languages",
    "skills": "Skills",
@@ -93,5 +92,13 @@
    "prizes": "Sowgatlar",
    "subscribe": "Ýazylmak",
    "alreadySubscribed": "Siz ýazyldyňyz",
-   "subscribtionStarted": "Ýazylyşyk başlananlar"
+   "subscribtionStarted": "Ýazylyşyk başlananlar",
+   "problems": "Meseleler",
+   "contest": "Ýaryşlar",
+   "discuss": "Maslahatlar",
+   "acceptedRate": "Kabul edilen goterim",
+   "tags": "Teglar",
+   "requirements": "Talaplar",
+   "memoryUsageLimit": "Ограничение использования памяти",
+   "timeLimit": "Wagt çägi"
 }

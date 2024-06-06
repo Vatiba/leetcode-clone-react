@@ -1,7 +1,7 @@
 import { ProblemDifficulties } from "entities/types";
 
 type ProblemsParamsDto = {
-   category?: number | ''
+   categories?: number | ''
    difficulty: ProblemDifficulties | ''
    limit: number | ''
    offset: number | ''

@@ -9,8 +9,18 @@ import { python } from '@codemirror/lang-python';
 import { LanguageSupport, StreamLanguage } from "@codemirror/language";
 import { pascal } from "@codemirror/legacy-modes/mode/pascal";
 import CodeMirror from '@uiw/react-codemirror';
+import { useDebounceValue } from 'shared/hooks';
 
-function Code() {
+type CodeProps = {
+	onCodeChange: Function
+	onLangChange: Function
+}
+
+function Code(props: CodeProps) {
+	const {
+		onCodeChange,
+		onLangChange
+	} = props;
 	const { t } = useTranslation();
 	const codeBlockRef = useRef<HTMLDivElement>(null);
 
@@ -26,25 +36,50 @@ function Code() {
 		});
 	}, [])
 
+	const debounceValue = useDebounceValue(value, 800);
+
+	useEffect(() => {
+		onCodeChange(debounceValue);
+	}, [debounceValue]);
+
+
 	const onLanguageChange = (value: string) => {
 		switch (value) {
 			case '63':
 				setLanguage(javascript({ typescript: true }));
+				onLangChange(63)
 				break;
 			case '71':
 				setLanguage(python());
+				onLangChange(71)
 				break;
 			case '54':
 				setLanguage(cpp());
+				onLangChange(54)
 				break;
 			case '50':
 				setLanguage(cpp());
+				onLangChange(50)
 				break;
 			case '62':
 				setLanguage(java());
+				onLangChange(62)
 				break;
 			case '67':
 				setLanguage(StreamLanguage.define(pascal));
+				onLangChange(67)
+				break;
+			case '60':
+				setLanguage(undefined)
+				onLangChange(60)
+				break;
+			case '73':
+				setLanguage(undefined)
+				onLangChange(73)
+				break;
+			case '72':
+				setLanguage(undefined)
+				onLangChange(72)
 				break;
 			default:
 				setLanguage(undefined)

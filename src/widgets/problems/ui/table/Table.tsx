@@ -45,7 +45,7 @@ function ProblemsTableWidget(props: ProblemsTableWidgetProps) {
 										problems?.map((problem, index: number) => {
 											return (
 												<tr key={index}>
-													<td>{index + 1}</td>
+													<td>{index + 1}.</td>
 													<td>
 														<Link to={`/problems/${problem.slug}`}>
 															{problem.is_solved && <MdOutlineCheckCircleOutline className='text-green-600' />}

@@ -54,7 +54,7 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 
 	return (
 		<div className="overflow-x-auto w-full mb-4">
-			<div className={clsx('flex flex-col rounded-md', {
+			<div className={clsx('min-h-[50vh] flex flex-col rounded-md', {
 				'bg-gray-50': !isMinimized
 			})}>
 				<div className={clsx('flex flex-wrap gap-3 items-center justify-between py-3 px-1 rounded-t-md border-b border-gray-200', {
@@ -207,10 +207,12 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 					}
 				</div>
 			</div>
-			<Pagination
-				pageCount={comments ? comments.count / limit : 0}
-				onPageChange={({ selected }) => setPage(selected + 1)}
-			/>
+			<div className='mt-5'>
+				<Pagination
+					pageCount={comments ? comments.count / limit : 0}
+					onPageChange={({ selected }) => setPage(selected + 1)}
+				/>
+			</div>
 		</div>
 	)
 }

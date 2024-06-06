@@ -1,13 +1,14 @@
 /* global VoidFunction */
 import { AuthStatus } from 'entities/auth';
 import { ReactNode, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import logo from 'shared/assets/img/logo.png';
 import { NavItem } from 'widgets/navbar';
 
 const navigation = [
-	{ name: 'Problems', href: '/problems' },
-	{ name: 'Contest', href: '/contest' },
-	{ name: 'Discuss', href: '/discuss' },
+	{ name: 'problems', href: '/problems' },
+	{ name: 'contest', href: '/contest' },
+	{ name: 'discuss', href: '/discuss' },
 	// { name: 'Top rating', href: '/top-rating' },
 ];
 
@@ -16,9 +17,10 @@ function Logo() {
 }
 
 function navItems(isMobile = false) {
+	const { t } = useTranslation();
 	return navigation.map((item) => (
 		<NavItem key={item.name} href={item.href} isMobile={isMobile}>
-			{item.name}
+			{t(item.name)}
 		</NavItem>
 	));
 }

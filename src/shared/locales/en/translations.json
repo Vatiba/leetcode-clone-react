@@ -70,7 +70,6 @@
    "save": "Save",
    "editProfile": "Edit profile",
    "communityStats": "Community stats",
-   "discuss": "Discuss",
    "discusses": "Discusses",
    "languages": "Languages",
    "skills": "Skills",
@@ -94,5 +93,13 @@
    "prizes": "Prizes",
    "subscribe": "Subscribe",
    "alreadySubscribed": "You already subscribed",
-   "subscribtionStarted": "Subscribtion started"
+   "subscribtionStarted": "Subscribtion started",
+   "problems": "Problems",
+   "contest": "Contest",
+   "discuss": "Discuss",
+   "acceptedRate": "Accepted rate",
+   "tags": "Tags",
+   "requirements": "Requirements",
+   "memoryUsageLimit": "Ýat ulanyş çägi",
+   "timeLimit": "Time limit"
 }
