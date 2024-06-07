@@ -101,5 +101,17 @@
    "tags": "Tags",
    "requirements": "Requirements",
    "memoryUsageLimit": "Ýat ulanyş çägi",
-   "timeLimit": "Time limit"
+   "timeLimit": "Time limit",
+   "submit": "Submit",
+   "input": "Input",
+   "output": "Output",
+   "accepted": "Accepted",
+   "memoryUsed": "Memory used",
+   "timeUsed": "Time used",
+   "wrongAnswer": "Wrong answer",
+   "timeLimitExceeded": "Time limit exceeded",
+   "compilationError": "Compilation error",
+   "runtimeError": "Runtime error",
+   "internalError": "Internal error",
+   "execFormatError": "Exec format error"
 }

@@ -99,6 +99,18 @@
    "acceptedRate": "Kabul edilen goterim",
    "tags": "Teglar",
    "requirements": "Talaplar",
-   "memoryUsageLimit": "Ограничение использования памяти",
-   "timeLimit": "Wagt çägi"
+   "memoryUsageLimit": "Ýat çäklendirmesi",
+   "timeLimit": "Wagt çägi",
+   "submit": "Ugrat",
+   "input": "Giriş maglumatlary",
+   "output": "Garaşylýan maglumatlar",
+   "accepted": "Kabul edildi",
+   "memoryUsed": "Ýat ullanyldy",
+   "timeUsed": "Wagt ullanyldy",
+   "wrongAnswer": "Nädogry jogap",
+   "timeLimitExceeded": "Wagt çäkleri geçdi",
+   "compilationError": "Toplama ýalňyşlygy",
+   "runtimeError": "Iş wagtynyň ýalňyşlygy",
+   "internalError": "Içerki ýalňyşlyk",
+   "execFormatError": "Exec format ýalňyşlygy"
 }

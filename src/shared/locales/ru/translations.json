@@ -100,5 +100,17 @@
    "tags": "Теги",
    "requirements": "Требования",
    "memoryUsageLimit": "Ограничение использования памяти",
-   "timeLimit": "Лимит времени"
+   "timeLimit": "Лимит времени",
+   "submit": "Отправить",
+   "input": "Вводимые данные",
+   "output": "Ожидаемые данные",
+   "accepted": "Принят",
+   "memoryUsed": "Использовано памяти",
+   "timeUsed": "Использовано времени",
+   "wrongAnswer": "Неправильный ответ",
+   "timeLimitExceeded": "Превышен лимит времени",
+   "compilationError": "Ошибка компиляции",
+   "runtimeError": "Ошибка выполнения",
+   "internalError": "Внутренняя ошибка",
+   "execFormatError": "Ошибка формата Exec"
 }

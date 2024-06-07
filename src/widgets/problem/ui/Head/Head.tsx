@@ -1,5 +1,7 @@
 
 import { AuthStatus } from 'entities/auth';
+import { useTranslation } from 'react-i18next';
+import { IoReload } from "react-icons/io5";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import LogoImg from 'shared/assets/img/logo.png';
@@ -14,6 +16,7 @@ function Head(props: HeadProps) {
 		handleSumbit,
 		isLoadingSubmission
 	} = props;
+	const { t } = useTranslation();
 
 
 	return (
@@ -27,7 +30,7 @@ function Head(props: HeadProps) {
 					Run
 				</button> */}
 				<button
-					className='flex bg-gray-200 hover:bg-gray-300 p-1 px-4 items-center rounded-md font-bold text-green-500'
+					className='flex bg-gray-200 hover:bg-gray-300 h-8 w-32 justify-center items-center rounded-md font-bold text-green-500'
 					onClick={() => handleSumbit()}
 					disabled={isLoadingSubmission}
 				>
@@ -35,10 +38,10 @@ function Head(props: HeadProps) {
 						!isLoadingSubmission ?
 							<>
 								<MdOutlineCloudUpload className='mr-2' />
-								Submit
+								{t('submit')}
 							</>
 							:
-							null
+							<IoReload className='animate-spin' size={20} />
 					}
 				</button>
 			</div>

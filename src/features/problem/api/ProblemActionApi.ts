@@ -1,4 +1,4 @@
-import { ProblemSubmissionDto, ProblemSubmissionResponseDto } from "entities/problems";
+import { ProblemSubmissionCheckResponseDto, ProblemSubmissionDto, ProblemSubmissionResponseDto } from "entities/problems";
 import api from "shared/api";
 
 const ProblemActionApi = {
@@ -11,7 +11,7 @@ const ProblemActionApi = {
       });
       return res.json();
    },
-   checkSubmission: async (id: string) => {
+   checkSubmission: async (id: string): Promise<ProblemSubmissionCheckResponseDto> => {
       const res = await api.post(`submissions/${id}/check/`);
       return res.json();
    }
