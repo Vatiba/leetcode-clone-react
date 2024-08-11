@@ -28,37 +28,46 @@ function ProblemTagsWidget(props: ProblemTagsWidgetProps) {
 
 	return (
 		<div className='flex flex-wrap mb-5 gap-1'>
-			{
-				!categoriesError ?
-					!categoriesLoading ?
-						categories?.length ?
-							categories.map(item => {
-								return (
-									<button
-										key={item.id}
-										className={
-											clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
-												'border-green-600 text-white bg-green-600': tag === item.id
-											})
-										}
-										onClick={() => setTag(item.id)}
-									>
-										{item.name}
-									</button>
-								)
-							})
-							: null
-						:
-						new Array(5).fill(0).map((_, index) => {
-							return (
-								<div
-									key={index}
-									className='animate-pulse bg-gray-200 rounded-full h-9 w-16'
-								/>
-							)
-						})
-					: null
-			}
+			<button
+				className={
+					clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
+						'border-green-600 text-white bg-green-600': tag === 1
+					})
+				}
+				onClick={() => setTag(1)}
+			>
+				Array
+			</button>
+			<button
+				className={
+					clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
+						'border-green-600 text-white bg-green-600': tag === 2
+					})
+				}
+				onClick={() => setTag(2)}
+			>
+				Number
+			</button>
+			<button
+				className={
+					clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
+						'border-green-600 text-white bg-green-600': tag === 3
+					})
+				}
+				onClick={() => setTag(3)}
+			>
+				Hash table
+			</button>
+			<button
+				className={
+					clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
+						'border-green-600 text-white bg-green-600': tag === 4
+					})
+				}
+				onClick={() => setTag(4)}
+			>
+				Linked list
+			</button>
 		</div>
 	)
 }

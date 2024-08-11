@@ -17,6 +17,159 @@ import { numberFormatter } from 'shared/libs';
 import { getPageOffset } from 'shared/libs/helpers';
 import { Pagination } from 'shared/ui';
 
+const trashData = [
+	{
+		"slug": "1",
+		"title": "How to optimize the Two Sum solution?",
+		"problem": {
+			"title": "Two Sum",
+			"slug": "1"
+		},
+		"user": {
+			"first_name": "John",
+			"last_name": "Doe"
+		},
+		"date_created": "08.11.2024 10:45",
+		"votes_sum": 32,
+		"view_count": 256
+	},
+	{
+		"slug": "2",
+		"title": "Best approach for Longest Substring Without Repeating Characters?",
+		"problem": {
+			"title": "Longest Substring Without Repeating Characters",
+			"slug": "3"
+		},
+		"user": {
+			"first_name": "Alice",
+			"last_name": "Smith"
+		},
+		"date_created": "08.11.2024 11:05",
+		"votes_sum": 45,
+		"view_count": 378
+	},
+	{
+		"slug": "3",
+		"title": "Clarification needed on Merge Two Sorted Lists",
+		"problem": {
+			"title": "Merge Two Sorted Lists",
+			"slug": "21"
+		},
+		"user": {
+			"first_name": "Bob",
+			"last_name": "Johnson"
+		},
+		"date_created": "08.11.2024 12:30",
+		"votes_sum": 18,
+		"view_count": 142
+	},
+	{
+		"slug": "4",
+		"title": "Is there a dynamic programming approach to Climbing Stairs?",
+		"problem": {
+			"title": "Climbing Stairs",
+			"slug": "70"
+		},
+		"user": {
+			"first_name": "Emily",
+			"last_name": "Brown"
+		},
+		"date_created": "08.11.2024 13:50",
+		"votes_sum": 26,
+		"view_count": 198
+	},
+	{
+		"slug": "5",
+		"title": "Edge cases for Valid Parentheses?",
+		"problem": {
+			"title": "Valid Parentheses",
+			"slug": "20"
+		},
+		"user": {
+			"first_name": "Michael",
+			"last_name": "Davis"
+		},
+		"date_created": "08.11.2024 14:15",
+		"votes_sum": 21,
+		"view_count": 173
+	},
+	{
+		"slug": "6",
+		"title": "How does the sliding window technique apply to Maximum Subarray?",
+		"problem": {
+			"title": "Maximum Subarray",
+			"slug": "53"
+		},
+		"user": {
+			"first_name": "Sarah",
+			"last_name": "Wilson"
+		},
+		"date_created": "08.11.2024 14:45",
+		"votes_sum": 34,
+		"view_count": 215
+	},
+	{
+		"slug": "7",
+		"title": "Why does my solution fail on edge cases for Palindrome Number?",
+		"problem": {
+			"title": "Palindrome Number",
+			"slug": "9"
+		},
+		"user": {
+			"first_name": "David",
+			"last_name": "Martinez"
+		},
+		"date_created": "08.11.2024 15:10",
+		"votes_sum": 15,
+		"view_count": 123
+	},
+	{
+		"slug": "8",
+		"title": "Understanding the time complexity of Reverse Integer",
+		"problem": {
+			"title": "Reverse Integer",
+			"slug": "7"
+		},
+		"user": {
+			"first_name": "Jessica",
+			"last_name": "Garcia"
+		},
+		"date_created": "08.11.2024 15:30",
+		"votes_sum": 28,
+		"view_count": 190
+	},
+	{
+		"slug": "9",
+		"title": "Can someone explain the merge step in Merge k Sorted Lists?",
+		"problem": {
+			"title": "Merge k Sorted Lists",
+			"slug": "23"
+		},
+		"user": {
+			"first_name": "Daniel",
+			"last_name": "Rodriguez"
+		},
+		"date_created": "08.11.2024 15:45",
+		"votes_sum": 19,
+		"view_count": 167
+	},
+	{
+		"slug": "10",
+		"title": "Optimizing space complexity for Best Time to Buy and Sell Stock",
+		"problem": {
+			"title": "Best Time to Buy and Sell Stock",
+			"slug": "121"
+		},
+		"user": {
+			"first_name": "Sophia",
+			"last_name": "Hernandez"
+		},
+		"date_created": "08.11.2024 16:00",
+		"votes_sum": 37,
+		"view_count": 299
+	}
+]
+
 type DiscussesTableWidgetProps = {
 	/**
 	 * @default false
@@ -142,68 +295,42 @@ function DiscussesTableWidget(props: DiscussesTableWidgetProps) {
 				</div>
 				<div className='flex flex-col px-2'>
 					{
-						!commentsError ?
-							!commentsLoading ?
-								comments?.results.length ?
-									comments?.results.map((comment, index) => {
-										return (
-											<Link key={index} to={`/discuss/${comment.slug}`} className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
-												<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
-												<div className='flex flex-col flex-grow ml-3'>
-													<p className='font-bold line-clamp-2'>{comment.title}</p>
-													{
-														comment.problem.title &&
-														<Link to={`/problems/${comment.problem.slug}`} className='font-medium line-clamp-2 hover:underline text-blue-500'>Problem: {comment.problem.title}</Link>
-													}
-													<div>
-														<span className='hidden sm:inline pr-2'>{t('userName')}:</span>
-														<span className=''>{`${comment.user.first_name ? comment.user.first_name : ''} ${comment.user.last_name ? comment.user.last_name : ''}`}</span>
-													</div>
-													<div className='mt-1 flex flex-wrap items-center text-gray-600'>
-														<span className='flex items-center mr-2'>
-															<RxCountdownTimer className='mr-0 sm:mr-2' />
-															<span className='truncate hidden sm:inline'>{t('postedTime')}</span>
-														</span>
-														<span>{comment.date_created}</span>
-													</div>
-												</div>
-												<div className='flex flex-shrink-1 flex-wrap max-w-[75px] sm:max-w-[90px] md:max-w-none'>
-													<div className="flex justify-end w-full md:w-1/2 items-center border-b md:border-b-0 pb-2 md:pb-0 mb-2 md:mb-0">
-														<BiSolidUpArrow color='gray' />
-														<span className='ml-3 w-10 sm:w-12 md:w-16'>{comment.votes_sum ? numberFormatter(comment.votes_sum) : 0}</span>
-													</div>
-													<div className="flex justify-end w-full md:w-1/2 items-center">
-														<IoEyeSharp color='gray' />
-														<span className='ml-3 w-10 sm:w-12 md:w-16'>{comment.view_count ? numberFormatter(comment.view_count) : 0}</span>
-													</div>
-												</div>
-											</Link>
-										)
-									})
-									:
-									<>No results</>
-								:
-								new Array(limit).fill(0).map((_, index) => {
-									return (
-										<div key={index} className='animate-pulse flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
-											<div className='rounded-full bg-gray-200 w-10 h-10 m-3 mr-0 hidden md:block' />
-											<div className='flex flex-col flex-grow ml-3'>
-												<div className='font-bold line-clamp-2 bg-gray-200 rounded-md h-4 w-36 mb-3' />
-												<div className='h-3 w-60 rounded-md bg-gray-200 mb-1' />
-												<div className='h-3 w-44 rounded-md bg-gray-200' />
-												{/* <div className='mt-1 flex flex-wrap items-center text-gray-600'>
-													<span className='flex items-center mr-2'>
-														<RxCountdownTimer className='mr-0 sm:mr-2' />
-														<span className='truncate hidden sm:inline'>{t('postedTime')}</span>
-													</span>
-													<span>{comment.date_created}</span>
-												</div> */}
-											</div>
+						trashData.map((item, index) => {
+							return (
+
+								<Link key={index} to={`/discuss/${item.slug}`} className='flex gap-1 justify-start items-center border-b border-gray-200 last:border-b-0 py-2 text-xs sm:text-base'>
+									<img src={DefaultUserImg} alt="img" className='rounded-full w-10 h-10 object-cover m-3 mr-0 hidden md:block' />
+									<div className='flex flex-col flex-grow ml-3'>
+										<p className='font-bold line-clamp-2'>{item.title}</p>
+										{
+											item.problem.title &&
+											<Link to={`/problems/${item.problem.slug}`} className='font-medium line-clamp-2 hover:underline text-blue-500'>Problem: {item.problem.title}</Link>
+										}
+										<div>
+											<span className='hidden sm:inline pr-2'>{t('userName')}:</span>
+											<span className=''>{`${item.user.first_name ? item.user.first_name : ''} ${item.user.last_name ? item.user.last_name : ''}`}</span>
 										</div>
-									)
-								})
-							:
-							<>No results</>
+										<div className='mt-1 flex flex-wrap items-center text-gray-600'>
+											<span className='flex items-center mr-2'>
+												<RxCountdownTimer className='mr-0 sm:mr-2' />
+												<span className='truncate hidden sm:inline'>{t('postedTime')}</span>
+											</span>
+											<span>{item.date_created}</span>
+										</div>
+									</div>
+									<div className='flex flex-shrink-1 flex-wrap max-w-[75px] sm:max-w-[90px] md:max-w-none'>
+										<div className="flex justify-end w-full md:w-1/2 items-center border-b md:border-b-0 pb-2 md:pb-0 mb-2 md:mb-0">
+											<BiSolidUpArrow color='gray' />
+											<span className='ml-3 w-10 sm:w-12 md:w-16'>{item.votes_sum ? numberFormatter(item.votes_sum) : 0}</span>
+										</div>
+										<div className="flex justify-end w-full md:w-1/2 items-center">
+											<IoEyeSharp color='gray' />
+											<span className='ml-3 w-10 sm:w-12 md:w-16'>{item.view_count ? numberFormatter(item.view_count) : 0}</span>
+										</div>
+									</div>
+								</Link>
+							)
+						})
 					}
 				</div>
 			</div>

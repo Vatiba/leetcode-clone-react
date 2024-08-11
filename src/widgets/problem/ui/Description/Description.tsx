@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useParams, useSearchParams } from 'react-router-dom';
 
 import { ProblemSubmissionCheckResponseDto, useGetProblem } from 'entities/problems';
-import { CiViewTimeline } from "react-icons/ci";
 import { FaTag } from "react-icons/fa";
 import { IoArrowBack, IoCloseCircleOutline, IoDocumentTextOutline } from "react-icons/io5";
 import { MdOutlineCheckCircleOutline } from 'react-icons/md';
@@ -81,49 +80,78 @@ function Description(props: DescriptionProps) {
 					!checkResponse ?
 						<>
 
-							{
+							{/* {
 								!problemLoading ?
 									<h1 className='text-xl font-bold mb-3'>
 										{problem?.title}
 									</h1>
 									:
 									<div className='animate-pulse bg-gray-200 h-7 w-1/2 rounded-md mb-3' />
-							}
+							} */}
 							<div className="flex flex-wrap text-sm">
-								{
-									!problemLoading ?
-										<>
-											<span className={clsx('bg-gray-100 rounded-full px-3 py-1 mr-1 font-bold', {
-												'text-green-400': problem?.difficulty && problem.difficulty == 'easy',
-												'text-orange-400': problem?.difficulty && problem.difficulty == 'medium',
-												'text-red-400': problem?.difficulty && problem.difficulty == 'hard',
-											})}>
-												{problem?.difficulty ? t(problem.difficulty) : ''}
-											</span>
-											<button
-												className='bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 flex items-center mr-1'
-												onClick={() => contentRef.current?.scrollTo(0, tagsRef.current?.offsetTop || 0)}
-											>
-												<FaTag className='text-sm mr-1' />
-												{t('tags')}
-											</button>
-											<button
-												className='bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 flex items-center mr-1'
-												onClick={() => contentRef.current?.scrollTo(0, tagsRef.current?.offsetTop || 0)}
-											>
-												<CiViewTimeline className='text-sm mr-1' />
-												{t('requirements')}
-											</button>
-										</>
-										:
-										<>
-											<div className='animate-pulse bg-gray-200 h-7 w-16 rounded-full mr-1' />
-											<div className='animate-pulse bg-gray-200 h-7 w-20 rounded-full mr-1' />
-											<div className='animate-pulse bg-gray-200 h-7 w-24 rounded-full mr-1' />
-										</>
-								}
+
+								<>
+									<span className={clsx('bg-gray-100 rounded-full px-3 py-1 mr-1 font-bold', {
+										'text-green-400': true
+									})}>
+										Easy
+									</span>
+									<button
+										className='bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 flex items-center mr-1'
+										onClick={() => contentRef.current?.scrollTo(0, tagsRef.current?.offsetTop || 0)}
+									>
+										<FaTag className='text-sm mr-1' />
+										{t('tags')}
+									</button>
+									{/* <button
+										className='bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 flex items-center mr-1'
+										onClick={() => contentRef.current?.scrollTo(0, tagsRef.current?.offsetTop || 0)}
+									>
+										<CiViewTimeline className='text-sm mr-1' />
+										{t('requirements')}
+									</button> */}
+								</>
 							</div>
-							<div className='my-3' dangerouslySetInnerHTML={{ __html: problem?.description || '' }} />
+							<div className='my-3'>
+								<p>Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>
+
+								<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>
+
+								<p>You can return the answer in any order.</p>
+
+								<p>&nbsp;</p>
+								<p><strong className="example">Example 1:</strong></p>
+
+								<pre><strong>Input:</strong> nums = [2,7,11,15], target = 9
+									<strong>Output:</strong> [0,1]
+									<strong>Explanation:</strong> Because nums[0] + nums[1] == 9, we return [0, 1].
+								</pre>
+
+								<p><strong className="example">Example 2:</strong></p>
+
+								<pre><strong>Input:</strong> nums = [3,2,4], target = 6
+									<strong>Output:</strong> [1,2]
+								</pre>
+
+								<p><strong className="example">Example 3:</strong></p>
+
+								<pre><strong>Input:</strong> nums = [3,3], target = 6
+									<strong>Output:</strong> [0,1]
+								</pre>
+
+								<p>&nbsp;</p>
+								<p><strong>Constraints:</strong></p>
+
+								<ul>
+									<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+									<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+									<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
+									<li><strong>Only one valid answer exists.</strong></li>
+								</ul>
+
+								<p>&nbsp;</p>
+								<strong>Follow-up:&nbsp;</strong>Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code>
+							</div>
 							<div className='flex flex-wrap mt-6 text-sm border-b pb-3'>
 								{/* <span className='flex items-center border-r pr-4 h-4'>
 						<span className=''>
@@ -148,7 +176,7 @@ function Description(props: DescriptionProps) {
 												{t('acceptedRate')}
 											</span>
 											<span className='font-bold ml-2'>
-												{problem?.acceptance}%
+												85.80%
 											</span>
 										</span>
 										:
@@ -162,30 +190,23 @@ function Description(props: DescriptionProps) {
 								</span>
 							</div>
 							<div className='flex flex-wrap gap-1 mt-3'>
-								{
-									!problemLoading ?
-										problem?.categories.map(category => {
-											return (
-												<span key={category.id} className='flex justify-center items-center bg-gray-200 rounded-full px-2 py-1 text-xs text-gray-500'>
-													{category.name}
-												</span>
-											)
-										})
-										:
-										new Array(3).fill(0).map((item, index) => {
-											return (
-												<div key={index} className='animate-pulse bg-gray-200 h-8 w-16 rounded-full' />
-											)
-										})
-								}
+								<span key={1} className='flex justify-center items-center bg-gray-200 rounded-full px-2 py-1 text-xs text-gray-500'>
+									Array
+								</span>
+								<span key={1} className='flex justify-center items-center bg-gray-200 rounded-full px-2 py-1 text-xs text-gray-500'>
+									Hash table
+								</span>
+								<span key={1} className='flex justify-center items-center bg-gray-200 rounded-full px-2 py-1 text-xs text-gray-500'>
+									Linked list
+								</span>
 							</div>
-							<div className='flex mt-3'>
+							{/* <div className='flex mt-3'>
 								<span id='#tags' className='flex items-center mr-1' ref={tagsRef}>
 									<CiViewTimeline className='text-sm mr-1' />
 									{t('requirements')}
 								</span>
-							</div>
-							<div className='flex flex-col mt-3 text-sm pb-3'>
+							</div> */}
+							{/* <div className='flex flex-col mt-3 text-sm pb-3'>
 								{
 									problem?.memory_limit_kb ?
 										<span className='flex items-center h-4 mb-4'>
@@ -212,7 +233,7 @@ function Description(props: DescriptionProps) {
 										:
 										null
 								}
-							</div>
+							</div> */}
 						</>
 						:
 						<>

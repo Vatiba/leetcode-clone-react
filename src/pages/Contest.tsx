@@ -1,16 +1,20 @@
 import Head from 'entities/Head';
 import { useTranslation } from 'react-i18next';
-import { RxCountdownTimer } from "react-icons/rx";
 import { Container } from 'shared';
 import ContestImg from 'shared/assets/img/contest.jpg';
 import { PastContestsTableWidget } from 'widgets/contest';
 
-// trash
 import { useGetFinishedContests, useGetFutureContests, useGetOpenContests, useGetSubscriptionStartedContests } from 'entities/contest';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPageOffset } from 'shared/libs/helpers';
 import { Pagination } from 'shared/ui';
+
+// trash
+import trash1 from 'shared/assets/trash/biweekly.png';
+import trash2 from 'shared/assets/trash/card_img_1654.png';
+import trash3 from 'shared/assets/trash/card_img_1659.png';
+import trash4 from 'shared/assets/trash/weekly-default.png';
 
 const limit = 30;
 
@@ -64,148 +68,99 @@ function Contest() {
 			</div>
 			<Container>
 				<div className='mt-4'>
-					{
-						!openContestsLoading ?
-							!openContestsLoading && !openContestsError && openContests?.results.length ?
-								<section className='flex flex-col mb-8'>
-									<h3 className='font-bold text-lg'>
-										{t('activeContests')}
-									</h3>
-									<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-										{
-											openContests?.results.map(item => {
-												return (
-													<Link to={`/contest/open/${item.id}`} key={item.id} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
-														<img
-															className='rounded-lg'
-															src={item.banner}
-															alt="img"
-														/>
-														<p className='mt-3 font-bold'>{item.title}</p>
-													</Link>
-												)
-											})
-										}
-									</div>
-								</section>
-								:
-								null
-							:
-							<section className='flex flex-col mb-8'>
-								<h3 className='font-bold text-lg'>
-									{t('activeContests')}
-								</h3>
-								<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-									{
-										new Array(3).fill(0).map((_, index) => {
-											return (
-												<div key={index} className='md:w-1/3 w-1/2 lg:p-2 p-1 animate-pulse'>
-													<div className='w-full h-44 bg-gray-200 mb-3 rounded-lg' />
-													<div className='w-8/12 h-6 rounded-md bg-gray-200' />
-												</div>
-											)
-										})
-									}
-								</div>
-							</section>
-					}
-					{
-						!subscriptionStartedContestsLoading ?
-							!subscriptionStartedContestsLoading && !subscriptionStartedContestsError && subscriptionStartedContests?.results.length ?
-								<section className='flex flex-col mb-8'>
-									<h3 className='font-bold text-lg'>
-										{t('subscribtionStarted')}
-									</h3>
-									<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-										{
-											subscriptionStartedContests?.results.map(item => {
-												return (
-													<Link to={`/contest/open/${item.id}`} key={item.id} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
-														<img
-															className='rounded-lg'
-															src={item.banner}
-															alt="img"
-														/>
-														<p className='mt-3 font-bold'>{item.title}</p>
-													</Link>
-												)
-											})
-										}
-									</div>
-								</section>
-								:
-								null
-							:
-							<section className='flex flex-col mb-8'>
-								<h3 className='font-bold text-lg'>
-									{t('subscribtionStarted')}
-								</h3>
-								<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-									{
-										new Array(3).fill(0).map((_, index) => {
-											return (
-												<div key={index} className='md:w-1/3 w-1/2 lg:p-2 p-1 animate-pulse'>
-													<div className='w-full h-44 bg-gray-200 mb-3 rounded-lg' />
-													<div className='w-8/12 h-6 rounded-md bg-gray-200' />
-												</div>
-											)
-										})
-									}
-								</div>
-							</section>
-					}
-					{
-						!futureContestsLoading ?
-							!futureContestsLoading && !futureContestsError && futureContests?.results.length ?
-								<section className='flex flex-col mb-8'>
-									<h3 className='font-bold text-lg'>
-										{t('futureContents')}
-									</h3>
-									<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-										{
-											futureContests?.results.map(item => {
-												return (
-													<Link to={`/contest/future/${item.id}`} key={item.id} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
-														<img
-															className='rounded-lg'
-															src={item.banner}
-															alt="img"
-														/>
-														<p className='mt-3 font-bold'>{item.title}</p>
-														<div className='mt-1 flex items-center text-gray-600 text-sm'>
-															<span className='flex items-center mr-2'>
-																<RxCountdownTimer className='mr-2' />
-																{t('startTime')}:
-															</span>
-															<span>{item.date_started}</span>
-														</div>
-													</Link>
-												)
-											})
-										}
-									</div>
-								</section>
-								:
-								null
-							:
-							<section className='flex flex-col mb-8'>
-								<h3 className='font-bold text-lg'>
-									{t('futureContents')}
-								</h3>
-								<div className='flex flex-wrap lg:-mx-2 -mx-1'>
-									{
-										new Array(3).fill(0).map((_, index) => {
-											return (
-												<div key={index} className='md:w-1/3 w-1/2 lg:p-2 p-1 animate-pulse'>
-													<div className='w-full h-44 bg-gray-200 mb-3 rounded-lg' />
-													<div className='w-8/12 h-6 rounded-md bg-gray-200' />
-												</div>
-											)
-										})
-									}
-								</div>
-							</section>
-					}
+					<section className='flex flex-col mb-8'>
+						<h3 className='font-bold text-lg'>
+							{t('activeContests')}
+						</h3>
+						<div className='flex flex-wrap lg:-mx-2 -mx-1'>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash1}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 411</p>
+							</Link>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash2}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 290</p>
+							</Link>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash4}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 85</p>
+							</Link>
+						</div>
+					</section>
+
+					<section className='flex flex-col mb-8'>
+						<h3 className='font-bold text-lg'>
+							{t('subscribtionStarted')}
+						</h3>
+						<div className='flex flex-wrap lg:-mx-2 -mx-1'>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash4}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 411</p>
+							</Link>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash1}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 290</p>
+							</Link>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash3}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 85</p>
+							</Link>
+						</div>
+					</section><section className='flex flex-col mb-8'>
+						<h3 className='font-bold text-lg'>
+							{t('futureContents')}
+						</h3>
+						<div className='flex flex-wrap lg:-mx-2 -mx-1'>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash1}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 88</p>
+							</Link>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash2}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 405</p>
+							</Link>
+							<Link to={`/contest/open/1`} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+								<img
+									className='rounded-lg'
+									src={trash4}
+									alt="img"
+								/>
+								<p className='mt-3 font-bold'>Contest 25</p>
+							</Link>
+						</div>
+					</section>
 					{
 						<section className='flex flex-col mb-3'>
 							{
