@@ -18,7 +18,7 @@ const ContestGetApi = {
       return res.json();
    },
    getContestants: async (id: number): Promise<ContestDto> => {
-      const res = await api.get(`contests/${id}`);
+      const res = await api.get(`contests/${id}/contestants`);
       return res.json();
    },
 }
