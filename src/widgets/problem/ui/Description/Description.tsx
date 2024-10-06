@@ -229,26 +229,26 @@ function Description(props: DescriptionProps) {
 									</div>
 									<div className='flex flex-col mt-3 text-sm pb-3'>
 										{
-											problem?.memory_limit_kb ?
+											checkResponse?.memory_usage_kb != undefined || checkResponse?.memory_usage_kb != null ?
 												<span className='flex items-center h-4 mb-4'>
 													<span className=''>
 														{t('memoryUsed')}:
 													</span>
 													<span className='font-bold ml-2'>
-														{problem?.memory_limit_kb} Kb
+														{checkResponse?.memory_usage_kb} Kb
 													</span>
 												</span>
 												:
 												null
 										}
 										{
-											problem?.memory_limit_kb ?
+											checkResponse?.time_usage_ms != undefined || checkResponse?.time_usage_ms != null ?
 												<span className='flex items-center h-4 mb-4'>
 													<span className=''>
 														{t('timeUsed')}:
 													</span>
 													<span className='font-bold ml-2'>
-														{problem?.time_limit_ms} ms
+														{checkResponse?.time_usage_ms} ms
 													</span>
 												</span>
 												:
