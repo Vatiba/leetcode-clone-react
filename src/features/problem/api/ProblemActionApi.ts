@@ -3,7 +3,6 @@ import api from "shared/api";
 
 const ProblemActionApi = {
    submitProblem: async ({ code, lang, slug }: ProblemSubmissionDto): Promise<ProblemSubmissionResponseDto> => {
-      console.log(code, lang, slug)
       const res = await api.post(`problems/${slug}/submit/`, {
          json: {
             code, lang

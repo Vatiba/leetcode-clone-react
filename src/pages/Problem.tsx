@@ -1,11 +1,14 @@
+import { useAuth } from 'entities/auth';
 import { ProblemSubmissionCheckResponseDto } from 'entities/problems';
 import { useCheckSubmit, useSubmit } from 'features/problem';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ProblemHead, ProblemLayouts } from 'widgets/problem';
 
 function ProblemScreen() {
 	const params = useParams();
+	const navigate = useNavigate();
+	const { data: authData, } = useAuth();
 	const [submissionId, setSubmissionId] = useState('');
 	const [isSubmissionLoading, setIsSubmissionLoading] = useState(false);
 	const [checkResponse, setCheckResponse] = useState<ProblemSubmissionCheckResponseDto>();
@@ -21,17 +24,23 @@ function ProblemScreen() {
 	} = useCheckSubmit();
 
 	const handleSumbit = () => {
-		if (lang) {
-			submit({
-				code: code,
-				lang: lang,
-				slug: params['problemSlug'] as string
-			}, {
-				onSuccess: (data) => {
-					setSubmissionId(data.id);
-					setIsSubmissionLoading(true);
-				}
-			});
+		if (authData?.user) {
+			if (lang) {
+				submit({
+					code: code,
+					lang: lang,
+					slug: params['problemSlug'] as string
+				}, {
+					onSuccess: (data) => {
+						setSubmissionId(data.id);
+						setIsSubmissionLoading(true);
+						console.log('here')
+					}
+				});
+			}
+		}
+		else {
+			navigate('/login?loginType=signIn');
 		}
 	}
 
@@ -86,7 +95,6 @@ function ProblemScreen() {
 							default:
 								break;
 						}
-						console.log(data);
 					}
 				})
 			}, 5000)

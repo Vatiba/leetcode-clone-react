@@ -129,7 +129,6 @@ const SignUp = (props: SignUpProps) => {
 					isSubmitting,
 					dirty
 				}) => {
-					console.log(values)
 					return (
 						<Form>
 							{
