@@ -112,5 +112,6 @@
    "compilationError": "Ошибка компиляции",
    "runtimeError": "Ошибка выполнения",
    "internalError": "Внутренняя ошибка",
-   "execFormatError": "Ошибка формата Exec"
+   "execFormatError": "Ошибка формата Exec",
+   "loginToMakeAction": "Войдите чтобы выполнить действие"
 }

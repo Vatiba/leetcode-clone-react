@@ -113,5 +113,6 @@
    "compilationError": "Compilation error",
    "runtimeError": "Runtime error",
    "internalError": "Internal error",
-   "execFormatError": "Exec format error"
+   "execFormatError": "Exec format error",
+   "loginToMakeAction": "Login to make action"
 }

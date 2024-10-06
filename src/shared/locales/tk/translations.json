@@ -112,5 +112,6 @@
    "compilationError": "Toplama ýalňyşlygy",
    "runtimeError": "Iş wagtynyň ýalňyşlygy",
    "internalError": "Içerki ýalňyşlyk",
-   "execFormatError": "Exec format ýalňyşlygy"
+   "execFormatError": "Exec format ýalňyşlygy",
+   "loginToMakeAction": "Hereketi ýerine ýetirmek üçin ulgama giriň"
 }
