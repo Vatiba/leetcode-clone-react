@@ -110,7 +110,7 @@ const SignIn = (props: SignInProps) => {
 						</div>
 					</label>
 					<button
-						className="btn btn-primary btn-block mt-6 text-white"
+						className="btn btn-primary btn-block mt-6"
 						type='submit'
 						disabled={isSubmitting}
 					>
