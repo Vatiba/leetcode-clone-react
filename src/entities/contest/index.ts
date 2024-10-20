@@ -1,7 +1,6 @@
 export {
    ContestGetApi,
-   useGetContest,
-   useGetFinishedContests,
+   useGetContest, useGetContestants, useGetFinishedContests,
    useGetFutureContests,
    useGetOpenContests,
    useGetSubscriptionStartedContests

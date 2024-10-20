@@ -9,7 +9,7 @@ import { concatUserName } from "shared/libs/helpers";
 import { ContestantTable, ContestProblemTable } from "widgets/contest";
 dayjs.extend(customParseFormat);
 
-function PastContest() {
+function ActiveContest() {
    const params = useParams();
    const { t } = useTranslation();
 
@@ -34,16 +34,6 @@ function PastContest() {
                         <div className="flex flex-col w-full md:w-3/4">
                            <h1 className="font-bold text-2xl mb-3">{contest.title}</h1>
                            <p dangerouslySetInnerHTML={{ __html: contest.description }} />
-                           <div className="mt-5">
-                              <div className="flex">
-                                 <span className="font-bold">
-                                    {t('endedTime')}:
-                                 </span>
-                                 <span className="ml-3">
-                                    {contest.date_finished}
-                                 </span>
-                              </div>
-                           </div>
                         </div>
                         <div className="flex flex-col w-full md:w-1/4">
                            <div className="bg-white p-4 rounded-md min-h-[250px]">
@@ -136,4 +126,4 @@ function PastContest() {
    )
 }
 
-export default PastContest
+export default ActiveContest

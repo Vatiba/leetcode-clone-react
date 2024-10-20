@@ -21,6 +21,7 @@ const AddDiscuss = lazy(() => import('pages/AddDiscuss'));
 const FutureContest = lazy(() => import('pages/FutureContest'));
 const OpenContest = lazy(() => import('pages/OpenContest'));
 const PastContest = lazy(() => import('pages/PastContest'));
+const ActiveContests = lazy(() => import('pages/ActiveContests'));
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -99,6 +100,14 @@ function Routes() {
 					element: (
 						<Layout>
 							<PastContest />
+						</Layout>
+					),
+				},
+				{
+					path: '/contest/active/:contestId',
+					element: (
+						<Layout>
+							<ActiveContests />
 						</Layout>
 					),
 				},

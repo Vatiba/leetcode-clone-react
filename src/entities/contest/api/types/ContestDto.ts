@@ -3,7 +3,6 @@ type ContestDto = {
    title: string
    banner: string
    description: string
-   problems: number[]
    date_subscription_started: string
    date_subscription_finished: string
    date_started: string
@@ -14,6 +13,12 @@ type ContestDto = {
       to_place: number
       score: number
       additional: string
+   }[],
+   problems: {
+      id: number
+      slug: string
+      title: string
+      score: number
    }[]
 }
 

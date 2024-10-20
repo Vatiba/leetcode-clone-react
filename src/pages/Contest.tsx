@@ -75,7 +75,7 @@ function Contest() {
 										{
 											openContests?.results.map(item => {
 												return (
-													<Link to={`/contest/open/${item.id}`} key={item.id} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
+													<Link to={`/contest/active/${item.id}`} key={item.id} className='md:w-1/3 w-1/2 lg:p-2 p-1'>
 														<img
 															className='rounded-lg'
 															src={item.banner}
