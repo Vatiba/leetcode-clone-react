@@ -17,12 +17,12 @@ function PastContest() {
       data: contest,
       isLoading: contestLoading,
       isError: contestError
-   } = useGetContest(Number(params['contestId'] as string));
+   } = useGetContest(Number(params.contestId as string));
    const {
       data: contestants,
       isLoading: contestantsLoading,
       isError: contestantsError
-   } = useGetContestants(Number(params['contestId']));
+   } = useGetContestants(Number(params.contestId));
 
    return (
       <Container>
@@ -68,14 +68,16 @@ function PastContest() {
                            'md:w-1/2': !!contestants?.results.length
                         })}>
                            {
-                              <ContestProblemTable
-                                 data={contest.problems.map(item => ({
-                                    id: item.id,
-                                    name: item.title,
-                                    score: item.score,
-                                    slug: item.slug
-                                 }))}
-                              />
+                              contest.problems.length ?
+                                 <ContestProblemTable
+                                    data={contest.problems.map(item => ({
+                                       id: item.id,
+                                       name: item.title,
+                                       score: item.score,
+                                       slug: item.slug
+                                    }))}
+                                 />
+                                 : null
                            }
                         </div>
                         {

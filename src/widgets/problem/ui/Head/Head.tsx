@@ -1,6 +1,5 @@
 
 import { AuthStatus } from 'entities/auth';
-import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoReload } from "react-icons/io5";
 import { MdOutlineCloudUpload } from "react-icons/md";
@@ -8,13 +7,13 @@ import { Link } from 'react-router-dom';
 import LogoImg from 'shared/assets/img/logo.png';
 
 type HeadProps = {
-	handleSumbit: Function
+	handleSubmit: Function
 	isLoadingSubmission: boolean
 }
 
 function Head(props: HeadProps) {
 	const {
-		handleSumbit,
+		handleSubmit,
 		isLoadingSubmission
 	} = props;
 	const { t } = useTranslation();
@@ -34,7 +33,7 @@ function Head(props: HeadProps) {
 					className='flex bg-gray-200 hover:bg-gray-300 h-8 w-32 justify-center items-center rounded-md font-bold text-green-500'
 					onClick={(e) => {
 						e.preventDefault();
-						handleSumbit?.();
+						handleSubmit?.();
 					}}
 					type='button'
 					disabled={isLoadingSubmission}

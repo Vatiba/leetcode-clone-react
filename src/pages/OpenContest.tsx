@@ -100,6 +100,7 @@ function OpenContest() {
                            'md:w-1/2': !!contestants?.results.length
                         })}>
                            {
+                              contest.problems.length ?
                               <ContestProblemTable
                                  data={contest.problems.map(item => ({
                                     id: item.id,
@@ -108,6 +109,7 @@ function OpenContest() {
                                     slug: item.slug
                                  }))}
                               />
+                              : null
                            }
                         </div>
                         {

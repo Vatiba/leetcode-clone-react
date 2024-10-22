@@ -24,8 +24,8 @@ function Code(props: CodeProps) {
 	const { t } = useTranslation();
 	const codeBlockRef = useRef<HTMLDivElement>(null);
 
-	const [value, setValue] = useState("console.log('hello world!');");
-	const [language, setLanguage] = useState<StreamLanguage<unknown> | LanguageSupport | undefined>(javascript({ typescript: true }));
+	const [value, setValue] = useState("");
+	const [language, setLanguage] = useState<StreamLanguage<unknown> | LanguageSupport | undefined>(python());
 	const onChange = React.useCallback((val: string) => {
 		setValue(val);
 	}, []);
@@ -88,19 +88,19 @@ function Code(props: CodeProps) {
 	}
 
 	return (
-		<div className='rounded-lg border bg-white h-full'>
-			<div className='flex h-[8%] max-h-8 bg-gray-100 rounded-t-lg p-1 justify-between'>
+		<div className="rounded-lg border bg-white h-full">
+			<div className="flex h-[8%] max-h-8 bg-gray-100 rounded-t-lg p-1 justify-between">
 				<span
-					className='flex items-center p-2 rounded-md bg-gray-100'
+					className="flex items-center p-2 rounded-md bg-gray-100"
 				>
-					<FaCode className='text-green-500' />
-					<span className='ml-2'>
+					<FaCode className="text-green-500" />
+					<span className="ml-2">
 						Code
 					</span>
 				</span>
-				<select className='mr-1' onChange={({ target: { value } }) => onLanguageChange(value)}>
-					<option value="63" defaultChecked>Node js (12.14)</option>
-					<option value="71">Python (3.8)</option>
+				<select className="mr-1" onChange={({ target: { value } }) => onLanguageChange(value)}>
+					<option value="71" defaultChecked>Python (3.8)</option>
+					<option value="63">Node js (12.14)</option>
 					<option value="54">C++ (GCC 9.2)</option>
 					<option value="50">C (GCC 9.2)</option>
 					<option value="62">Java (OpenJDK 13)</option>
@@ -110,7 +110,7 @@ function Code(props: CodeProps) {
 					<option value="72">Ruby (2.7)</option>
 				</select>
 			</div>
-			<div className='h-[94%] overflow-hidden' ref={codeBlockRef}>
+			<div className="h-[94%] overflow-hidden" ref={codeBlockRef}>
 				<CodeMirror
 					value={value}
 					height={codeBlockRef.current?.clientHeight ? `${codeBlockRef.current.clientHeight}px` : '10000px'}
@@ -118,6 +118,7 @@ function Code(props: CodeProps) {
 						language
 					] : undefined}
 					onChange={onChange}
+					placeholder="Do your magic..."
 				/>
 			</div>
 		</div>

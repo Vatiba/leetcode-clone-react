@@ -14,27 +14,26 @@ function ProblemScreen() {
 	const [checkResponse, setCheckResponse] = useState<ProblemSubmissionCheckResponseDto>();
 
 	const [code, setCode] = useState('');
-	const [lang, setLang] = useState<number>(63);
+	const [lang, setLang] = useState<number>(71);
 
 	const {
 		mutate: submit,
 	} = useSubmit();
 	const {
-		mutate: checkSubmittion
+		mutate: checkSubmission
 	} = useCheckSubmit();
 
-	const handleSumbit = () => {
+	const handleSubmit = () => {
 		if (authData?.user) {
 			if (lang) {
 				submit({
 					code: code,
 					lang: lang,
-					slug: params['problemSlug'] as string
+					slug: params.problemSlug as string
 				}, {
 					onSuccess: (data) => {
 						setSubmissionId(data.id);
 						setIsSubmissionLoading(true);
-						console.log('here')
 					}
 				});
 			}
@@ -55,7 +54,7 @@ function ProblemScreen() {
 		let id = 0;
 		if (submissionId) {
 			id = setInterval(() => {
-				checkSubmittion(submissionId, {
+				checkSubmission(submissionId, {
 					onSuccess: (data) => {
 						switch (data.status) {
 							case 0:
@@ -103,9 +102,9 @@ function ProblemScreen() {
 	}, [submissionId]);
 
 	return (
-		<div className='px-3 bg-slate-100 h-screen overflow-x-auto'>
+		<div className="px-3 bg-slate-100 h-screen overflow-x-auto">
 			<ProblemHead
-				handleSumbit={handleSumbit}
+				handleSubmit={handleSubmit}
 				isLoadingSubmission={isSubmissionLoading}
 			/>
 			<ProblemLayouts
