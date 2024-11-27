@@ -65,7 +65,7 @@ function OpenContest() {
                               {
                                  !contest.is_subscribed ?
                                     <button
-                                       className='w-full flex bg-gray-200 hover:bg-gray-300 h-8 justify-center items-center rounded-md font-bold text-green-500'
+                                       className='w-full flex bg-gray-200 hover:bg-gray-300 h-8 justify-center items-center rounded-md font-bold text-blue-500'
                                        onClick={(e) => {
                                           if (userData?.token) {
                                              e.preventDefault();
@@ -101,15 +101,15 @@ function OpenContest() {
                         })}>
                            {
                               contest.problems.length ?
-                              <ContestProblemTable
-                                 data={contest.problems.map(item => ({
-                                    id: item.id,
-                                    name: item.title,
-                                    score: item.score,
-                                    slug: item.slug
-                                 }))}
-                              />
-                              : null
+                                 <ContestProblemTable
+                                    data={contest.problems.map(item => ({
+                                       id: item.id,
+                                       name: item.title,
+                                       score: item.score,
+                                       slug: item.slug
+                                    }))}
+                                 />
+                                 : null
                            }
                         </div>
                         {

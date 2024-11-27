@@ -38,7 +38,7 @@ function ProblemTagsWidget(props: ProblemTagsWidgetProps) {
 										key={item.id}
 										className={
 											clsx('flex justify-center items-center px-3 py-1 border rounded-full cursor-pointer', {
-												'border-green-600 text-white bg-green-600': tag === item.id
+												'border-blue-600 text-white bg-blue-600': tag === item.id
 											})
 										}
 										onClick={() => setTag(item.id)}

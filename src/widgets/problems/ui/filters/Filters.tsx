@@ -92,10 +92,10 @@ function ProblemFiltersWidget(props: ProblemFiltersWidgetProps) {
 				className='flex gap-1 bg-transparent items-center'
 				onClick={() => onClickPickRandom()}
 			>
-				<span className='flex justify-center items-center w-9 h-9 rounded-full bg-gradient-to-b from-green-500 to-green-600'>
+				<span className='flex justify-center items-center w-9 h-9 rounded-full bg-gradient-to-b from-blue-500 to-blue-600'>
 					<FaRandom color='white' />
 				</span>
-				<span className='text-green-500 text-sm ml-1'>
+				<span className='text-blue-500 text-sm ml-1'>
 					{t('pickRandom')}
 				</span>
 			</button>

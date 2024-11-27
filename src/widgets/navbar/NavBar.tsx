@@ -55,7 +55,7 @@ function MobileMenuButton({ onClick }: MobileMenuButtonProps) {
 		<div className="md:hidden flex items-center">
 			<button className="outline-none mobile-menu-button" onClick={onClick}>
 				<svg
-					className=" w-6 h-6 text-gray-500 hover:text-green-500 "
+					className=" w-6 h-6 text-gray-500 hover:text-blue-500 "
 					x-show="!showMenu"
 					fill="none"
 					strokeLinecap="round"

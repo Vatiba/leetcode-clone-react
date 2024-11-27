@@ -80,7 +80,7 @@ function Chart(props: ChartProps) {
                         <span className='text-sm'>{solvedProblemsCount.easy}/{problemsCount.easy}</span>
                         <div className='relative'>
                            <div className='absolute top-0 left-0 w-full h-2 rounded-2xl bg-gray-200' />
-                           <div className='absolute top-0 left-0 h-2 rounded-2xl bg-green-500' style={{ width: `${easyPercent}%` }} />
+                           <div className='absolute top-0 left-0 h-2 rounded-2xl bg-blue-500' style={{ width: `${easyPercent}%` }} />
                         </div>
                      </div>
                      <div className='flex flex-col w-full'>

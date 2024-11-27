@@ -29,7 +29,7 @@ function TestCases() {
 					}
 					onClick={() => setShowResults(false)}
 				>
-					<FaRegCheckSquare className="text-green-500" />
+					<FaRegCheckSquare className="text-blue-500" />
 					<span className="ml-2">
 						Test cases
 					</span>

@@ -245,7 +245,7 @@ function Profile() {
 								<span className="flex justify-center items-center px-2 rounded-full text-sm bg-gray-100">Queue x10</span>
 							</div>
 							<div className="flex items-center">
-								<span className="h-2 w-2 bg-green-500 rounded-full mr-2" />
+								<span className="h-2 w-2 bg-blue-500 rounded-full mr-2" />
 								<span className="text-sm">Fundamental</span>
 							</div>
 							<div className="flex flex-wrap my-2 gap-1">

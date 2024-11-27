@@ -520,7 +520,7 @@ function EditProfile() {
                                 </div>
                                 <div className="flex justify-end mt-4">
                                     <button
-                                        className="flex justify-center py-2 px-4 bg-green-500 hover:bg-green-600 rounded-md text-white font-bold"
+                                        className="flex justify-center py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded-md text-white font-bold"
                                         disabled={isSubmitting}
                                     >
                                         {t('save')}
