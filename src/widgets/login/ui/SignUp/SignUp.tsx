@@ -457,7 +457,7 @@ const SignUp = (props: SignUpProps) => {
 													</div>
 												</label>
 											}
-											<button className="btn btn-primary btn-block mb-3 capitalize text-white" type='submit' disabled={isSubmitting}>
+											<button className="btn btn-primary btn-block mb-3 capitalize border-blue-500 text-blue-500 hover:text-white" type='submit' disabled={isSubmitting}>
 												{t('signUp')}
 											</button>
 										</>
@@ -482,7 +482,7 @@ const SignUp = (props: SignUpProps) => {
 								activeTab.get('step') === '1' || !activeTab.get('step') ?
 									<div className='flex justify-end'>
 										<button
-											className="btn btn-primary capitalize text-white"
+											className="btn btn-primary capitalize border-blue-500 text-blue-500 hover:text-white"
 											type='button'
 											onClick={() => {
 												handleSubmit();
