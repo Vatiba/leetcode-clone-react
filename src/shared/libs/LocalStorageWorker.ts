@@ -5,7 +5,7 @@ const init = () => {
    ls = new SecureLS({
       encodingType: 'aes',
       isCompression: false,
-      encryptionSecret: '-*prokod*-',
+      encryptionSecret: '-*oguzcode*-',
    });
 };
 if (localStorage) init();

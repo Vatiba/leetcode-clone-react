@@ -30,7 +30,7 @@ function Head(props: HeadProps) {
 					Run
 				</button> */}
 				<button
-					className='flex bg-gray-200 hover:bg-gray-300 h-8 w-32 justify-center items-center rounded-md font-bold text-green-500'
+					className='flex bg-gray-200 hover:bg-gray-300 h-8 w-32 justify-center items-center rounded-md font-bold text-blue-500'
 					onClick={() => handleSumbit()}
 					disabled={isLoadingSubmission}
 				>

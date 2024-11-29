@@ -243,8 +243,8 @@ function Description(props: DescriptionProps) {
 							{checkResponse?.status && checkResponse.status <= 2 ?
 								<>
 									<div className="flex flex-col justify-center items-center mb-8">
-										<MdOutlineCheckCircleOutline size={120} className='text-green-500' />
-										<h1 className='font-bold text-green-500 text-4xl'>
+										<MdOutlineCheckCircleOutline size={120} className='text-blue-500' />
+										<h1 className='font-bold text-blue-500 text-4xl'>
 											{t('accepted')}
 										</h1>
 									</div>

@@ -93,7 +93,7 @@ function Code(props: CodeProps) {
 				<span
 					className='flex items-center p-2 rounded-md bg-gray-100'
 				>
-					<FaCode className='text-green-500' />
+					<FaCode className='text-blue-500' />
 					<span className='ml-2'>
 						Code
 					</span>

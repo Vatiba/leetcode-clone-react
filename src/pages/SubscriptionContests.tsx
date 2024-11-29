@@ -55,7 +55,7 @@ function FutureContest() {
                               dayjs(contest.date_subscription_started, 'DD.MM.YYYY HH:ss').isAfter(dayjs()) ?
                               <div className="flex justify-end mt-3">
                                  <button
-                                    className="bg-green-500 px-5 py-3 hover:bg-green-600 rounded-md text-white font-bold "
+                                    className="bg-blue-500 px-5 py-3 hover:bg-green-600 rounded-md text-white font-bold "
                                     disabled={contest.is_subscribed || subscribingToContest}
                                     onClick={() => {
                                        subscribeToContest(contest.id, {
