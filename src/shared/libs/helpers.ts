@@ -67,7 +67,7 @@ export function concatUserName(firstName?: string | null, lastName?: string | nu
 	return `${firstName ? firstName : ""}${lastName ? ` ${lastName}` : ''}`;
 }
 
-export function getLocationString(location: LocationParent, loc: string): string {
+export function getLocationString(location: LocationParent | null, loc: string): string {
 	if (!location)
 		return loc;
 

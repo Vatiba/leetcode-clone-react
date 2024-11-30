@@ -1,7 +1,7 @@
 type Location = {
    id: number
    name: string
-   parent: Location
+   parent: Location | null
 }
 
 export default Location;
