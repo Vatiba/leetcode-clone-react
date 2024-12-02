@@ -1,7 +1,9 @@
 import { useGetLastContestWinners, useGetTopScoredUsers } from "entities/home/api";
 import { useTranslation } from "react-i18next";
+import DefaultAvatar from "shared/assets/img/default_avatar.jpg";
 import { concatUserName, getLocationString } from "shared/libs/helpers";
 import TableWidget from "../table/TableWidget";
+
 
 const TablesWidget = () => {
    const { t } = useTranslation();
@@ -23,7 +25,7 @@ const TablesWidget = () => {
                   <h3 className="mb-3 font-bold text-lg">{t('topRating')}</h3>
                   <TableWidget data={topScored?.map(item => {
                      return {
-                        avatar: item?.avatar || '',
+                        avatar: item?.avatar || DefaultAvatar,
                         location: getLocationString(item.location, ''),
                         name: concatUserName(item.first_name, item.last_name),
                         score: item.score
@@ -39,7 +41,7 @@ const TablesWidget = () => {
                   <h3 className="mb-3 font-bold text-lg">{t('winnersOfLastOlimpiads')}</h3>
                   <TableWidget data={lastContestWinners?.map(item => {
                      return {
-                        avatar: item?.avatar || '',
+                        avatar: item?.avatar || DefaultAvatar,
                         location: item?.location?.name || '',
                         name: concatUserName(item.first_name, item.last_name),
                         score: item.score

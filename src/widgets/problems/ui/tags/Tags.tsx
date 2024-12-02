@@ -41,7 +41,7 @@ function ProblemTagsWidget(props: ProblemTagsWidgetProps) {
 												'border-blue-600 text-white bg-blue-600': tag === item.id
 											})
 										}
-										onClick={() => setTag(item.id)}
+										onClick={() => setTag(tag == item.id ? undefined : item.id)}
 									>
 										{item.name}
 									</button>

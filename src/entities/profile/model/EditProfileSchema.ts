@@ -7,7 +7,7 @@ const EditProfileSchema = (t: TFunction) => Yup.object().shape(
       last_name: Yup.string(),
       phone: Yup.string(),
       password: Yup.string(),
-      passwordConfirm: Yup.string().required(t('requiredField') as string)
+      passwordConfirm: Yup.string()
          .oneOf([Yup.ref('password'), ''], t('passwordMustMatch') as string),
       location: Yup.string(),
       school_number: Yup.string(),
