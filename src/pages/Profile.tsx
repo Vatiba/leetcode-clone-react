@@ -38,7 +38,7 @@ function Profile() {
 					<div className="flex gap-3">
 						{
 							!profileLoading && !profileError ?
-								<img src={profile?.avatar || AvatarPlaceholder} className="w-16 h-16 rounded-md" />
+								<img src={profile?.avatar || AvatarPlaceholder} className="w-16 h-16 rounded-md object-cover" />
 								:
 								<div className="w-16 h-16 rounded-md bg-gray-200 animate-pulse" />
 						}
